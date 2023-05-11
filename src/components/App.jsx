@@ -10,7 +10,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React yourpet group project
+      React yourpet project
     </div>
   );
 };
