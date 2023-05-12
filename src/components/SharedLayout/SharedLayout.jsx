@@ -7,14 +7,18 @@ import { Main } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
-    <Container>
-      <Main>
-        <Header />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </Main>
-    </Container>
+    // <Container>
+    //   <Main>
+    //     <Header />
+    <>
+      <Header/>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </>
+
+    //   </Main>
+    // </Container>
   );
 };
 
