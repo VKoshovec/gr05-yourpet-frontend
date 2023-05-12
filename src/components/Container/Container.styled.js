@@ -5,7 +5,8 @@ export const Cont = styled.div`
   width: 100%;
   display: flex;
   padding: 0 15px;
-  background-color: ${({ theme }) => theme.color.background};
+  margin: 0 auto;
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.mob}) {
     width: ${({ theme }) => theme.breakpoint.mob};
   }

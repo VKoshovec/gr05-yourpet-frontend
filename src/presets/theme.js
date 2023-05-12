@@ -5,7 +5,7 @@ const theme = {
     main: {
       regular: 'Manrope-Regular',
       medium: 'Manrope-Medium',
-      semiBold: 'Manrope-SemiBold',
+       semiBold: 'Manrope-SemiBold',
       bold: 'Manrope-Bold',
       extraBold: 'Manrope-ExtraBold',
     },
@@ -13,10 +13,11 @@ const theme = {
   },
   fontSizes: ['12px', '14px', '16px', '20px', '24px', '28px', '48px', '68px'],
   fontWeight: {
-    normal: 400,
-    medium: 500,
-    semiBold: 600,
-    bold: 700,
+    regular: 400,
+     medium: 500,
+     semiBold: 600,
+     bold: 700,
+     extrabold: 800,
   },
   color: {
     accent: '#FF8356',
