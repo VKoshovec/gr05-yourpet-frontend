@@ -2,22 +2,19 @@ const theme = {
   breakpoint: { mob: '350px', tab: '798px', desk: '1310px' },
   space: [0, 2, 4, 8, 16, 32, 64],
   fonts: {
-    main: {
       regular: 'Manrope-Regular',
       medium: 'Manrope-Medium',
-       semiBold: 'Manrope-SemiBold',
+      semiBold: 'Manrope-SemiBold',
       bold: 'Manrope-Bold',
       extraBold: 'Manrope-ExtraBold',
-    },
-    secondary: { regular: 'Inter-Regular', medium: 'Inter-Medium' },
   },
   fontSizes: ['12px', '14px', '16px', '20px', '24px', '28px', '48px', '68px'],
   fontWeight: {
     regular: 400,
-     medium: 500,
-     semiBold: 600,
-     bold: 700,
-     extrabold: 800,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    extrabold: 800,
   },
   color: {
     accent: '#FF8356',
