@@ -1,45 +1,58 @@
-@import-normalize;
+
+:root {
+  --accent: #FF8356;
+  --background: #FEF9F9;
+  --black: #111111;
+  --yellow: #FFC107;
+  --bluelinks: #54ADFF;
+  --grblue: #419EF1;
+  --red: #F43F5E;
+  --green: #00C3AD;
+  --grey: #888888;
+  --white: #FFFFFF;
+  --grorange: #FF634E;
+}
+
 
 @font-face {
   font-family: 'Manrope-Regular';
   src: local('Manrope-Regular'),
-    url('./components/assets/fonts/Manrope-Regular.ttf') format('truetype');
+    url('../components/assets/fonts/Manrope-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Manrope-Medium';
   src: local('Manrope-Medium'),
-    url('./components/assets/fonts/Manrope-Medium.ttf')
+    url('../components/assets/fonts/Manrope-Medium.ttf')
       format('truetype');
 }
 
 @font-face {
   font-family: 'Manrope-SemiBold';
   src: local('Manrope-SemiBold'),
-    url('./components/assets/fonts/Manrope-SemiBold.ttf')
+    url('../components/assets/fonts/Manrope-SemiBold.ttf')
       format('truetype');
 }
 
 @font-face {
   font-family: 'Manrope-Bold';
   src: local('Manrope-Bold'),
-    url('./components/assets/fonts/Manrope-Bold.ttf') format('truetype');
+    url('../components/assets/fonts/Manrope-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Manrope-ExtraBold';
   src: local('Manrope-ExtraBold'),
-    url('./components/assets/fonts/Manrope-ExtraBold.ttf')
+    url('../components/assets/fonts/Manrope-ExtraBold.ttf')
       format('truetype');
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Manrope-Regular';
+  font-family: 'Manrope-Regular', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: '#FEF9F9';
 }
 
 code {
@@ -78,3 +91,6 @@ input,
 select {
   font: inherit;
 }
+
+
+
