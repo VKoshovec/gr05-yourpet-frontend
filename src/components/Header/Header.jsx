@@ -1,6 +1,14 @@
+import { HeaderContainer } from './Header.styled';
+import Navbar from '../Navbar/Navbar';
+
+
 const Header = () => {
   return (
-    <h2>Header</h2>
+    <HeaderContainer>
+    <h3>Logo</h3>
+    <Navbar/>
+    <h3>User menu</h3>
+    </HeaderContainer>
   );
 };
 
