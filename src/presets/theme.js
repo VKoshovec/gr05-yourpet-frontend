@@ -1,5 +1,5 @@
 const theme = {
-  breakpoint: { mob: '350px', tab: '798px', desk: '1310px' },
+  breakpoint: { mob: '320px', tab: '768px', desk: '1280px' },
   space: [0, 2, 4, 8, 16, 32, 64],
   fonts: {
       regular: 'Manrope-Regular',
