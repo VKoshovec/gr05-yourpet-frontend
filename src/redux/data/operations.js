@@ -25,3 +25,18 @@ export const getNews = createAsyncThunk(
   }
 );
 
+export const getNotices = createAsyncThunk(
+  'notices/getAll',
+  // 'notices/getAll',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const {auth} = getState();
+            const data = await api.fetchContacts(auth.token);
+            return data;
+      // const { data } = await axios.get('/pets');
+      // return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
+  }
+);
