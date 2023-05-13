@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styled from  './UserNav.module.scss'
 import { ReactComponent as UserIcon } from '../../assets/images/icon/user-1.svg';
 import cn from 'classnames';
@@ -12,6 +14,10 @@ const UserNav = ({openMenu }) => {
     </Link>
 
   )
+};
+
+UserNav.propTypes = {
+  openMenu: PropTypes.bool,
 };
 
 export default UserNav;

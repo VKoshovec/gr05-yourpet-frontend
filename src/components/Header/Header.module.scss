@@ -1,11 +1,14 @@
 @import "./src/styles/mixins/media";
 
-
 .header {
+  background: var(--background);
+  padding: 0;
+}
+.headerSection {
   height: 48px;
   padding:20px 20px 0 20px;
   width: 100%;
-  background: var(--background);
+
 
   @include tablet {
    padding: 24px 32px 0 32px;

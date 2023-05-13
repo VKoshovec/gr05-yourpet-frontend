@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 import styles from  './AuthNav.module.scss'
 import cn from 'classnames';
@@ -19,13 +20,11 @@ const handleClickBtn = () => {
        <span className={cn(styles.text, styles.registerBtn)}>Registration</span>
       </Link>
   </>
-
-
-
-
-
-
   )
 };
 
+AuthNav.propTypes = {
+  openMenu: PropTypes.bool,
+  closeMenu: PropTypes.func,
+};
 export default AuthNav;
