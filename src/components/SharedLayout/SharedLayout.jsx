@@ -14,11 +14,11 @@ const SharedLayout = () => {
     <>
       <Header />
       <Content className={styled.main}>
-        <section className={styled.mainContentWrapper}>
+        {/*<section className={styled.mainContentWrapper}>*/}
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-        </section>
+        {/*</section>*/}
 
       </Content>
     </>

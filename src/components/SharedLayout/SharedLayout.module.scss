@@ -1,12 +1,20 @@
+@import "./src/styles/mixins/media";
+
 
 .main {
   width: 100%;
   background: var(--background);
+  min-height: calc(100vh - 48px);;
 
-  .mainContentWrapper {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 20px 0 20px;
-    height: calc(100vh - 44px);;
+
+  @include desktop {
+    max-width: 1280px;
+    margin: 0 auto  ;
   }
+  //.mainContentWrapper {
+  //  margin: 0 auto;
+  //  width: 100%;
+  //  padding: 0 20px 0 20px;
+  //  height: calc(100vh - 44px);;
+  //}
 }

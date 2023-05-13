@@ -1,11 +1,15 @@
+@import "./src/styles/mixins/media";
+
+
 .mobileMenuWrapper {
   position: absolute;
-  top:44px;
+  top:48px;
   left: 0;
   z-index: 10000;
   width: 100%;
+  padding: 40px 0 0 0;
   //max-width: 371px;
-  height: calc(100vh - 44px);
+  height: calc(100vh - 48px);
   //height: calc(var(--vh, 1vh) * 100);
   background: var(--background);
   transform: translateX(-110%);
@@ -18,19 +22,35 @@
     transition: transform .4s ease-in-out;
   }
 
-  .menuHeader {
+  @include tablet {
+    height: calc(100vh - 68px);
+    top:68px;
+  }
+
+  .userNavBarWrapper {
     display: flex;
+    gap:12px;
+    flex-direction: column;
+    align-items: center;
 
-    .logoWrapper {
-      display: flex;
-
-
-      .logo {
-        width: 116px;
-        height: 20px;
-      }
-
+    @include tablet {
+      display: none;
     }
   }
+
+  //.menuHeader {
+  //  display: flex;
+  //
+  //  .logoWrapper {
+  //    display: flex;
+  //
+  //
+  //    .logo {
+  //      width: 116px;
+  //      height: 20px;
+  //    }
+  //
+  //  }
+  //}
 
   }

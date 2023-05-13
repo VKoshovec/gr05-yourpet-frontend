@@ -2,10 +2,23 @@
 
 
 .header {
-  height: 44px;
+  height: 48px;
   padding:20px 20px 0 20px;
   width: 100%;
   background: var(--background);
+
+  @include tablet {
+   padding: 24px 32px 0 32px;
+    height: 68px;
+  }
+
+  @include desktop {
+    padding: 20px 16px 0 16px;
+    height: 68px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
 
   .btn {
     border: none;
@@ -27,6 +40,14 @@
     margin-left: auto;
     margin-right: auto;
 
+    @include tablet {
+      height: 44px;
+    }
+
+    @include desktop {
+      height: 48px;
+    }
+
     .navigationBlock {
       display: flex;
       align-items: center;
@@ -47,6 +68,22 @@
       gap: 8px;
       align-items: center;
 
+      @include tabletAndDesktop {
+        display: flex;
+        gap:22px
+      }
+
+      .userNavigateBtn {
+        display: none;
+
+        @include tabletAndDesktop {
+          display: flex;
+        }
+
+
+
+      }
+
       .closeBtn {
 
 
@@ -61,27 +98,22 @@
 
     }
 
-    .userIconBtn {
-      height: 28px;
-      width: 28px;
-      border: none;
-      padding: 0;
-    }
+    //.userIconBtn {
+    //  height: 28px;
+    //  width: 28px;
+    //  border: none;
+    //  padding: 0;
+    //}
 
     .menuBtn {
 
+      @include desktop {
+        display: none;
+      }
+
     }
   }
 
-
-
-  @include tablet {
-    background: var(--green);
-  }
-
-  @include desktop {
-    background: var(--red);
-  }
 
 }
 
