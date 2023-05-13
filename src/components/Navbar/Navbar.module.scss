@@ -1,0 +1,67 @@
+@import "./src/styles/mixins/media";
+
+
+.navbarList {
+  display: none;
+
+
+  &.mobileMenu {
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+    margin-top: 40px;;
+  }
+
+  @include desktop {
+    display: flex;
+    gap:40px;
+  }
+
+  li {
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    width: 100%;
+
+    @include desktop {
+      width: initial;
+    }
+  }
+
+  .listItemLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 44px;
+    color:var(--black);
+
+    &:global(.active) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 44px;
+      color: var(--yellow);
+    }
+
+    @include desktop {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 27px;
+
+      &:global(.active) {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 27px;
+        color: var(--yellow);
+      }
+
+    }
+
+  }
+
+
+
+}

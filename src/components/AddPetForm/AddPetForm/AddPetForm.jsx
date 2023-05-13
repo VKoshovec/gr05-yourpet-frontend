@@ -1,4 +1,4 @@
-import { Form } from 'antd'
+import { Form } from 'antd';
 
 const AddPetForm = () => {
     return (

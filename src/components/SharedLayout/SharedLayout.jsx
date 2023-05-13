@@ -1,20 +1,28 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import Container from '../Container/Container';
 import Header from '../Header/Header';
-import { Main } from './SharedLayout.styled';
+import { Layout } from 'antd';
+import styled from './SharedLayout.module.scss';
+
+const { Content } = Layout;
+
 
 const SharedLayout = () => {
+
   return (
-    <Container>
-      <Main>
-        <Header />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </Main>
-    </Container>
+    <>
+      <Header />
+      <Content className={styled.main}>
+        {/*<section className={styled.mainContentWrapper}>*/}
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        {/*</section>*/}
+
+      </Content>
+    </>
+
   );
 };
 

@@ -1,0 +1,123 @@
+
+:root {
+  --accent: #FF8356;
+  --background: #FEF9F9;
+  --black: #111111;
+  --yellow: #FFC107;
+  --bluelinks: #54ADFF;
+  --grblue: #419EF1;
+  --red: #F43F5E;
+  --green: #00C3AD;
+  --grey: #888888;
+  --white: #FFFFFF;
+  --grorange: #FF634E;
+}
+
+
+@font-face {
+  font-family: 'Manrope-Regular';
+  src: local('Manrope-Regular'),
+  url('../components/assets/fonts/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-Medium';
+  src: local('Manrope-Medium'),
+  url('../components/assets/fonts/Manrope-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-SemiBold';
+  src: local('Manrope-SemiBold'),
+  url('../components/assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-Bold';
+  src: local('Manrope-Bold'),
+  url('../components/assets/fonts/Manrope-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-ExtraBold';
+  src: local('Manrope-ExtraBold'),
+  url('../components/assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Manrope-Regular', serif ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Manrope-Regular', serif ;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+select {
+  font: inherit;
+}
+
+//.customBtn {
+//
+//  width: 165px;
+//  height: 40px;
+//  border: 2px solid var(--yellow);
+//  border-radius: 40px;
+//
+//  &.contained {
+//    background: var(--yellow) ;
+//  }
+
+
+
+  :where(.css-dev-only-do-not-override-ed5zg0).ant-btn-default{
+
+  box-shadow: initial;
+  }
+
+//:where(.css-dev-only-do-not-override-ed5zg0).ant-btn:not(:disabled):focus-visible {
+//
+//  outline: initial;
+//  outline-offset: initial;
+//  transition: initial;
+//}
+
+
+:where(.css-dev-only-do-not-override-ed5zg0)[class^="ant-layout"], :where(.css-dev-only-do-not-override-ed5zg0)[class*=" ant-layout"] {
+  font-family: 'Manrope-Regular', serif ;
+  font-size: initial;
+  font-weight: initial;
+}
