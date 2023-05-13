@@ -47,7 +47,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Manrope-Regular', serif;
+  font-family: 'Manrope-Regular', serif ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59,6 +59,7 @@ code {
 
 * {
   box-sizing: border-box;
+  font-family: 'Manrope-Regular', serif ;
 }
 
 h1,
@@ -115,4 +116,8 @@ select {
 //}
 
 
-
+:where(.css-dev-only-do-not-override-ed5zg0)[class^="ant-layout"], :where(.css-dev-only-do-not-override-ed5zg0)[class*=" ant-layout"] {
+  font-family: 'Manrope-Regular', serif ;
+  font-size: initial;
+  font-weight: initial;
+}

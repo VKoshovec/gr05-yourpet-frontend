@@ -9,11 +9,11 @@ const AuthNav = () => {
 
 
   return(<>
-      <Link to={"/login"}  className={styles.authBtn}>
-        <span>Log IN</span>
+      <Link to={"/login"} className={cn(styles.authBtn, styles.contained)} >
+        <span className={styles.text}>Log IN</span>
       </Link>
-      <Link to={"/register"} className={cn(styles.authBtn, styles.contained)}>
-        Registration
+      <Link to={"/register"} className={styles.authBtn} >
+       <span className={cn(styles.text, styles.registerBtn)}>Registration</span>
       </Link>
   </>
 
