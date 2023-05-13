@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
 const Section = ({ children }) => {
-
   return <section>{children}</section>;
 };
 
-Container.propTypes = {
+Section.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
