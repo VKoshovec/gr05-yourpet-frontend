@@ -1,0 +1,17 @@
+@import "./src/styles/mixins/media";
+
+
+.navbarWrapper {
+  display: none;
+
+  &.mobileMenu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include desktop {
+    display: flex;
+    gap:40px;
+  }
+
+}

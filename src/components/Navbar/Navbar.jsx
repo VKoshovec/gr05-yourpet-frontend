@@ -1,12 +1,16 @@
-import { Nav, Link } from './Navbar.styled';
+import { NavLink } from 'react-router-dom';
+import styled from './Navbar.module.scss'
+import cn from 'classnames';
 
-const Navbar = ({ children }) => {
+const Navbar = ({menuOpen}) => {
   return (
-    <Nav>
-    <Link to="/news" end>News</Link>
-    <Link to="/notices">Find pet</Link>
-    <Link to="/friends">Our friends</Link>
-  </Nav>
+   <div className={cn(styled.navbarWrapper, {[styled.mobileMenu] : menuOpen})}>
+     <NavLink to="/news" end>News</NavLink>
+     <NavLink to="/notices">Find pet</NavLink>
+     <NavLink to="/friends">Our friends</NavLink>
+   </div>
+
+
   );
 };
 
