@@ -1,5 +1,6 @@
+import AddPetFrame from "components/AddPetForm/AddPetFrame/AddPetFrame";
 
 const AddPetPage = () => {
-  return <h1>AddPet page</h1>;
+  return <AddPetFrame/>;
 };
 export default AddPetPage;
