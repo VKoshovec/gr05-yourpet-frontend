@@ -23,10 +23,18 @@ const HeaderPage = () => {
   // const isLoggingIn = true
   // console.log(isLoggingIn);
 
+  const closeMenu =  () => {
+    setOpenMenu(false)
+  }
+  const handleClickLogo = () => {
+    if (openMenu) setOpenMenu(false)
+
+  }
+
   return (
     <Header className={styled.header}>
       <div className={styled.headerWrapper}>
-        <Link to={'/main'} className={styled.logoWrapper}>
+        <Link to={'/main'} className={styled.logoWrapper} onClick={handleClickLogo}>
           <ReactLogo className={styled.logo} />
         </Link>
         <nav className={styled.navigationBlock}>
@@ -35,7 +43,7 @@ const HeaderPage = () => {
         <div className={styled.rightNavigationalBlock}>
           {!openMenu && isLoggingIn &&  <UserNav openMenu={openMenu}/>}
 
-          {!isLoggingIn && (<div className={styled.userNavigateBtn}>
+          {!isLoggingIn && !openMenu && (<div className={styled.userNavigateBtn}>
             <AuthNav />
           </div>)}
           {!openMenu && <Button
@@ -44,12 +52,12 @@ const HeaderPage = () => {
             <BurgerIcon />
           </Button>}
           {openMenu && <Button
-            onClick={() => setOpenMenu(false)}
+            onClick={closeMenu}
             className={cn(styled.closeBtn, styled.btn)}>
             <CloseBtnIcon className={styled.closeBtnIcon} />
           </Button>}
         </div>
-        <MobileMenu open={openMenu} />
+        <MobileMenu open={openMenu} closeMenu={closeMenu}/>
       </div>
 
     </Header>

@@ -9,7 +9,7 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 
 
-const MobileMenu = ({open}) => {
+const MobileMenu = ({open, closeMenu}) => {
 
   const isLoggingIn = useSelector(selectIsLoggedIn);
   // const isLoggingIn = true
@@ -21,12 +21,12 @@ const MobileMenu = ({open}) => {
 
     >
       <div className={styled.userNavBarWrapper}>
-        {!isLoggingIn && <AuthNav/>}
+        {!isLoggingIn && <AuthNav openMenu={open} closeMenu={closeMenu} />}
         {isLoggingIn && <UserNav openMenu={open}/>}
 
       </div>
       <div>
-        <Navbar menuOpen={open}/>
+        <Navbar menuOpen={open} closeMenu={closeMenu}/>
       </div>
 
     </div>

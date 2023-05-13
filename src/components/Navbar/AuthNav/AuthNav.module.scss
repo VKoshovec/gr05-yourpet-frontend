@@ -2,6 +2,7 @@
 
 .authBtn {
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   width: 165px;
@@ -26,5 +27,10 @@
   }
 }
 
+  svg {
+    path {
+      fill: var(--white);
+    }
+  }
 }
 
