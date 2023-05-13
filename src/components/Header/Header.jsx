@@ -4,13 +4,20 @@ import styled from './Header.module.scss'
 import { Button, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 import {ReactComponent as ReactLogo} from '../assets/images/icon/logo.svg';
-import {ReactComponent as UserIcon} from '../assets/images/icon/userIcon.svg';
-import {ReactComponent as BurgerIcon} from '../assets/images/icon/menuHamburgerIcon.svg';
+import {ReactComponent as UserIcon} from '../assets/images/icon/user-1.svg';
+import {ReactComponent as BurgerIcon} from '../assets/images/icon/menu-hamburger.svg';
+import {ReactComponent as CloseBtnIcon} from '../assets/images/icon/cross-bigl.svg';
+import { useState } from 'react';
+import MobileMenu from '../MobileMenu/MobileMenu';
+import cn from 'classnames';
 
 
 const { Header } = Layout;
 
 const HeaderPage = () => {
+
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <Header className={styled.header}>
       <div className={styled.headerWrapper}>
@@ -21,13 +28,23 @@ const HeaderPage = () => {
           <Navbar />
         </nav>
         <div className={styled.rightNavigationalBlock}>
-          <Button className={styled.userIconBtn}>
+          {!openMenu && <Button
+            className={styled.userIconBtn}
+          >
             <UserIcon/>
-          </Button>
-          <Button  className={styled.menuBtn}>
+          </Button>}
+          {!openMenu &&  <Button
+            onClick={() => setOpenMenu(true)}
+            className={cn(styled.menuBtn, styled.btn)}>
             <BurgerIcon/>
-          </Button>
+          </Button>}
+          {openMenu &&  <Button
+            onClick={() => setOpenMenu(false)}
+            className={cn(styled.closeBtn, styled.btn)}>
+            <CloseBtnIcon className={styled.closeBtnIcon} />
+          </Button>}
         </div>
+        <MobileMenu open={openMenu}/>
       </div>
 
     </Header>

@@ -1,0 +1,36 @@
+.mobileMenuWrapper {
+  position: absolute;
+  top:44px;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  //max-width: 371px;
+  height: calc(100vh - 44px);
+  //height: calc(var(--vh, 1vh) * 100);
+  background: var(--background);
+  transform: translateX(-110%);
+  transition: transform .4s ease-out;
+
+
+
+  &.active {
+    transform: translateX(0) !important;
+    transition: transform .4s ease-in-out;
+  }
+
+  .menuHeader {
+    display: flex;
+
+    .logoWrapper {
+      display: flex;
+
+
+      .logo {
+        width: 116px;
+        height: 20px;
+      }
+
+    }
+  }
+
+  }

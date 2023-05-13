@@ -15,8 +15,6 @@ export const Link = styled(NavLink)`
   color: black;
   font-weight: 700;
   font-size: 24px;
-  color: #c9c8c8;
-  border-bottom: 3px solid #b5daf4;
 
   &:hover,
   &:focus {

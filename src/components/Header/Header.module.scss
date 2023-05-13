@@ -2,17 +2,28 @@
 
 
 .header {
-  height: initial;
-  padding: 0;
+  height: 44px;
+  padding:20px 20px 0 20px;
   width: 100%;
+  background: var(--background);
+
+  .btn {
+    border: none;
+    padding: 0;
+    background: transparent;
+    height: 24px;
+    width: 24px;
+    box-shadow:none;
+  }
 
 
   .headerWrapper {
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 280px;
-    padding: 20px 20px 0 20px;
+   width: 100%;
+    //padding: 20px 20px 0 20px;
     margin-left: auto;
     margin-right: auto;
 
@@ -35,6 +46,19 @@
       display: flex;
       gap: 8px;
       align-items: center;
+
+      .closeBtn {
+
+
+          svg path {
+            stroke: var(--yellow);
+          }
+
+
+
+      }
+
+
     }
 
     .userIconBtn {
@@ -45,15 +69,11 @@
     }
 
     .menuBtn {
-      border: none;
-      padding: 0;
-      height: 24px;
-      width: 24px;
-      box-shadow:none;
+
     }
   }
 
-  background: var(--color-button);
+
 
   @include tablet {
     background: var(--green);

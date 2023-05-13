@@ -1,4 +1,9 @@
 
 .navbarWrapper {
   display: none;
+
+  &.mobileMenu {
+    display: flex;
+    flex-direction: column;
+  }
 }
