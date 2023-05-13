@@ -6,7 +6,7 @@ import { getNotices } from "../../redux/data/operations";
 import NoticeCategoryItem from '../NoticeCategoryItem';
 import css from './NoticesCategorieslist.module.css';
 
-const NoticesCategoryList = ({noticies}) => {
+const NoticesCategoryList = ({noticies, onClick, onClickModal}) => {
     
     const dispatch = useDispatch();
 
@@ -22,13 +22,16 @@ const NoticesCategoryList = ({noticies}) => {
 
     return (
         <ul className={css.list}>
-            {noticies.map(({ id, category, location, date, sex }) => (
+            {noticies.map(({ id, category, image, location, date, sex}) => (
                 <NoticeCategoryItem
                     key={id} 
                     category={category}
+                    image={image}
                     location={location} 
                     date={date}
                     sex={sex} 
+                    onClick={onClick}
+                    onClickModal={onClickModal}
                 />
             ))}
         </ul>

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialData } from '../../presets/initial';
-import { getPets, getNews, getNotices } from './operations';
+import { getPets, getNews, getNotices, fetchAddNotice, fetchDeleteNotice } from './operations';
 
 const dataSlice = createSlice({
   name: 'data',
@@ -14,7 +14,15 @@ const dataSlice = createSlice({
         state.comments = payload;
       })
       .addCase(getNotices.fulfilled, (state, { payload }) => {
-        state.comments = payload;
+        state.notices = payload;
+      })
+      .addCase(fetchAddNotice.fulfilled, (state, { payload }) => {
+        state.notices.push(payload);
+      })
+      .addCase(fetchDeleteNotice.fulfilled, (state, { payload }) => {
+        state.notices = payload;
+        const index = state.notices.findIndex(item => item.id === payload);
+        state.notices.splice(index, 1);
       });
   },
 });
