@@ -1,22 +1,21 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import React, { useEffect } from 'react';
 import { getNotices, fetchAddFavorite, fetchDeleteFavorite  } from "../../redux/data/operations";
-// import { getFilteredContacts } from "../../redux/selectors";
 
-import css from './NoticeCategoryItem.module.css';
+import css from './NoticeCategoryItem.module.scss';
 
 const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
     const dispatch = useDispatch();
 
-    const noticeFavorite = {id, category, image, location, date, sex}
+    const isPresentNoticeFavorite = {id, category, image, location, date, sex}
 
     useEffect(()=> {
         dispatch(getNotices());
     }, [dispatch])
 
     const addAndDeleteFavorite = () => {
-        if(!noticeFavorite) {
-            dispatch(fetchAddFavorite(category, image, location, date, sex));
+        if(!isPresentNoticeFavorite) {
+            dispatch(fetchAddFavorite(id));
         }
         
         dispatch(fetchDeleteFavorite(id));
@@ -25,9 +24,6 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
     // const openModal = () => {
     //     dispatch(Modal);
     // }
-
-
-    // const contactList = useSelector(getFilteredContacts);
 
     return (
         <li className={css.item}>
@@ -49,7 +45,8 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
             <button             
                 className={css.button}
                 type="button"
-                onClickModal={() => openModal()}>
+                // onClickModal={() => openModal()}
+            >
                 LearnMore</button>
         </li>
     );

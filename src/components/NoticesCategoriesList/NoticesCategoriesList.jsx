@@ -1,24 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import React, { useEffect } from 'react';
-import { getNotices } from "../../redux/data/operations";
-// import { getFilteredContacts } from "../../redux/selectors";
+import { getNoticesCategory } from "../../redux/data/operations";
 
 import NoticeCategoryItem from '../NoticeCategoryItem';
-import css from './NoticesCategorieslist.module.css';
+import css from './NoticesCategorieslist.module.scss';
 
 const NoticesCategoryList = ({noticies, onClick, onClickModal}) => {
-    
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        dispatch(getNotices());
+        dispatch(getNoticesCategory());
     }, [dispatch])
-
-    // const handleDeleteContact = (id) => {
-    //     dispatch(fetchDeleteContact(id));
-    // }
-
-    // const contactList = useSelector(getFilteredContacts);
 
     return (
         <ul className={css.list}>

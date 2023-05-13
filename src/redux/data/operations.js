@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getPets = createAsyncThunk(
@@ -27,11 +27,22 @@ export const getNews = createAsyncThunk(
 
 export const getNotices = createAsyncThunk(
   'notices/getAll',
-  // 'notices/getAll/category',
   async (_, { rejectWithValue }) => {
     try {
-      // const { data } = await axios.get('/notices');
-      // return data;
+      const { data } = await axios.get('/notices');
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
+  }
+);
+
+export const getNoticesCategory = createAsyncThunk(
+  'notices/category',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/notices/category');
+      return data;
     } catch ({ message }) {
       return rejectWithValue(message);
     }
@@ -40,27 +51,24 @@ export const getNotices = createAsyncThunk(
 
 export const fetchAddFavorite = createAsyncThunk(
   "notices/addFavorite",
-  async({name, number}, {rejectWithValue, getState}) => {
+  async({category, image, location, date, sex}, {rejectWithValue, getState}) => {
       try {
-          const {auth} = getState();
-          const result = await api.addContact({name, number}, auth.token);
-          return result;
-          // const { data } = await axios.post('/notices/addFavorite');
-      // return data;
+        const {auth} = getState();
+        const { data } = await axios.post('/notices/addFavorite', {category, image, location, date, sex}, auth.token);
+        return data;
       }
-      catch({response}) {
-          return rejectWithValue(response.data);
+      catch ({ message }) {
+        return rejectWithValue(message);
       }
   },
   {
-      condition: ({name}, {getState}) => {
-          const {contacts} = getState();
-          const isPresentContact = contacts.items.find(element => 
-              element.name.toLowerCase() === name.toLowerCase()
-          );
+      condition: ({id}, {getState}) => {
+          const {notices} = getState();
+          const isPresentNoticeFavorite = notices.items.find(element => 
+              element.id === id );
   
-          if (isPresentContact) { 
-              alert('Contact is already exist!')
+          if (isPresentNoticeFavorite) { 
+              alert('Notice is already exist!')
               return false;
           }
       }
@@ -69,16 +77,14 @@ export const fetchAddFavorite = createAsyncThunk(
 
 export const fetchDeleteFavorite = createAsyncThunk(
   "notices/deleteFavorite",
-  async(id, {rejectWithValue, getState}) => {
+  async({id}, {rejectWithValue, getState}) => {
       try {
           const {auth} = getState();
-          await api.deleteContact(id, auth.token);
-          return id;
-          // const { data } = await axios.delete('/notices/deleteFavorite');
-          // return data;
+          const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
+          return data;
       }
-      catch({response}) {
-          return rejectWithValue(response.data);
+      catch ({ message }) {
+        return rejectWithValue(message);
       }
   }
 );
