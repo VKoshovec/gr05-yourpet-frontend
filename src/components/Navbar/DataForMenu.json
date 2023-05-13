@@ -1,0 +1,19 @@
+[
+  {
+    "key": "news",
+    "title": "News",
+    "link": "/news"
+  },
+  {
+    "key": "findPet",
+    "title": "Find pet",
+    "link": "/notices"
+
+  },
+  {
+    "key": "ourFriends",
+    "title": "Our friends",
+    "link": "/friends"
+  }
+]
+
