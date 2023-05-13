@@ -1,20 +1,37 @@
+import { useState } from "react";
 import { Buttonset, ButtonsetItem, ButtonItem } from "./AddPetFormButtonset.styled";
 
 
 const AddPetFormButtonset = ({ ButtonSetResponse }) => {
+
+    const [variant, setVariant] = useState (); 
+
+    const getVarint = (num) => {
+        ButtonSetResponse(num);
+        setVariant(num);
+    }
+
     return (
         <Buttonset>
             <ButtonsetItem>
-                <ButtonItem onClick={ ButtonSetResponse }>your pet</ButtonItem>
+                <ButtonItem 
+                className={ variant === 0 ? "active" : "" }
+                onClick={ () => getVarint(0) }>your pet</ButtonItem>
             </ButtonsetItem>
             <ButtonsetItem>
-                <ButtonItem onClick={ ButtonSetResponse }>sell</ButtonItem>
+                <ButtonItem 
+                className={ variant === 1 ? "active" : "" }
+                onClick={ () => getVarint(1) }>sell</ButtonItem>
             </ButtonsetItem>
             <ButtonsetItem>
-                <ButtonItem onClick={ ButtonSetResponse }>lost/found</ButtonItem>
+                <ButtonItem 
+                className={ variant === 2 ? "active" : "" }
+                onClick={ () => getVarint(2) }>lost/found</ButtonItem>
             </ButtonsetItem>
             <ButtonsetItem>
-                <ButtonItem onClick={ ButtonSetResponse }>in good hands</ButtonItem>
+                <ButtonItem 
+                className={ variant === 3 ? "active" : "" }
+                onClick={ () => getVarint(3) }>in good hands</ButtonItem>
             </ButtonsetItem>
         </Buttonset>
     );

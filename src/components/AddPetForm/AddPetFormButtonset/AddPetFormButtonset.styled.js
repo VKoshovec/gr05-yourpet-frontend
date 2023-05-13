@@ -20,10 +20,11 @@ export const ButtonItem = styled(Button)`
 border-radius: 40px;
 background-color: #CCE4FB;
 border: none;
-color: ${ theme.color.bluelinks };
+& span {
+    color: ${ theme.color.bluelinks };
+}
 
 &:hover{
-    color: ${ theme.color.background }; 
     background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
 }
 
@@ -31,5 +32,10 @@ color: ${ theme.color.bluelinks };
     color: ${ theme.color.background }; 
 }
 
-&.active{}
+&.active{
+    background: ${ theme.color.grblue };
+    & span{
+      color: ${ theme.color.background }; 
+    }
+}
 `;
