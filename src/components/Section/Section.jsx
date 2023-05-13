@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import styled from './Section.module.scss'
 
 const Section = ({ children }) => {
 
-  return <section>{children}</section>;
+  return <section className={styled.sectionWrapper}>{children}</section>;
 };
 
-Container.propTypes = {
+Section.propTypes = {
   children: PropTypes.node.isRequired,
 };
 

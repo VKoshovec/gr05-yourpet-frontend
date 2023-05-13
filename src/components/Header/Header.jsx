@@ -33,31 +33,33 @@ const HeaderPage = () => {
 
   return (
     <Header className={styled.header}>
-      <div className={styled.headerWrapper}>
-        <Link to={'/main'} className={styled.logoWrapper} onClick={handleClickLogo}>
-          <ReactLogo className={styled.logo} />
-        </Link>
-        <nav className={styled.navigationBlock}>
-          <Navbar />
-        </nav>
-        <div className={styled.rightNavigationalBlock}>
-          {!openMenu && isLoggingIn &&  <UserNav openMenu={openMenu}/>}
+      <div className={styled.headerSection}>
+        <div className={styled.headerWrapper}>
+          <Link to={'/main'} className={styled.logoWrapper} onClick={handleClickLogo}>
+            <ReactLogo className={styled.logo} />
+          </Link>
+          <nav className={styled.navigationBlock}>
+            <Navbar />
+          </nav>
+          <div className={styled.rightNavigationalBlock}>
+            {!openMenu && isLoggingIn &&  <UserNav openMenu={openMenu}/>}
 
-          {!isLoggingIn && !openMenu && (<div className={styled.userNavigateBtn}>
-            <AuthNav />
-          </div>)}
-          {!openMenu && <Button
-            onClick={() => setOpenMenu(true)}
-            className={cn(styled.menuBtn, styled.btn)}>
-            <BurgerIcon />
-          </Button>}
-          {openMenu && <Button
-            onClick={closeMenu}
-            className={cn(styled.closeBtn, styled.btn)}>
-            <CloseBtnIcon className={styled.closeBtnIcon} />
-          </Button>}
+            {!isLoggingIn && !openMenu && (<div className={styled.userNavigateBtn}>
+              <AuthNav />
+            </div>)}
+            {!openMenu && <Button
+              onClick={() => setOpenMenu(true)}
+              className={cn(styled.menuBtn, styled.btn)}>
+              <BurgerIcon />
+            </Button>}
+            {openMenu && <Button
+              onClick={closeMenu}
+              className={cn(styled.closeBtn, styled.btn)}>
+              <CloseBtnIcon className={styled.closeBtnIcon} />
+            </Button>}
+          </div>
+          <MobileMenu open={openMenu} closeMenu={closeMenu}/>
         </div>
-        <MobileMenu open={openMenu} closeMenu={closeMenu}/>
       </div>
 
     </Header>
