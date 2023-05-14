@@ -3,6 +3,7 @@ import styled from './Navbar.module.scss'
 import cn from 'classnames';
 
 import data from './DataForMenu.json'
+import PropTypes from 'prop-types';
 
 const Navbar = ({menuOpen, closeMenu}) => {
 
@@ -22,6 +23,9 @@ const Navbar = ({menuOpen, closeMenu}) => {
   );
 };
 
-
+Navbar.propTypes = {
+  menuOpen: PropTypes.bool,
+  closeMenu: PropTypes.func,
+};
 
 export default Navbar;
