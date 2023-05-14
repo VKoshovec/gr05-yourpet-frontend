@@ -4,7 +4,11 @@
 .main {
   width: 100%;
   background: var(--background);
-  min-height: calc(100vh - 48px);;
+  min-height: calc(100vh - 48px);
+
+  @include tabletAndDesktop {
+    min-height: calc(100vh - 68px);
+  }
 
 
   .mainContentWrapper {
