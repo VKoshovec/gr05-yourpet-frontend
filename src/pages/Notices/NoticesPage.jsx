@@ -1,5 +1,5 @@
 import NoticesCategoriesNav from '../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import NoticesSearch from '../../components/Notices/NoticesSearch/NoticesSearch';
