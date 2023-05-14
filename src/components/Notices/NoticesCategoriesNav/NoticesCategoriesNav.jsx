@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from './NoticesCategoriesNav.module.scss';
 
 const NoticesCategoriesNav = () => {

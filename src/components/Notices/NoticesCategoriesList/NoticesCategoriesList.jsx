@@ -12,7 +12,7 @@ const NoticesCategoriesList = () => {
 
   const { category } = useParams();
 
-  console.log(category);
+  console.log(category, loading, error, message);
 
   useEffect(() => {
     if (!category) {

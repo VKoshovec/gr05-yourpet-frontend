@@ -88,3 +88,31 @@ export const fetchDeleteFavorite = createAsyncThunk(
       }
   }
 );
+
+export const fetchAddNotice = createAsyncThunk(
+  "notices/fetchAddNotice",
+  async({id}, {rejectWithValue, getState}) => {
+  //     try {
+  //         const {auth} = getState();
+  //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
+  //         return data;
+  //     }
+  //     catch ({ message }) {
+  //       return rejectWithValue(message);
+  //     }
+  }
+);
+
+export const fetchDeleteNotice = createAsyncThunk(
+  "notices/deleteNotice",
+  async({id}, {rejectWithValue, getState}) => {
+  //     try {
+  //         const {auth} = getState();
+  //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
+  //         return data;
+  //     }
+  //     catch ({ message }) {
+  //       return rejectWithValue(message);
+  //     }
+  }
+);
