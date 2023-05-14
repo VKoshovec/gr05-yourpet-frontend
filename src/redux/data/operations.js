@@ -64,10 +64,10 @@ export const fetchAddFavorite = createAsyncThunk(
   {
       condition: ({id}, {getState}) => {
           const {notices} = getState();
-          const isPresentNoticeFavorite = notices.items.find(element => 
+          const isPresentNoticeFavorite = notices.items.find(element =>
               element.id === id );
-  
-          if (isPresentNoticeFavorite) { 
+
+          if (isPresentNoticeFavorite) {
               alert('Notice is already exist!')
               return false;
           }

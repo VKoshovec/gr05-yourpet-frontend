@@ -1,4 +1,4 @@
-import styles from './MainPage.module.css';
+import styles from './MainPage.module.scss';
 // import bigDog from '../../components/assets/images/mainPageImage/big-dog.png';
 // import smallDog from '../../components/assets/images/mainPageImage/small-dog.png';
 // import cat from '../../components/assets/images/mainPageImage/cat.png';
