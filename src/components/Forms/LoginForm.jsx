@@ -51,12 +51,13 @@ export const LoginForm = () => {
                   name="password"
                   type="password"
                   placeholder="Password"
+                  isShow
                 />
               </div>
               <MainButton>Login</MainButton>
-              <div className="singin__link--wrap">
+              <div className={css.singinLinkWrap}>
                 Don't have an account?
-                <Link className="singIn__link" to="/register">
+                <Link className={css.singinLink} to="/register">
                   Register
                 </Link>
               </div>

@@ -1,22 +1,21 @@
 @import "./src/styles/mixins/media";
 
 .authWrapper {
-  width: 608px;
+  width: 280px;
   height: 100%;
-  margin: 82px auto 0;
+  margin: 48px auto 0;
 }
 .auth_form_wrap {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 60px 75px;
+  padding: 40px 12px;
   background-color: #fff;
-  margin-top: 64px;
   border-radius: 40px;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 }
 .authFormTitle {
-  margin: 40px 0;
+  margin: 0 0 40px;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.375;
@@ -30,8 +29,58 @@
 }
 .authItem {
   display: inline-flex;
+  position: relative;
   padding: 0;
   vertical-align: top;
   width: 100%;
   margin-bottom: 24px;
+}
+.singinLinkWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.04em;
+  color: #888888;
+}
+.singinLink {
+  display: inline-block;
+  position: relative;
+  margin-left: 4px;
+  font-family: inherit;
+  text-decoration: none;
+  background: transparent;
+  color: #54ADFF;
+  cursor: pointer;
+  transition: color 300ms ease-in-out;
+}
+.singinLink::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  opacity: 0.5;
+  border-bottom: 1px solid #54ADFF;
+  transform: scaleX(0);
+  transition: transform 300ms ease-in-out;
+}
+.singinLink:hover:after {
+  transform: scaleX(1);
+}
+
+@include tabletAndDesktop {
+  .authWrapper {
+    width: 608px;
+    margin: 82px auto 0;
+  }
+  .auth_form_wrap {
+    padding: 60px 75px;
+  }
+  .authFormTitle {
+    font-size: 36px;
+    line-height: 1.36;
+  }
 }
