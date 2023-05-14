@@ -42,7 +42,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 		{date}</div>
 		<div className={css.item}>icon
 		{sex}</div>
-		<h3 className={css.item}>Сute dog looking for a home</h3>
+		<h2 className={css.item}>Сute dog looking for a home</h2>
 		<button             
             className={css.button}
             type="button"
