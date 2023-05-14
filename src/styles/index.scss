@@ -4,13 +4,16 @@
   --background: #FEF9F9;
   --black: #111111;
   --yellow: #FFC107;
-  --bluelinks: #54ADFF;
+  --bluelinksActive: #54ADFF;
+  --bluelinks: #CCE4FB;
   --grblue: #419EF1;
   --red: #F43F5E;
   --green: #00C3AD;
   --grey: #888888;
   --white: #FFFFFF;
   --grorange: #FF634E;
+
+  --fontFamily: 'Manrope-Regular';
 }
 
 
@@ -59,7 +62,7 @@ code {
 
 * {
   box-sizing: border-box;
-  font-family: 'Manrope-Regular', serif ;
+  font-family: 'Manrope-Regular', sans-serif;
 }
 
 h1,

@@ -9,6 +9,7 @@ const RegisterPage = lazy(() => import('../pages/Register/RegisterPage'));
 const MainPage = lazy(() => import('../pages/Main/MainPage'));
 const NewsPage = lazy(() => import('../pages/News/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/Notices/NoticesPage'));
+const NoticesCategoriesList = lazy(() => import('./Notices/NoticesCategoriesList/NoticesCategoriesList'));
 const OurFriendsPage = lazy(() => import('../pages/OurFriends/OurFriendsPage'));
 const UserPage = lazy(() => import('../pages/User/UserPage'));
 const AddPetPage = lazy(() => import('../pages/AddPet/AddPetPage'));
@@ -34,7 +35,9 @@ const Router = () => {
         <Route index element={<Navigate to="/notices" replace />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/notices" element={<NoticesPage />} />
+          <Route path="/notices" element={<NoticesPage />} >
+            <Route path=":category" element={<NoticesCategoriesList/>}/>
+          </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
           <Route
             path="/user"

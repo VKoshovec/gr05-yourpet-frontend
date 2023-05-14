@@ -1,0 +1,24 @@
+.noticesNavWrapper {
+  display: flex;
+  gap:20px;
+
+  .linkBtn{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 8px 16px;
+    background-color: var(--bluelinks);
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--bluelinksActive);
+
+    &:global(.active) {
+      background-color: var(--bluelinksActive);
+      color: var(--background);
+
+    }
+
+  }
+}
