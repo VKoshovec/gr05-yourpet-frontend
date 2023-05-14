@@ -29,7 +29,7 @@ export default function BaseInput({
       />
       {isShow && (
         <div className={css.authInputIsShow} onClick={handleShowPassword}>
-          {showPassword ? <EyeOpen /> : <EyeClosed />}
+          {showPassword ? <EyeClosed /> : <EyeOpen />}
         </div>
       )}
     </>

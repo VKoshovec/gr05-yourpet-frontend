@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
   padding: 40px 12px;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 40px;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 }
@@ -42,7 +42,7 @@
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.04em;
-  color: #888888;
+  color: var(--grey);
 }
 .singinLink {
   display: inline-block;
@@ -51,7 +51,7 @@
   font-family: inherit;
   text-decoration: none;
   background: transparent;
-  color: #54ADFF;
+  color: var(--bluelinks);
   cursor: pointer;
   transition: color 300ms ease-in-out;
 }
@@ -63,7 +63,7 @@
   left: 0;
   width: 100%;
   opacity: 0.5;
-  border-bottom: 1px solid #54ADFF;
+  border-bottom: 1px solid var(--bluelinks);
   transform: scaleX(0);
   transition: transform 300ms ease-in-out;
 }

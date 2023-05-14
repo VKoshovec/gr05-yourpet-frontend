@@ -6,7 +6,6 @@ import { signin } from '../../redux/auth/operations';
 import BaseInput from 'components/fields/baseInput';
 import { MainButton } from 'components/buttons/MainButton';
 import { validationFormLogin } from 'helpers';
-import ErrorCode from 'constans/error-code';
 import Section from 'components/Section/Container';
 import Container from 'components/Container/Container';
 
@@ -28,7 +27,7 @@ export const LoginForm = () => {
       const res = await dispatch(signin({ email, password }));
       if (!res.payload.success) throw new Error(res.payload.errorCode);
     } catch (error) {
-      toast.error(ErrorCode[error.message]);
+      console.log(error);
     }
   };
 
