@@ -31,11 +31,12 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Navigate to="/notices" replace />} />
+          <Route index element={<Navigate to="/notices" replace />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
+          {/* <Route path="/user" element={<UserPage />} /> */}
           <Route
             path="/user"
             element={
