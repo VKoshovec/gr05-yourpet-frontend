@@ -1,107 +1,62 @@
+.mainBox {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+  background-image: url('../../components/assets/images/mainPageImage/bgMob.png'), url('../../components/assets/images/mainPageImage/FrameMob.png');
+  background-repeat: no-repeat;
+  background-position: center center, bottom center;
+  position: relative;
+  
+  min-height: 600px;
+  
+  
 
-.mainBox{
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    background-image: url('../../components/assets/images/mainPageImage/bgTab.png'), url('../../components/assets/images/mainPageImage/FrameTab.png');
+    background-repeat: no-repeat;
+    background-position: center center, bottom center;
+    min-height: 1196px;
+    /* min-height: 100vh; */
+  }
+
+  @media screen and (min-width: 1280px) {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    max-width: 1280px;
+    min-height: calc(100vh - 68px);
+    background-image: url('../../components/assets/images/mainPageImage/bg.png'), url('../../components/assets/images/mainPageImage/FrameDesk.png');
+    background-repeat: no-repeat;
+    background-position: center center, bottom right;
+  }
+  
 }
-
-.title{
-    width: 500px;
-    font-size: 68px;
-}
-
-.container {
-    position: relative;
-    width: 916px;
-    height: 100%;
-    background-color: aliceblue;
-  }
-
-  /* .triangle1::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/src/components/assets/images/mainPageImage/small-dog.png');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-  }
-  .triangle1 {
-    position: relative;
-    width: 0;
-    height: 0;
-    border-left: 200px solid transparent;
-    border-right: 200px solid transparent;
-    border-bottom: 400px solid #FFC107;
-  } */
-  .triangle {
-    position: relative;
-    width: 200px; 
-    height: 200px; 
-    background: #FFC107;
-    border-top-right-radius: 30%;
-    transform: rotate(-60deg) skewX(-30deg) scale(1, .866) ;
-  }
   
-  .triangle::before,
-  .triangle::after {
-  content: "";
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  background: inherit;
-  border-top-right-radius: inherit;
+  .title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: calc(44/32);
+    margin-top: 60px;
+    
+    
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      right: 0;
+      font-size: 68px;
+      line-height: calc(100/68);
+      max-width: 588px;
+      margin-top: 80px;
+      margin-left: 16px;
+      
+    };
+    @media screen and (min-width: 1280px) {
+      /* position: absolute;
+      right: 58%; */
+      margin-top:0;
+      width: 501px;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 68px;
+      line-height: calc(88/68);
+    };
   }
-
-  .triangle::before {
-  transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translateY(-50%);
-  }
-  
-  .triangle::after {
-  transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translateX(50%);
-  }
-/* 
-  .triangle1 {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    width: 0;
-    height: 0;
-    border-left: 200px solid transparent;
-    border-right: 200px solid transparent;
-    border-bottom: 400px solid #FFC107;
-    background-image: url('/src/components/assets/images/mainPageImage/small-dog.png');
-  }
-  
-  .triangle1 img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
-
-  /* .triangle1{
-    width: 426px;
-    height: 100%;
-    background-image: url('/src/components/assets/images/mainPageImage/small-dog.png');
-    background-repeat: no-repeat;
-    background-color: #FFC107;
-  } */
-  /* .triangle2{
-    width: 532px;
-    height: 100%;
-    background-image: url('/src/components/assets/images/mainPageImage/big-dog.png');
-    background-repeat: no-repeat;
-    background-color: #54ADFF;
-  }
-  .triangle3{
-    width: 362px;
-    height: 100%;
-    background-image: url('/src/components/assets/images/mainPageImage/cat.png');
-    background-repeat: no-repeat;
-    background-color: #419EF1;
-  } */
