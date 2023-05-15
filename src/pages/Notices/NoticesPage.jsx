@@ -4,27 +4,20 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import NoticesSearch from '../../components/Notices/NoticesSearch/NoticesSearch';
 import Section from '../../components/Section/Section';
-import styled from './NoticesPage.module.scss'
+import styled from './NoticesPage.module.scss';
 
 const NoticesPage = () => {
 
-  const location = useLocation()
+  const location = useLocation();
   console.log(location.pathname);
 
-  // useEffect(() => {
-  //   // if (location.pathname === "/notices") {
-  //   //   history.push('/notices/sell');
-  //   // }
-  //  return <Navigate to="/dashboard" replace={true} />
-  // }, []);
-
   return (<>
-    {location.pathname === "/notices" &&  <Navigate to='/notices/sell' replace={true} />}
+    {location.pathname === '/notices' && <Navigate to='/notices/sell' replace={true} />}
     <Section className={styled.searchWrapper}>
-      <NoticesSearch/>
+      <NoticesSearch />
     </Section>
     <Section className={styled.noticesCategoriesNavWrapper}>
-      <NoticesCategoriesNav/>
+      <NoticesCategoriesNav />
     </Section>
     <Section>
       <Suspense fallback={<p>Loading...</p>}>
@@ -33,6 +26,6 @@ const NoticesPage = () => {
     </Section>
 
 
-  </>)
+  </>);
 };
 export default NoticesPage;

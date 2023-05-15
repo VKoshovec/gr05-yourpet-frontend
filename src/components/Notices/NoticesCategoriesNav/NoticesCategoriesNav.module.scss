@@ -1,7 +1,11 @@
+@import "./src/styles/mixins/media";
+
+
 .noticesNavWrapper {
   display: flex;
-  flex-wrap: wrap;
-  gap:20px;
+  justify-content: space-between;
+
+
 
   .linkBtn{
     display: flex;
@@ -19,6 +23,27 @@
       background-color: var(--bluelinksActive);
       color: var(--background);
 
+    }
+
+  }
+
+  .leftNavbarWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+  }
+
+  .rightNavbarWrapper {
+    display: flex;
+    gap:12px;
+
+
+    .addPetBtnWrapper {
+      display: none;
+
+      @include tabletAndDesktop {
+        display: inline-flex;
+      }
     }
 
   }
