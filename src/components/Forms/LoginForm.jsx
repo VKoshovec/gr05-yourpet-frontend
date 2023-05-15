@@ -6,7 +6,7 @@ import { signin } from '../../redux/auth/operations';
 import BaseInput from 'components/fields/baseInput';
 import { MainButton } from 'components/buttons/MainButton';
 import { validationFormLogin } from 'helpers';
-import Section from 'components/Section/Container';
+import Section from 'components/Section/Section';
 import Container from 'components/Container/Container';
 
 import css from './LoginForm.module.scss';
