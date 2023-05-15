@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://yourpet-api.onrender.com/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,8 +16,8 @@ export const signup = createAsyncThunk(
   'auth/signup',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
-      setAuthHeader(data.token);
+      const { data } = await axios.post('api/auth/register', credentials);
+      // setAuthHeader(response.token);
       return data;
     } catch ({ message }) {
       toast.error(message);
@@ -29,8 +29,9 @@ export const signup = createAsyncThunk(
 export const signin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
+    console.log(credentials);
     try {
-      const { data } = await axios.post('/users/login', credentials);
+      const { data } = await axios.post('api/auth/login', credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -46,7 +47,7 @@ export const signout = createAsyncThunk(
   'auth/signout',
   async (_, { rejectWithValue }) => {
     try {
-      // await axios.post('/users/signout');
+      // await axios.post('api/auth/logout');
       clearAuthHeader();
     } catch ({ message }) {
       return rejectWithValue(message);

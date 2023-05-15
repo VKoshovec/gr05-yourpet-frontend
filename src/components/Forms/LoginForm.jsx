@@ -23,12 +23,13 @@ export const LoginForm = () => {
       const errorMessages = Object.values(errors).join('\n');
       return toast.error(errorMessages);
     }
-    try {
-      const res = await dispatch(signin({ email, password }));
-      if (!res.payload.success) throw new Error(res.payload.errorCode);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(signin({ email, password }));
+    // try {
+      // const res = await dispatch(signin({ email, password }));
+      // if (!res.payload.success) throw new Error(res.payload.errorCode);
+    // } catch (error) {
+      // console.log(error);
+    // }
   };
 
   return (

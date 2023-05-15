@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { signup } from '../../redux/auth/operations';
 import { validationAuthForm } from 'helpers';
 
-import Section from 'components/Section/Container';
+import Section from 'components/Section/Section';
 import Container from 'components/Container/Container';
 import BaseInput from 'components/fields/baseInput';
 import { MainButton } from 'components/buttons/MainButton';
@@ -19,20 +19,20 @@ export const AuthForm = () => {
     e.preventDefault();
 
     const dataForm = Object.fromEntries(Array.from(new FormData(e.target)));
-    const { email, password, confirm_password } = dataForm;
+    const { email, password } = dataForm;
 
     const errors = validationAuthForm(dataForm);
     if (Object.keys(errors).length > 0) {
       const errorMessages = Object.values(errors).join('\n');
       return toast.error(errorMessages);
     }
-
-    try {
-      const res = await dispatch(signup({ email, password, confirm_password }));
-      if (!res.payload.success) throw new Error(res.payload.errorCode);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(signup({ email, password }));
+    // try {
+    //   const res = await dispatch(signup({ email, password, confirm_password }));
+    //   if (!res.payload.success) throw new Error(res.payload.errorCode);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
