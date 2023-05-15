@@ -4,7 +4,7 @@ import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
 import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
 import { useState } from 'react';
-import { switchCase } from '@babel/types';
+// import { switchCase } from '@babel/types';
 
 const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
 

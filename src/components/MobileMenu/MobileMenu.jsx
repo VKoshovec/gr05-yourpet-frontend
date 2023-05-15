@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import styled from './MobileMenu.module.scss'
 import Navbar from '../Navbar/Navbar';
@@ -32,5 +33,11 @@ const MobileMenu = ({open, closeMenu}) => {
     </div>
   )
 };
+
+MobileMenu.propTypes = {
+  open: PropTypes.bool.isRequired,
+  closeMenu: PropTypes.func.isRequired,
+};
+
 
 export default MobileMenu;

@@ -4,17 +4,23 @@
 .main {
   width: 100%;
   background: var(--background);
-  min-height: calc(100vh - 48px);;
+  min-height: calc(100vh - 48px);
 
-
-  @include desktop {
-    max-width: 1280px;
-    margin: 0 auto  ;
+  @include tabletAndDesktop {
+    min-height: calc(100vh - 68px);
   }
-  //.mainContentWrapper {
-  //  margin: 0 auto;
-  //  width: 100%;
-  //  padding: 0 20px 0 20px;
-  //  height: calc(100vh - 44px);;
-  //}
+
+
+  .mainContentWrapper {
+    margin: 0 auto;
+    width: 100%;
+    //padding: 0 20px 0 20px;
+    height: calc(100vh - 44px);
+
+
+    @include desktop {
+      max-width: 1280px;
+      margin: 0 auto  ;
+    }
+  }
 }
