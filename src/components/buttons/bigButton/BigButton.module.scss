@@ -1,0 +1,33 @@
+@import "./src/styles/mixins/media";
+
+.bigBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 248px;
+    height: 40px;
+    background: #54ADFF;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+
+    font-family: "Manrope-Regular", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: calc(22/16);
+    letter-spacing: 0.04em;
+    color: #FEF9F9;
+    fill: white;
+
+
+    &:hover {
+        background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
+    }
+    svg {
+        margin-left: 12px;
+        path {
+          fill: var(--white);
+        };
+}
+}
