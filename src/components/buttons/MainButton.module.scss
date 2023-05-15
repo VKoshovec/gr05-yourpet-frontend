@@ -1,0 +1,29 @@
+@import "./src/styles/mixins/media";
+
+.main__button {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 60px auto 24px;
+  padding: 10.5px 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-align: center;
+  outline: 0;
+  border: none;
+  border-radius: 40px;
+  color: var(--white);
+  background-color: var(--bluelinks);
+  cursor: pointer;
+  transition: background-color 300ms cubic-bezier(0, 0, 0.2, 1),
+  color 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+.main__button:hover {
+    color: var(--bluelinks);
+    background-color: rgba(140, 200, 253, 0.44);;
+  }
