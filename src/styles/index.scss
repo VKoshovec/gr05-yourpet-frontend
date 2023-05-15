@@ -52,7 +52,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Manrope-Regular', serif ;
+  font-family: 'Manrope-Regular', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -95,46 +95,60 @@ select {
   font: inherit;
 }
 
- // style for custom button
+// style for custom button
 
- button {
-   &:hover {
-     background-image: var(--gradientBtn);
-     border-image: var(--gradientBtn)!important;
-     border-image-slice: 1 !important;
-     border-radius: 40px;
-     color:var(--white) !important;
-     border: none;
+button {
 
-   }
-
-   &.outlined {
-     border: 2px solid var(--bluelinksActive);
-     border-radius: 40px;
-     font-weight: 700;
-     font-size: 16px;
-     line-height: 22px;
-     color: var(--bluelinksActive);
-   }
-
-   &.flooded {
-     border: 2px solid var(--bluelinksActive);
-     border-radius: 40px;
-     background: var(--bluelinksActive);
-
-     font-weight: 700;
-     font-size: 16px;
-     line-height: 22px;
-     color: var(--white);
-   }
- }
+  &.ant-btn {
 
 
+    &.outlined {
+      border: 2px solid var(--bluelinksActive);
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      color: var(--bluelinksActive);
 
-  :where(.css-dev-only-do-not-override-ed5zg0).ant-btn-default{
+      &:hover {
+        background-image: var(--gradientBtn);
+        border-image: var(--gradientBtn) !important;
+        border-image-slice: 1 !important;
+        border-radius: 40px;
+        color: var(--white) !important;
+        //border: none;
+
+      }
+    }
+
+    &.flooded {
+      border: 2px solid var(--bluelinksActive);
+      border-radius: 40px;
+      background: var(--bluelinksActive);
+
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      color: var(--white);
+
+      &:hover {
+        background-image: var(--gradientBtn);
+        border-image: var(--gradientBtn) !important;
+        border-image-slice: 1 !important;
+        border-radius: 40px;
+        color: var(--white) !important;
+        //border: none;
+
+      }
+    }
+  }
+}
+
+
+:where(.css-dev-only-do-not-override-ed5zg0).ant-btn-default {
 
   box-shadow: initial;
-  }
+}
 
 //:where(.css-dev-only-do-not-override-ed5zg0).ant-btn:not(:disabled):focus-visible {
 //
@@ -145,7 +159,7 @@ select {
 
 
 :where(.css-dev-only-do-not-override-ed5zg0)[class^="ant-layout"], :where(.css-dev-only-do-not-override-ed5zg0)[class*=" ant-layout"] {
-  font-family: 'Manrope-Regular', serif ;
+  font-family: 'Manrope-Regular', serif;
   font-size: initial;
   font-weight: initial;
 }
