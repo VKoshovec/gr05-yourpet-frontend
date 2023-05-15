@@ -1,4 +1,4 @@
-@import "./src/styles/mixins/media";
+@import './src/styles/mixins/media';
 
 .authWrapper {
   width: 280px;
@@ -35,7 +35,7 @@
   width: 100%;
   margin-bottom: 24px;
 }
-.singinLinkWrap {
+.linkWrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@
   letter-spacing: 0.04em;
   color: var(--grey);
 }
-.singinLink {
+.link {
   display: inline-block;
   position: relative;
   margin-left: 4px;
@@ -55,7 +55,7 @@
   cursor: pointer;
   transition: color 300ms ease-in-out;
 }
-.singinLink::after {
+.link::after {
   content: '';
   display: inline-block;
   position: absolute;
@@ -67,14 +67,14 @@
   transform: scaleX(0);
   transition: transform 300ms ease-in-out;
 }
-.singinLink:hover:after {
+.link:hover:after {
   transform: scaleX(1);
 }
 
 @include tabletAndDesktop {
   .authWrapper {
     width: 608px;
-    margin: 82px auto 0;
+    margin: 50px auto 50px;
   }
   .auth_form_wrap {
     padding: 60px 75px;

@@ -16,10 +16,11 @@ export const signup = createAsyncThunk(
   'auth/signup',
   async (credentials, { rejectWithValue }) => {
     try {
-      // const { data } = await axios.post('/users/signup', credentials);
-      // setAuthHeader(data.token);
-      // return data;
+      const { data } = await axios.post('/users/signup', credentials);
+      setAuthHeader(data.token);
+      return data;
     } catch ({ message }) {
+      toast.error(message);
       return rejectWithValue(message);
     }
   }
