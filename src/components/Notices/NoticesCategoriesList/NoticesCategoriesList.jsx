@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../../redux/auth/selectors';
 
-const categories = ['sell', 'lost-found', 'for-free'];
+const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
 const NoticesCategoriesList = () => {
 
@@ -19,10 +19,10 @@ const NoticesCategoriesList = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
-  console.log(category, loading, error, message);
+  // console.log(category, loading, error, message);
 
   useEffect(() => {
-    if (category === 'favorite' || category === 'own' && !isLoggingIn) {
+    if ((category === 'favorite' || category === 'own') && !isLoggingIn) {
       navigate('/');
     }
 
@@ -46,7 +46,7 @@ const NoticesCategoriesList = () => {
           setMessage(true);
           return;
         }
-        console.log('data', data);
+        // console.log('data', data);
         setItems(data);
         setMessage(false);
       } catch (error) {

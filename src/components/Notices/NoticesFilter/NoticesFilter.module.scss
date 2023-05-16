@@ -1,0 +1,29 @@
+.filterButton {
+  padding: 8px 38px;
+  width: initial;
+  height: initial;
+}
+
+.filterWrapper {
+
+  .title {
+
+    span  {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      color:var(--bluelinksActive) !important;
+
+    }
+  }
+
+  .chevronIcon {
+
+    &.active {
+      rotate: (180deg);
+    }
+  }
+
+}
+
+
