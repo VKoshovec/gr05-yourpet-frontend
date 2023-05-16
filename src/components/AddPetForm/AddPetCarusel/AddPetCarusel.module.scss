@@ -1,0 +1,49 @@
+@import '../../../styles/index.scss'; 
+
+.carusel{
+   display: flex;
+   flex-direction: row;
+   margin-top: 24px;
+   justify-content: center;
+   
+};
+
+.step{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   color: var(--grey) ;
+   font-weight: 500;
+   font-size: 10px;
+
+   @media screen and (min-width: 768px){
+    font-size: 16px;
+   }
+   &Active {
+      color: var(--bluelinks);
+   }
+   &Done {
+    color: var(--green);
+   }
+};
+
+.stepLine{
+   display: block;
+   height: 8px;
+   width: 80px;
+   border-radius: 8px;
+   background-color: #CCE4FB;
+   margin-right: 12px;
+   margin-top: 12px;
+
+   @media screen and (min-width: 768px){
+      width: 120px;
+      margin-right: 16px;
+   }
+   &Active {
+    background-color: var(--bluelinks);
+   }
+   &Done {
+    background-color: var(--green);
+   }
+};

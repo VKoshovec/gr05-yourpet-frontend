@@ -1,0 +1,63 @@
+@import '../../../styles/index.scss'; 
+
+.petNav {
+   display: flex;
+   flex-direction: column-reverse;
+   align-items: center;
+
+   @media screen and (min-width: 768px){
+     flex-direction: row;
+     justify-content: center;
+   }
+};
+
+.BackCencel{
+   width: 248px;
+   border-radius: 40px;
+   border: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 40px;
+   margin-top: 15px;
+   font-weight: 700;
+
+   &Span{
+      font-size: 16px;
+      line-height: 22px;
+      color: var(--bluelinks)
+   };
+
+   &Svg { 
+     margin-right: 12px;
+   };
+
+   @media screen and (min-width: 768px){
+      margin-top: 0px;
+      width: 148px;
+   }
+};
+
+.NextDone { 
+    width: 248px;
+    border-radius: 40px;
+    font-weight: 700;
+    background-color: var(--bluelinks);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    
+    &Span {
+       color:var(--background);
+    };
+
+    &Svg { 
+       margin-left: 12px;
+    }
+
+    &:hover{
+       background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
+    };
+};

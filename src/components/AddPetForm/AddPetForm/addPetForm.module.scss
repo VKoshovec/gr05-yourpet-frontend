@@ -1,0 +1,142 @@
+@import '../../../styles/index.scss'; 
+
+.addPetContainer{
+    margin-top: 16px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.addPetInput {
+    border-radius: 40px;
+    height: 40px;
+    border-color: var(--bluelinks);
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    
+    &__Label{
+       margin-bottom: 10px;
+    };
+
+    &Text{
+      border-radius: 20px;   
+      border-color: var(--bluelinks);
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    &TextArea {
+        border-radius: 20px;   
+        border-color: var(--bluelinks);
+        margin-top: 5px;
+        margin-bottom: 10px;
+        height: 92px !important;
+    }
+
+};
+
+.addPetSexBox {
+    width: 100%;
+    border: none;
+    border-color: none;
+    outline: none;
+    display: flex;
+    justify-content: flex-start;
+    outline: white;
+    padding-top: 8px;
+    padding-bottom: 19px;
+};
+
+.addPetSex {
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    margin-right: 16px;
+  & span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.sexCaption{
+    font-size: 16px;
+    margin-left: 14px;
+    font-weight: 400px;
+}
+
+.addPetSexIcon {
+  margin: 0px;
+}
+
+.addPetImgButton {
+   width: 112px;
+   height: 112px;
+   border-radius: 20px;
+   background-color: #CCE4FB;
+   border: 0px;
+   font-size: xx-large;
+   margin-left: 27px;
+
+   @media screen and (min-width: 768px) {
+    width: 182px;
+    height: 182px;
+    margin-left: 10px;
+   }
+}
+
+.addPetImgLabel {
+   display: flex;
+   align-items: center;
+   margin-bottom: 24px;
+
+   @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+   }
+}
+
+.addPetImgLabelBig{
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        & span {
+            margin-right: 33px;
+        }
+    }
+}
+
+:global(.ant-radio-button-wrapper)::before {
+    background-color: white !important;
+}
+
+.mainContainer {
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+}
+.rightContainer {
+    @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 60px;
+    }
+}
+.leftContainer {
+    @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 395px;
+    padding: 0px;
+    }
+};
