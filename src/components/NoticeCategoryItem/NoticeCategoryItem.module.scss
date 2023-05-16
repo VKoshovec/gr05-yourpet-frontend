@@ -1,9 +1,8 @@
 @import "./src/styles/mixins/media";
 
 svg {
-    path {
-        stroke: var(--bluelinksActive);
-    }
+    
+    stroke: var(--bluelinksActive);
 
     &:hover {
         stroke:  var(--white);
@@ -17,13 +16,18 @@ svg {
     background: var(--white);
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 0px 0px 40px 40px;
+    margin-bottom: 24px;
 
+    &:hover {
+        box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
+    }
     // @include tablet {
     //     display: none;
     // }
 
     @include tablet {
-        
+        width: 336px;
+
     }
 
     @include tabletAndDesktop {
@@ -32,11 +36,14 @@ svg {
     }
 
     @include desktop {
-    
+        width: 288px;
     }
 }
 
 .category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 16px;
     left: 0px;
@@ -53,36 +60,71 @@ svg {
     font-size: 14px;
     line-height: 19px;
     color: var(--black);
+    display: flex;
+align-items: center;
+text-align: center;
 }
 
 .buttonOnClick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 12px;
     right: 12px;
     width: 40px;
     height: 40px;
+    border-radius: 50px;
+    border: none;
     background: var(--bluelinks);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    &:hover {
+        background: var(--bluelinks);
+    }
 }
 
 .buttonOnClick svg {
-    path {
-        stroke: var(--bluelinksActive);
-    }
+    
+    stroke: var(--bluelinksActive);
 
     &:hover {
         fill: var(--bluelinksActive);
     }
 }
 
+.imageWrapper {
+    margin-bottom: 20px;
+}
+
 .image {
     width: 280px;
     height: 288px;
+    
+    @include tablet {
+        width: 336px;
+    }
+
+    @include desktop {
+        width: 288px;
+    }
 }
+
+.infoWrapper {
+    position: absolute;
+    top: 248px;
+    left: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
 
 .info {
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 2px 4px;
@@ -92,13 +134,14 @@ svg {
     width: 80px;
     height: 28px;
     // left: 8px;
-    // top: 248px;
+    // bottom: 12px;
     
     background: var(--bluelinks);
     border-radius: 16px;
 
     &:hover {
-        color: var(--bluelinksActive);
+        background: var(--bluelinksActive);
+        color: var(--white);
     }
 }
 
@@ -119,6 +162,9 @@ svg {
 } 
 
 .title {
+    padding-left: 20px;
+    padding-right: 28px;
+    margin-bottom: 20px;
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 700;
@@ -129,12 +175,11 @@ svg {
 
 .buttonOnClickModal {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 8px 28px;
     gap: 10px;
-    
+    margin: 0 auto;
     // position: absolute;
     width: 248px;
     height: 38px;
@@ -146,7 +191,7 @@ svg {
     background: transparent;
 
     &:hover {
-        background: var(--gradientBtn);
+        color: var(--white);
     }
 }
 

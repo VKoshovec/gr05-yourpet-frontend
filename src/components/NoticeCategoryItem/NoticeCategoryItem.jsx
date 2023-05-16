@@ -6,7 +6,7 @@ import { ReactComponent as HeartIcon } from '../../components/assets/images/icon
 import { ReactComponent as Location } from '../../components/assets/images/icon/location-1.svg';
 import { ReactComponent as Clock } from '../../components/assets/images/icon/clock.svg';
 import { ReactComponent as Female } from '../../components/assets/images/icon/female.svg';
-import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.svg';
+import { ReactComponent as PawIcon } from '../../components/assets/images/icon/pawprint 1.svg';
 
 import styled from './NoticeCategoryItem.module.scss';
 // import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
@@ -46,14 +46,18 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 		>
             <HeartIcon />
         </button>
-        <img className={styled.image} src={image} alt="Your pet" width="280" />
-		<div className={styled.info}>
+        <div className={styled.imageWrapper}>
+            <img className={styled.image} src={image} alt="Your pet" width="280" />
+        </div>
+        
+        <div className={styled.infoWrapper}>
+        <div className={styled.info}>
             <Location />
             <span className={styled.infoText}>
                 {location}
             </span>
         </div>
-		<div className={styled.info}>
+        <div className={styled.info}>
             <Clock />
             <span className={styled.infoText}>
                 {date}  
@@ -65,6 +69,8 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
                 {sex}
             </span>
 		</div>
+        </div>
+		
 		<h2 className={styled.title}>Сute dog looking for a home</h2>
 		<button             
             className={styled.buttonOnClickModal}
