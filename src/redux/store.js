@@ -14,6 +14,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { noticesFilterSlice } from './filters/noticesFilter/filterSlice';
+
 
 const persistConfig = {
   key: 'auth',
@@ -25,6 +27,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   data: dataReducer,
   prestate: localReducer,
+  noticesFilter:noticesFilterSlice,
 });
 
 const middleware = getDefaultMiddleware =>
