@@ -5,17 +5,25 @@ import { initialAuth } from '../../presets/initial';
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialAuth,
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(signup.fulfilled, (state, { payload }) => (state = payload))
+      .addCase(signup.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+      })
       .addCase(signin.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
-  })
-      .addCase(refresh.fulfilled, (state, { payload }) => (state = payload))
-      .addCase(signout.fulfilled, (state) => (state = initialAuth))
-      .addCase(refresh.rejected, (state) => (state = initialAuth));
+      })
+      .addCase(refresh.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoggedIn = true;
+      })
+      .addCase(signout.fulfilled, state => (state = initialAuth))
+      .addCase(signout.rejected, state => (state = initialAuth))
+      .addCase(refresh.rejected, state => (state = initialAuth));
   },
 });
 

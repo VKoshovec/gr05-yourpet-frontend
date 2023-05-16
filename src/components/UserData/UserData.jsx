@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-// import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
-
+import { signout } from '../../redux/auth/operations';
 import { Modal } from 'components/Modal/Modal';
 import { userValidationSchema } from './UserDataValidation';
 import PreviewImage from './PreviewImage/PreviewImage';
@@ -20,8 +20,8 @@ const UserData = () => {
   //   const [logout, setLogout] = useState(false);
 
   const fileRef = useRef(null);
-  //   const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   const initialValues = {
     image: null,
@@ -32,9 +32,9 @@ const UserData = () => {
   };
 
   const hanleLogOut = () => {
-    navigate('/main');
+    // navigate('/main');
     // setLogout(true);
-    //   dispatch(logout());
+      dispatch(signout());
   };
 
   //   const onInputChange = event => {

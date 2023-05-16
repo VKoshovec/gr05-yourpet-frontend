@@ -31,6 +31,7 @@ const localSlice = createSlice({
       .addCase(signup.fulfilled, handleFulfilled)
       .addCase(signin.fulfilled, handleFulfilled)
       .addCase(signout.fulfilled, handleFulfilled)
+      .addCase(refresh.fulfilled, handleFulfilled)
 
       .addCase(getPets.fulfilled, handleFulfilled)
       .addCase(getNews.fulfilled, handleFulfilled)
@@ -38,7 +39,7 @@ const localSlice = createSlice({
       .addCase(signup.pending, handlePending)
       .addCase(signin.pending, handlePending)
       .addCase(signout.pending, handlePending)
-
+      .addCase(refresh.pending, handlePending)
       .addCase(getPets.pending, handlePending)
       .addCase(getNews.pending, handlePending)
 

@@ -17,9 +17,9 @@ export const signup = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('api/auth/register', credentials);
-      // setAuthHeader(response.token);
+      setAuthHeader(data.token);
       return data;
-    } catch ({ message }) {
+    } catch ({ response: { data: { message }}}) {
       toast.error(message);
       return rejectWithValue(message);
     }
@@ -34,11 +34,9 @@ export const signin = createAsyncThunk(
       const { data } = await axios.post('api/auth/login', credentials);
       setAuthHeader(data.token);
       return data;
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || error.message;
-      const errorCode = error.response?.data?.errorCode;
-      toast.error(`${errorCode}: ${errorMessage}`);
-      return rejectWithValue(error.message);
+    } catch ({ response: { data: { message }}}) {
+      toast.error(message);
+      return rejectWithValue(message);
     }
   }
 );
@@ -47,9 +45,10 @@ export const signout = createAsyncThunk(
   'auth/signout',
   async (_, { rejectWithValue }) => {
     try {
-      // await axios.post('api/auth/logout');
+      await axios.post('api/auth/logout');
       clearAuthHeader();
-    } catch ({ message }) {
+    } catch ({ response: { data: { message }}}) {
+      toast.error(message);
       return rejectWithValue(message);
     }
   }
@@ -59,14 +58,16 @@ export const refresh = createAsyncThunk(
   'auth/refresh',
   async (_, { rejectWithValue, getState }) => {
     const { token, isLoggedIn } = getState().auth;
-    if (!isLoggedIn) return rejectWithValue();
-    if (token === 'null') return rejectWithValue('Unable to fetch user');
+    // if (!isLoggedIn) return rejectWithValue();
+    // if (token === 'null') return rejectWithValue('Unable to fetch user');
+    if (!token) return rejectWithValue('Unable to fetch user');
 
     try {
       setAuthHeader(token);
-      // const { data } = await axios.get('/users/refresh');
-      // return data;
-    } catch ({ message }) {
+      const { data } = await axios.get('/auth/current');
+      return data;
+    } catch ({ response: { data: { message }}}) {
+      toast.error(message);
       return rejectWithValue(message);
     }
   }

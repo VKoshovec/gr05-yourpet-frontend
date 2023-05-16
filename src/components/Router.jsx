@@ -58,7 +58,7 @@ const Router = () => {
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo="/notices/sell"
+                redirectTo="/user"
                 component={<RegisterPage />}
               />
             }
