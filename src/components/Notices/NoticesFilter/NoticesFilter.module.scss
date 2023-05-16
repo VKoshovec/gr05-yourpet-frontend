@@ -1,15 +1,69 @@
+@import "./src/styles/mixins/media";
+
+
 .filterButton {
-  padding: 8px 38px;
-  width: initial;
-  height: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--bluelinks);
+
+  &:global(.outlined) {
+    border-color: var(--bluelinks) !important;
+  }
+
+
+  @include tabletAndDesktop {
+    gap: 12px;
+    padding: 8px 38px;
+    width: initial;
+    height: initial;
+    background-color: var(--white);
+
+    &:global(.outlined) {
+      border-color: var(--bluelinksActive) !important;
+    }
+
+  }
+
+  .textBtn {
+    display: none;
+
+    @include tabletAndDesktop {
+      display: inline-flex;
+    }
+  }
 
   &.isActive {
     background: var(--bluelinksActive);
+
     span {
       color: var(--white);
     }
 
+    svg path {
+      stroke: var(--white);
+
+    }
   }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &:hover {
+    svg path {
+      stroke: var(--white);
+
+    }
+  }
+
+
 }
 
 .dropdown {
