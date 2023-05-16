@@ -3,6 +3,7 @@ import { getNoticesByCategory } from '../../../api/notices';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../../redux/auth/selectors';
+import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selectors';
 
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
@@ -19,7 +20,34 @@ const NoticesCategoriesList = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
+  const filterValue = useSelector(selectNoticesFilters);
   // console.log(category, loading, error, message);
+
+  useEffect(() => {
+    if (!filterValue) {
+      return
+    }
+    const fetchNotices = async () => {
+      try {
+        setLoading(true);
+        const data = await getNoticesByCategory({ filterValue, category });
+        if (!data.length) {
+          setMessage(true);
+          return;
+        }
+        // console.log('data', data);
+        setItems(data);
+        setMessage(false);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchNotices();
+
+    // console.log(filterValue);
+  }, [filterValue])
 
   useEffect(() => {
     if ((category === 'favorite' || category === 'own') && !isLoggingIn) {
@@ -58,8 +86,6 @@ const NoticesCategoriesList = () => {
     fetchNotices();
   }, [category]);
 
-
-  console.log(items);
 
   return (
 

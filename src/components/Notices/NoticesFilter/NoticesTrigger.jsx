@@ -1,62 +1,32 @@
-import { Button, Checkbox, Dropdown } from 'antd';
+import { Button, Dropdown } from 'antd';
 import cn from 'classnames';
 import styled from './NoticesFilter.module.scss'
 import NoticesFilterAccordion from './NoticesFilterAccordion';
+import { useState } from 'react';
+import {ReactComponent as FilterBtnIcon} from 'components/assets/images/icon/filters-3.svg';
 
 
+const accordionComponent = () => {
 
+  return  <NoticesFilterAccordion/>
+}
 
 
 
 const NoticesFilter = () => {
 
-
-  const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-  };
-
-  // const items = [
-  //   {
-  //     key: '1',
-  //     label: (
-  //       <Checkbox onChange={onChange}>Checkbox</Checkbox>
-  //     ),
-  //   },
-  //   {
-  //     key: '2',
-  //     label: (
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-  //         2nd menu item
-  //       </a>
-  //     ),
-  //   },
-  //   {
-  //     key: '3',
-  //     label: (
-  //       <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-  //         3rd menu item
-  //       </a>
-  //     ),
-  //   },
-  // ];
-
-  const accordionComponent = () => {
-
-    return  <NoticesFilterAccordion/>
-  }
-
-
+const [isOpenFilter, setIsOpenFilter] = useState(false)
 
   return ( <>
       <Dropdown
         trigger={['click']}
-        // menu={{
-        //   items,
-        // }}
         dropdownRender={accordionComponent}
-        placement="bottom"
+        placement="bottomLeft"
+        onOpenChange={()=>setIsOpenFilter(!isOpenFilter)}
+
+
       >
-        <Button className={cn(styled.filterButton, 'outlined')}>Filter</Button>
+        <Button className={cn(styled.filterButton, 'outlined', {[styled.isActive] : isOpenFilter})}><span className={styled.textBtn}>Filter</span><FilterBtnIcon/></Button>
       </Dropdown>
     </>
   )
