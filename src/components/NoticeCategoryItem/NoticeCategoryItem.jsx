@@ -3,13 +3,14 @@ import React, { useEffect } from 'react';
 import { getNotices, fetchAddFavorite, fetchDeleteFavorite  } from "../../redux/data/operations";
 
 import { ReactComponent as HeartIcon } from '../../components/assets/images/icon/heart.svg';
+import { ReactComponent as Trash } from '../../components/assets/images/icon/trash-2.svg';
 import { ReactComponent as Location } from '../../components/assets/images/icon/location-1.svg';
 import { ReactComponent as Clock } from '../../components/assets/images/icon/clock.svg';
 import { ReactComponent as Female } from '../../components/assets/images/icon/female.svg';
 import { ReactComponent as PawIcon } from '../../components/assets/images/icon/pawprint 1.svg';
 
 import styled from './NoticeCategoryItem.module.scss';
-// import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
+import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
 
 const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 	const dispatch = useDispatch();
@@ -46,10 +47,16 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 		>
             <HeartIcon />
         </button>
+        <button 
+            className={styled.buttonDeleteOnClick}
+            type="button"
+            // onClick={() => addAndDeleteFavorite()}
+		>
+            <Trash />
+        </button>
         <div className={styled.imageWrapper}>
             <img className={styled.image} src={image} alt="Your pet" width="280" />
         </div>
-        
         <div className={styled.infoWrapper}>
         <div className={styled.info}>
             <Location />
@@ -69,6 +76,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
                 {sex}
             </span>
 		</div>
+        
         </div>
 		
 		<h2 className={styled.title}>Сute dog looking for a home</h2>
@@ -82,7 +90,10 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
             </span>
             <PawIcon/>
         </button>
-        {/* <AddPetButton /> */}
+        <div className={styled.addPetBtnWrapper}>
+        <AddPetButton className={styled.addPetBtnIcon}/>
+        </div>
+        
 		</li>
     );
 };

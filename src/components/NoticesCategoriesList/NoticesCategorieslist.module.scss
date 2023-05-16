@@ -8,6 +8,7 @@
     // padding-left: 20px;
     justify-content: center;
     margin-top: 24px;
+    column-gap: 24px;
 
     @include tablet {
         margin-top: 40px;
@@ -16,8 +17,6 @@
     @include tabletAndDesktop {
         row-gap: 32px;
         column-gap: 24px;
-
-
     }
 
     @include desktop {

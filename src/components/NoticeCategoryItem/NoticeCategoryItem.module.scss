@@ -13,30 +13,27 @@ svg {
     position: relative;
     width: 280px;
     height: 456px;
+    // width: 100%;
     background: var(--white);
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 0px 0px 40px 40px;
-    margin-bottom: 24px;
-
+    
     &:hover {
         box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
     }
-    // @include tablet {
-    //     display: none;
-    // }
 
     @include tablet {
-        width: 336px;
+        // width: 336px;
 
     }
 
     @include tabletAndDesktop {
-
+        width: 336px;
 
     }
 
     @include desktop {
-        width: 288px;
+        width: 286px;
     }
 }
 
@@ -61,8 +58,8 @@ svg {
     line-height: 19px;
     color: var(--black);
     display: flex;
-align-items: center;
-text-align: center;
+    align-items: center;
+    text-align: center;
 }
 
 .buttonOnClick {
@@ -93,6 +90,34 @@ text-align: center;
     }
 }
 
+.buttonDeleteOnClick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 68px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    background: var(--bluelinks);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    &:hover {
+        background: var(--bluelinks);
+    }
+}
+
+.buttonDeleteOnClick svg {
+    
+    stroke: var(--bluelinksActive);
+
+    &:hover {
+        fill: var(--bluelinksActive);
+    }
+}
+
 .imageWrapper {
     margin-bottom: 20px;
 }
@@ -106,7 +131,7 @@ text-align: center;
     }
 
     @include desktop {
-        width: 288px;
+        width: 286px;
     }
 }
 
@@ -119,6 +144,16 @@ text-align: center;
     justify-content: center;
     align-items: center;
     gap: 12px;
+
+    @include tablet {
+        left: 24px;
+        gap: 24px;
+    }
+
+    @include desktop {
+        left: 12px;
+        gap: 12px;
+    }
 }
 
 
@@ -135,13 +170,24 @@ text-align: center;
     height: 28px;
     // left: 8px;
     // bottom: 12px;
-    
-    background: var(--bluelinks);
     border-radius: 16px;
+    background: var(--bluelinks);
+    color: var(--black);
+    stroke: var(--bluelinksActive);
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:hover {
         background: var(--bluelinksActive);
         color: var(--white);
+        stroke:  var(--white);
+    }
+}
+
+.info svg path {
+    stroke:inherit;
+
+    &:hover {
+        stroke:inherit;
     }
 }
 
@@ -189,9 +235,22 @@ text-align: center;
     border: 2px solid var(--bluelinksActive);
     border-radius: 40px;
     background: transparent;
+    color: var(--bluelinksActive);
+    stroke: var(--bluelinksActive);
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:hover {
+        background: var(--gradientBtn);
         color: var(--white);
+        stroke:  var(--white);
+    }
+}
+
+.buttonOnClickModal svg path {
+    stroke:inherit;
+
+    &:hover {
+        stroke:inherit;
     }
 }
 
@@ -213,3 +272,15 @@ text-align: center;
     }
 }
 
+.addPetBtnWrapper {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    right: 0px;
+    top: 149px;
+
+    @include tabletAndDesktop {
+        display: none;
+
+    }
+}
