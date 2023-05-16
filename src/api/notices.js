@@ -7,9 +7,9 @@ const instance = axios.create({
   // },
 });
 
-export const getNoticesByCategory = async (category) => {
+export const getNoticesByCategory = async ({filterValue, category}) => {
   const { data } = await instance.get('api/notices', {
-    params : { category },
+    params : {  ...filterValue.byAge, ...filterValue.byGender, ...filterValue.search, category },
   })
   return data;
   };

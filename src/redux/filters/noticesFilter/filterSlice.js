@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  search: '',
+  search: {
+   searchParams:''
+  },
   byAge: {
     '3-12m': false,
     '1year': false,
-    '2years': false,
+    '2year': false,
   },
   byGender: {
     'female': false,
@@ -18,7 +20,7 @@ const initialState = {
   initialState,
   reducers: {
     setFilter(state, action) {
-      console.log(action,'---action---');
+      console.log(action.payload,'---redux state---');
       return (state = action.payload);
     },
   },

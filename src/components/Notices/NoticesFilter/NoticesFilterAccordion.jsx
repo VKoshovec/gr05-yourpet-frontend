@@ -12,15 +12,15 @@ const { Panel } = Collapse;
 const optionsByAge = [
   {
     label: '3-12 m',
-    value: '3-12 m',
+    value: '3-12m',
   },
   {
     label: '1 year',
-    value: '1 year',
+    value: '1year',
   },
   {
     label: '2 year',
-    value: '2 year',
+    value: '2year',
   },
 ];
 
@@ -48,25 +48,26 @@ const NoticesFilterAccordion = () => {
     [dispatch]
   );
 
-  const handleChange = (checkedValues) => {
-    const updatedFilter = {
-      ...filterValue,
-      byAge: {
-        ...filterValue.byAge,
-        '3-12m': checkedValues.includes('3-12 m'),
-        '1year': checkedValues.includes('1 year'),
-        '2years': checkedValues.includes('2 year'),
-      },
-      byGender: {
-        ...filterValue.byGender,
-        'female': checkedValues.includes('female'),
-        'male': checkedValues.includes('male'),
-      },
-    };
+
+  const handleClick = (e) => {
+    const { name, value, checked } = e.target;
+    const updatedFilter = { ...filterValue };
+
+    if (name === 'age') {
+      updatedFilter.byAge = {
+        ...updatedFilter.byAge,
+        [value]: checked,
+      };
+    } else if (name === 'gender') {
+      updatedFilter.byGender = {
+        ...updatedFilter.byGender,
+        [value]: checked,
+      };
+    }
 
     debouncedSetFilter(updatedFilter);
-
   };
+
 
   return (<div className={styled.dropdown}>
       <span className={styled.filterTitle}>Filters</span>
@@ -76,11 +77,18 @@ const NoticesFilterAccordion = () => {
         className={styled.filterWrapper}
       >
         <Panel header='By age' key='1' className={styled.title}>
-          <Checkbox.Group name={'age'} options={optionsByAge} onChange={handleChange} className={styled.checkbox} />
+          <Checkbox.Group name={'age'}
+                          options={optionsByAge}
+                          onClick={handleClick}
+                          className={styled.checkbox}
+          />
         </Panel>
         <Panel header='By gender' key='2' className={styled.title}>
-          <Checkbox.Group name={'gender'} options={optionsByGender} onChange={handleChange}
-                          className={styled.checkbox} />
+          <Checkbox.Group name={'gender'}
+                          options={optionsByGender}
+                          onClick={handleClick}
+                          className={styled.checkbox}
+          />
         </Panel>
       </Collapse>
     </div>
