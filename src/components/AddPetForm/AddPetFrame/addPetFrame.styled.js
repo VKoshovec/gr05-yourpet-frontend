@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import theme from 'presets/theme';
 
+
 export const Frame = styled.div`
 display: block;
 max-width: 280px;
 height: 498px;
 border-radius:  40px;
 margin-left: auto;
-margin-right: auto;\
+margin-right: auto;
 box-shadow: ${ theme.boxShadows.default };
 padding-top: 20px;
 padding-bottom: 20px;

@@ -1,23 +1,26 @@
 import { Carusel, Step, StepLine } from "./addPetCarusel.styled";
 import PropTypes from "prop-types";
+import css from '../AddPetCarusel/AddPetCarusel.module.scss'
 
 const AddPetCarusel = ({stepnumber}) => {
+
     return (
-    <Carusel>
+    <div className={ css.carusel }>
+      <div className={[css.step, stepnumber === 1 ? css.stepActive : css.stepDone ].join(" ")}>
+        Choose  option
+        <div className={[css.stepLine, stepnumber === 1 ? css.stepLineActive : css.stepLineDone].join(" ")}/>
+      </div>
 
-      <Step className={ stepnumber === 1 ? "active" : "done" } >Choose  option
-        <StepLine className={ stepnumber === 1 ? "active" : "done" }/>
-      </Step>
+      <div className={[css.step, stepnumber === 2 ? css.stepActive : stepnumber === 3 ? css.stepDone : ""].join(" ")}>
+        Personal details
+        <div className={[css.stepLine, stepnumber === 2 ? css.stepLineActive : stepnumber === 3 ? css.stepLineDone : "" ].join(" ")}/>
+      </div>
 
-      <Step className={ stepnumber === 2 ? "active" : stepnumber === 3 ? "done" : "" }>Personal details
-        <StepLine className={ stepnumber === 2 ? "active" : stepnumber === 3 ? "done" : "" }/>
-      </Step>
-
-      <Step className={ stepnumber === 3 ? "active" : "" }>More info
-        <StepLine className={ stepnumber === 3 ? "active" : "" }/>
-      </Step>
-
-    </Carusel>
+      <div className={[css.step, stepnumber === 3 ? css.stepActive : "" ].join(" ")}>
+        More info
+        <div className={[css.stepLine, stepnumber === 3 ? css.stepLineActive : "" ].join(" ")}/>
+      </div>
+    </div>
     );
 }
 

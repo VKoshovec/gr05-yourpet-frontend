@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Buttonset, ButtonsetItem, ButtonItem } from "./AddPetFormButtonset.styled";
+import { Button } from "antd";
+import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss'
 
 
 const AddPetFormButtonset = ({ ButtonSetResponse }) => {
@@ -12,28 +14,25 @@ const AddPetFormButtonset = ({ ButtonSetResponse }) => {
     }
 
     return (
-        <Buttonset>
-            <ButtonsetItem>
-                <ButtonItem 
-                className={ variant === 0 ? "active" : "" }
-                onClick={ () => getVarint(0) }>your pet</ButtonItem>
-            </ButtonsetItem>
-            <ButtonsetItem>
-                <ButtonItem 
-                className={ variant === 1 ? "active" : "" }
-                onClick={ () => getVarint(1) }>sell</ButtonItem>
-            </ButtonsetItem>
-            <ButtonsetItem>
-                <ButtonItem 
-                className={ variant === 2 ? "active" : "" }
-                onClick={ () => getVarint(2) }>lost/found</ButtonItem>
-            </ButtonsetItem>
-            <ButtonsetItem>
-                <ButtonItem 
-                className={ variant === 3 ? "active" : "" }
-                onClick={ () => getVarint(3) }>in good hands</ButtonItem>
-            </ButtonsetItem>
-        </Buttonset>
+        <ul className={ css.buttonset }>
+            <li className={ css.buttonsetItem }>
+                <Button 
+                className={[css.buttonItem, variant === 0 ? css.buttonItemActive : ""].join(" ")} 
+                onClick={ () => getVarint(0) }>your pet</Button >
+            </li>
+            <li className={ css.buttonsetItem }>
+                <Button className={[css.buttonItem, variant === 1 ? css.buttonItemActive : ""].join(" ")} 
+                onClick={ () => getVarint(1) }>sell</Button >
+            </li>
+            <li className={ css.buttonsetItem }>
+                <Button className={[css.buttonItem, variant === 2 ? css.buttonItemActive : ""].join(" ")} 
+                onClick={ () => getVarint(2) }>lost/found</Button >
+            </li>
+            <li className={ css.buttonsetItem }>
+                <Button className={[css.buttonItem, variant === 3 ? css.buttonItemActive : ""].join(" ")} 
+                onClick={ () => getVarint(3) }>in good hands</Button >
+            </li>
+        </ul>
     );
 };
 

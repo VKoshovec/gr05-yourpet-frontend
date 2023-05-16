@@ -1,52 +1,90 @@
-import { Frame, Title } from './addPetFrame.styled';
+import { Form } from 'antd';
+
 import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
 import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
 import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
 import { useState } from 'react';
-// import { switchCase } from '@babel/types';
+import css from '../AddPetFrame/AddPetFrame.module.scss'
+import { Validation } from '../AddPetValidation/AddPetValidation';
 
-const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
+export const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
 
 const AddPetFrame = () => {
+
+    const [fields, setFields] = useState();
 
     const [step, setStep] = useState(1);
     const [formType, setFormType] = useState();
 
     const ButtonSetResponse = (number) => {
         setFormType(initialFormType[number]);
-    }
+    };
 
     const NextStep = () => {
-
         if(formType && step === 1){
             setStep(2);
-        }
-    } 
+        };
+
+        if(step ===2 && Validation.validateStepTwo(fields)
+            && Validation.isValidStepTwo(fields)) {
+            setStep(3);
+        }      
+    };
 
     const PrevStep = () => {
-        if(step === 2)
-        setFormType("")
-        setStep(1);
+        if(step === 2) {
+            setFormType("")
+            setStep(1);
+        }
+        if(step === 3) {
+            setStep(2);
+        }
+    };
+
+    const GetFields = (fieldValues) => {
+       setFields(fieldValues);
+    };
+
+    const handleSubmit = () => {
+        if (step === 3 && Validation.isValidStepTwo) {
+            console.log(fields)
+        }
     }
 
+
     return (
-        <Frame>
+        <Form 
+        className={ [css.frame, 
+            step === 3 && formType === initialFormType [1] ? css.frameBig : step === 3 && formType === initialFormType [2] ? css.frameBig : "" ]
+            .join(" ") } 
+        initialValues={{remember: true }} 
+        autoComplete="off" 
+        onFinish={ handleSubmit }>
+
             {formType === initialFormType[0]? 
-            <Title>Add your pet</Title> :
+            <h1 className={ css.title }>Add your pet</h1> :
             formType === initialFormType[1]? 
-            <Title>Add pet for sale</Title> : 
+            <h1 className={ css.title }>Add pet for sale</h1> : 
             formType === initialFormType[2]? 
-            <Title>Add lost pet</Title> : 
+            <h1 className={ css.title }>Add lost pet</h1> : 
             formType === initialFormType[3]?
-            <Title>Add pet in good hands</Title> : 
-            <Title>Add pet</Title>
-            }
+            <h1 className={ css.title }>Add pet in good hands</h1> : 
+            <h1 className={ css.title }>Add pet</h1>}
+
             <AddPetCarusel stepnumber={ step }/>
+
             {step ===1 ? <AddPetFormButtonset ButtonSetResponse={ ButtonSetResponse } /> : ""}
-            {step !== 1 ? <AddPetForm /> : ""}
+            {step !== 1 ? <AddPetForm 
+            stepnumber={ step } 
+            formtype={ formType } 
+            getformFields={ GetFields }
+            initialFields={ fields }
+            /> : ""}
+            
             <AddPetNav NextStep = { NextStep } PrevStep = { PrevStep } curStep ={ step }/>
-        </Frame>
+
+        </Form>
     );
 };
 
