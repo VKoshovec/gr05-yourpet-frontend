@@ -1,14 +1,5 @@
 @import "./src/styles/mixins/media";
 
-svg {
-    
-    stroke: var(--bluelinksActive);
-
-    &:hover {
-        stroke:  var(--white);
-    }
-}
-
 .item {
     position: relative;
     width: 280px;
