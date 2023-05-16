@@ -4,8 +4,8 @@ import { getNoticesCategory } from "../../redux/data/operations";
 
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import css from './NoticesCategorieslist.module.scss';
-// import {noticies} from '../../noticies';
-const NoticesCategoryList = ({noticies, onClick, onClickModal}) => {
+import {noticies} from '../../noticies';
+const NoticesCategoryList = ({ onClick, onClickModal}) => {
     const dispatch = useDispatch();
 
     useEffect(()=> {

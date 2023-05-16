@@ -6,6 +6,7 @@ import { ReactComponent as HeartIcon } from '../../components/assets/images/icon
 import { ReactComponent as Location } from '../../components/assets/images/icon/location-1.svg';
 import { ReactComponent as Clock } from '../../components/assets/images/icon/clock.svg';
 import { ReactComponent as Female } from '../../components/assets/images/icon/female.svg';
+import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.svg';
 
 import styled from './NoticeCategoryItem.module.scss';
 // import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
@@ -73,6 +74,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
             <span className={styled.buttonText}>
                 LearnMore
             </span>
+            <PawIcon/>
         </button>
         {/* <AddPetButton /> */}
 		</li>
