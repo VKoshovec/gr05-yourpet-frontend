@@ -1,3 +1,9 @@
+.user_container {
+  gap: 11px;
+  display: flex;
+  flex-direction: column;
+}
+
 .user_form {
   position: relative;
   display: flex;
@@ -38,20 +44,21 @@
 
 .user_svg {
   position: absolute;
-  top: 7px;
-  right: 12px;
+  top: 1px;
+  right: 4px;
 }
 
-.error_wrapper {
-  display: flex;
-  height: 12px;
-  align-items: center;
-  justify-content: center;
+.user_btn {
+  position: absolute;
+  top: 1px;
+  right: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .error {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 1.33;
-  color: #f43f5e;
+  margin-top: 3px;
+  font-size: 11px;
+  color: red;
 }
