@@ -26,7 +26,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   data: dataReducer,
-  prestate: localReducer,
+  local: localReducer,
   noticesFilter:noticesFilterSlice,
 });
 
