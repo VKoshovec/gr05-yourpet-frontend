@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import React from 'react';
 import {ReactComponent as ArrowLeft} from '../../assets/images/icon/arrow-left.svg';
 import {ReactComponent as Paw} from '../../assets/images/icon/pawprint 1w.svg';
-import { PetNav, BackCencel, NextDone } from "./AddPetNav.styled";
 import { Button } from "antd";
 import css from '../AddPetNav/AddPetNav.module.scss'
 

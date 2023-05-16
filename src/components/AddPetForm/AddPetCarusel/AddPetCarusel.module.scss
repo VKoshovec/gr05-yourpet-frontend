@@ -20,7 +20,7 @@
     font-size: 16px;
    }
    &Active {
-      color: var(--bluelinks);
+      color: var(--grblue);
    }
    &Done {
     color: var(--green);
@@ -41,7 +41,7 @@
       margin-right: 16px;
    }
    &Active {
-    background-color: var(--bluelinks);
+    background-color: var(--grblue);
    }
    &Done {
     background-color: var(--green);

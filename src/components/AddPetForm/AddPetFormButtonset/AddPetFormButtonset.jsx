@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { Buttonset, ButtonsetItem, ButtonItem } from "./AddPetFormButtonset.styled";
 import { Button } from "antd";
 import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss'
 
 
-const AddPetFormButtonset = ({ ButtonSetResponse }) => {
+const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
 
     const [variant, setVariant] = useState (); 
+
+    const isRendered = (step) => {
+        return step === 1;
+    } 
 
     const getVarint = (num) => {
         ButtonSetResponse(num);
         setVariant(num);
     }
 
-    return (
+    return isRendered (step) && (
         <ul className={ css.buttonset }>
             <li className={ css.buttonsetItem }>
                 <Button 
