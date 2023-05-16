@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
+import { ReactComponent as Close } from '../assets/images/icon/cross-bigl.svg';
 import css from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -23,7 +24,7 @@ export const Modal = ({ closeModal, children }) => {
     <div className={css.overlay} onClick={onCloseModal}>
       <div className={css.modal_content}>
         <button className={css.modalBtn} onClick={closeModal}>
-          Close
+          <Close />
         </button>
         {children}
       </div>
