@@ -17,9 +17,9 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 
     const noticeFavorite = {id, category, image, location, date, sex}
 
-    useEffect(()=> {
-        dispatch(getNotices());
-    }, [dispatch])
+    // useEffect(()=> {
+    //     dispatch(getNotices());
+    // }, [dispatch])
 
     const addAndDeleteFavorite = () => {
         if(!noticeFavorite) {
@@ -29,10 +29,11 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
         dispatch(fetchDeleteFavorite(id));
     }
 
+  console.log('---------',category);
     // const openModal = () => {
     //     dispatch(Modal);
     // }
-	
+
 	return (
 	<li className={styled.item}>
 		<div className={styled.category}>
@@ -40,14 +41,14 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
                 {category}
             </span>
             </div>
-		<button 
+		<button
             className={styled.buttonOnClick}
             type="button"
             onClick={() => addAndDeleteFavorite()}
 		>
             <HeartIcon />
         </button>
-        <button 
+        <button
             className={styled.buttonDeleteOnClick}
             type="button"
             // onClick={() => addAndDeleteFavorite()}
@@ -67,7 +68,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
         <div className={styled.info}>
             <Clock />
             <span className={styled.infoText}>
-                {date}  
+                {date}
             </span>
 		</div>
 		<div className={styled.info}>
@@ -76,11 +77,11 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
                 {sex}
             </span>
 		</div>
-        
+
         </div>
-		
+
 		<h2 className={styled.title}>Сute dog looking for a home</h2>
-		<button             
+		<button
             className={styled.buttonOnClickModal}
             type="button"
             // onClickModal={() => openModal()}
@@ -93,7 +94,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
         <div className={styled.addPetBtnWrapper}>
         <AddPetButton className={styled.addPetBtnIcon}/>
         </div>
-        
+
 		</li>
     );
 };
