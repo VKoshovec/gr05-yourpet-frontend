@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../../redux/auth/selectors';
 import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selectors';
-
+import NoticesList from '../../NoticesCategoriesList/NoticesCategoriesList';
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
 const NoticesCategoriesList = () => {
@@ -89,7 +89,7 @@ const NoticesCategoriesList = () => {
 
   return (
 
-    <h1>Noties categories {category} </h1>);
+    <NoticesList />);
 };
 
 export default NoticesCategoriesList;

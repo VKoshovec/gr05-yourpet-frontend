@@ -1,7 +1,7 @@
 import NoticesCategoriesNav from '../../components/Notices/NoticesCategoriesNav/NoticesCategoriesNav';
 import { Suspense } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-
+import Loader from '../../components/Loader/Loader';
 import NoticesSearch from '../../components/Notices/NoticesSearch/NoticesSearch';
 import Section from '../../components/Section/Section';
 import styled from './NoticesPage.module.scss';
@@ -20,7 +20,7 @@ const NoticesPage = () => {
       <NoticesCategoriesNav />
     </Section>
     <Section>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Section>

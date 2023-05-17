@@ -5,7 +5,7 @@ import { getNoticesCategory } from "../../redux/data/operations";
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import css from './NoticesCategorieslist.module.scss';
 import {noticies} from '../../noticies';
-const NoticesCategoriesList = ({ onClick, onClickModal}) => {
+const NoticesList = ({ onClick, onClickModal}) => {
     const dispatch = useDispatch();
 
     useEffect(()=> {
@@ -30,8 +30,8 @@ const NoticesCategoriesList = ({ onClick, onClickModal}) => {
     );
 };
 
-NoticesCategoriesList.defaultProps = {
+NoticesList.defaultProps = {
     noticies: [],
 }
 
-export default NoticesCategoriesList;
+export default NoticesList;
