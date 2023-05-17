@@ -1,0 +1,16 @@
+@import '../../styles/mixins/media.scss';
+
+.section {
+  padding-top: 40px;
+  padding-bottom: 75px;
+
+  @include tablet {
+    padding-top: 80px;
+    padding-bottom: 204px;
+  }
+
+  @include desktop {
+    padding-top: 80px;
+    padding-bottom: 81px;
+  }
+}
