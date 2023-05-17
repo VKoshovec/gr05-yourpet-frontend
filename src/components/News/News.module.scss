@@ -1,0 +1,15 @@
+@import '../../styles/mixins/media.scss';
+
+.sectionNews {
+  padding-top: 40px;
+  padding-bottom: 147px;
+
+  @include tablet {
+    padding-top: 40px;
+    padding-bottom: 109px;
+  }
+
+  @include desktop {
+    margin-bottom: 60px;
+  }
+}
