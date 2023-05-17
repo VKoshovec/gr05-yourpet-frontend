@@ -27,6 +27,7 @@
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 40px;
   padding: 12px;
+  margin-bottom: 12px;
 
   @include tablet {
     flex-basis: calc((100% - 32px) / 2);
