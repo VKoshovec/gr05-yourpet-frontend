@@ -18,7 +18,7 @@ export const initialLocal = {
 };
 
 export const initialAuth = {
-  user: { name: null, email: null, birthDay: null, phone: null, city: null, pets: []},
+  user: { _id: null, name: null, email: null, birthDay: null, phone: null, city: null, pets: []},
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
