@@ -1,5 +1,7 @@
 import { Form } from 'antd';
 
+import { isValidFields } from '../AddPetValidation/AddPetValidation';
+
 import AddPetTitle from '../AddPetTitle/AddPetTitle';
 import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
 import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
@@ -26,8 +28,7 @@ const AddPetFrame = () => {
             setStep(2);
         };
 
-        if(step ===2 && Validation.validateStepTwo(fields)
-            && Validation.isValidStepTwo(fields)) {
+        if(step ===2 && isValidFields(fields, step , formType)) {
             setStep(3);
         }      
     };
@@ -46,7 +47,7 @@ const AddPetFrame = () => {
     };
 
     const handleSubmit = () => {
-        if (step === 3 && Validation.isValidStepTwo) {
+        if (step === 3 && isValidFields(fields, step , formType)) {
             console.log(fields)
         }
     }
