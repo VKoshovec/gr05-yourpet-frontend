@@ -5,17 +5,19 @@ import { Button, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import { initialFormType } from '../AddPetFrame/AddPetFrame';
 
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 
 
-const AddPetPhoto = ({ formtype, getPhoto }) => {
+const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
 
-    const [fileList, setFileList] = useState([]);
-    const [imgSrc, setImgSrc] = useState();
+    const [fileList, setFileList] = useState(
+      initielFields["saveList"] ? initielFields["saveList"] : []
+    );
 
     const onChange = ({ fileList: newFileList }) => {
         setFileList(newFileList);
-        getPhoto(newFileList[0].name);
+        getPhoto(newFileList);
+  
     };
 
     const onPreview = async (file) => {

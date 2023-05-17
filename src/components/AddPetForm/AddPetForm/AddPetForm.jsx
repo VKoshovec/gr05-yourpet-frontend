@@ -1,7 +1,7 @@
-import { Input, Radio, Button } from 'antd';
+import { Input, Radio, Button, Form } from 'antd';
 import { theme } from 'antd';
 import { initialFormType } from '../AddPetFrame/AddPetFrame';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {ReactComponent as Male} from '../../assets/images/icon/male.svg';
 import {ReactComponent as Female} from '../../assets/images/icon/female-red.svg';
 import {ReactComponent as PlusBig} from '../../assets/images/icon/plus-big.svg';
@@ -22,43 +22,56 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
     const [photo, setPhoto] = useState();
     const [price, setPrice] = useState();
     const [location, setLocation] = useState();
+    const [saveList, setSavelist] = useState();
 
-    const fieldsForSubmit = { title, name, dBirth, breed, comments, price, location, sex, photo };
+    useEffect (()=>{
+     if (initialFields) {
+      setTitle(initialFields["title"]);
+      setName(initialFields["name"]);
+      setDBirth(initialFields["dBirth"]);
+      setBreed(initialFields["breed"]);
+      setComments(initialFields["comments"]);
+      setSex(initialFields["sex"]);
+      setPhoto(initialFields["photo"]);
+      setPrice(initialFields["price"]);
+      setLocation(initialFields["location"]);
+    }
+    },[])
 
-    const getGield = (e) => {
+     const getGield = (e) => {
        const inputValue = e.target.value;
        switch (e.target.name) {
         case "title":
           setTitle(inputValue)
-          getformFields({ title: inputValue, name, dBirth, breed, comments, sex, photo });
+          getformFields({ title: inputValue, name, dBirth, breed, comments, sex, photo, saveList });
           break;
         case "name":
           setName(inputValue)
-          getformFields({ title, name: inputValue, dBirth, breed, comments, sex, photo});
+          getformFields({ title, name: inputValue, dBirth, breed, comments, sex, photo, saveList});
           break;
         case "dBirth":
           setDBirth(inputValue)
-          getformFields({ title, name, dBirth: inputValue, breed, comments, sex, photo});
+          getformFields({ title, name, dBirth: inputValue, breed, comments, sex, photo, saveList});
           break;
         case "breed":
           setBreed(inputValue)
-          getformFields({ title, name, dBirth, breed: inputValue, comments, sex, photo});
+          getformFields({ title, name, dBirth, breed: inputValue, comments, sex, photo, saveList});
           break;  
         case "comments":
           setComments(inputValue)
-          getformFields({ title, name, dBirth, breed, comments: inputValue, sex, photo});
+          getformFields({ title, name, dBirth, breed, comments: inputValue, sex, photo, saveList});
           break;  
         case "price":
           setPrice(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price:inputValue,  sex, photo});
+          getformFields({ title, name, dBirth, breed, comments, price:inputValue,  sex, photo, saveList});
           break;   
         case "location":
           setLocation(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price, location:inputValue, sex, photo});
+          getformFields({ title, name, dBirth, breed, comments, price, location:inputValue, sex, photo, saveList});
           break;   
         case "sex":
           setSex(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price, location, sex: inputValue, photo});
+          getformFields({ title, name, dBirth, breed, comments, price, location, sex: inputValue, photo, saveList});
           break;    
         default:
           break;
@@ -66,14 +79,17 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
     };
 
     const getPhoto = (photo) => {
-      setPhoto(photo);
-      getformFields({ title, name, dBirth, breed, comments, price, location, sex, photo: photo});
+      setPhoto(photo[0].name);
+      setSavelist(photo);
+      getformFields({ title, name, dBirth, breed, comments, price, location, sex, photo: photo[0].name, saveList: photo});
     };
 
     
     return stepnumber === 2 ? (
         <div className={ css.addPetContainer }>
-            {formtype === initialFormType[1] && <label className={ css.addPetInput__Label }>Title of add
+
+            {formtype !== initialFormType[0] &&
+             <label className={ css.addPetInput__Label }>Title of add
               <Input 
               required
               type='text'
@@ -84,7 +100,18 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               onInput={ getGield }/>
             </label>}
 
+
             <label className={ css.addPetInput__Label }>Name pet
+            <Form.Item 
+            noStyle 
+            initialValue={ initialFields && initialFields["name"] } 
+            rules={[
+             {
+               required: true,
+               message: 'Please input your username!',
+             },
+             ]}>
+
               <Input 
               required
               type='text'
@@ -93,6 +120,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               placeholder='Type name pet' 
               className={ css.addPetInput }
               onInput={ getGield }/>
+            </Form.Item>  
             </label>
 
             <label className={ css.addPetInput__Label }>Date of birth
@@ -122,8 +150,8 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
     <div className={ css.addPetContainer }>
       <div className={ formtype === initialFormType[1] ? css.mainContainer : formtype === initialFormType[2] ? css.mainContainer : ""}>
         <div className={ css.rightContainer }>
-        {
-        formtype === initialFormType[1] && 
+
+        {formtype !== initialFormType[0] && 
          <label className={ css.addPetInput__Label }>Sex
           <Radio.Group 
             required
@@ -149,19 +177,17 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                </Radio.Button>
 
             </Radio.Group> 
-          </label>
-          }
+          </label>}
 
 
-          <AddPetPhoto formtype={ formtype } getPhoto = { getPhoto }/>
+          <AddPetPhoto formtype={ formtype } getPhoto = { getPhoto } initielFields={ initialFields }/>
 
 
           </div>
           <div className={ css.leftContainer }>
-          {
-          formtype === initialFormType[1] && 
-          <>
-                    <label className={ css.addPetInput__Label }>Location
+
+          {formtype !== initialFormType[0] && 
+          <label className={ css.addPetInput__Label }>Location
                     <Input
                     required
                     name='location' 
@@ -170,8 +196,10 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                     placeholder='Type location' 
                     className={ css.addPetInputText }
                     onInput={ getGield }/>
-          </label>
-          <label className={ css.addPetInput__Label }>Price
+          </label>}
+
+         { formtype === initialFormType[1] && 
+         <label className={ css.addPetInput__Label }>Price
                     <Input
                     required
                     name='price' 
@@ -180,8 +208,9 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                     placeholder='Type price' 
                     className={ css.addPetInputText }
                     onInput={ getGield }/>
-          </label>
-          </>}
+          </label>}
+
+         
 
           <label className={ css.addPetInput__Label }>Comments
               <Input.TextArea 

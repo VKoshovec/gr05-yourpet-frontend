@@ -7,7 +7,7 @@ import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
 import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
 import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import css from '../AddPetFrame/AddPetFrame.module.scss'
 import { Validation } from '../AddPetValidation/AddPetValidation';
 
@@ -50,7 +50,7 @@ const AddPetFrame = () => {
         if (step === 3 && isValidFields(fields, step , formType)) {
             console.log(fields)
         }
-    }
+    };
 
     return (
         <Form 
@@ -58,7 +58,10 @@ const AddPetFrame = () => {
             step === 3 && formType === initialFormType [1] ? css.frameBig : 
             step === 3 && formType === initialFormType [2] ? css.frameBig : "" 
         ].join(" ") } 
-        initialValues={{remember: true }} 
+        initialValues={{ remember: true }} 
+        wrapperCol={{
+            span: 16,
+        }}
         autoComplete="off" 
         onFinish={ handleSubmit }>
 

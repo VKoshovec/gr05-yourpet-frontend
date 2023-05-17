@@ -49,6 +49,9 @@ export const Validation = {
 
 export const isValidFields = (data, step, type) =>{
 
+    console.log({data, step, type});
+    const clearSchema = {};
+
     const presetSchemaOne = { 
         breed: string().required().min(5),
         dBirth: date().required(),
@@ -57,20 +60,17 @@ export const isValidFields = (data, step, type) =>{
 
     const aditiveOne =  { title: string().required().min(5) };
 
-    
+
     const presetSchemaTwo = {
         photo: string().required(),
-        comments: string().required(),
+        comments: string().required().min(5),
     };
 
     const aditiveForSale =  { 
         sex: string().required(),
         location: string().required(),
-        price: number().required().test( 
-           'is-decimal',
-           'invalid decimal',
-            value => (value + "").match(/^\d+(?:\.\d{0,2})$/),
-        )
+        price: number().required(),
+        // value => (value + "").match(/^\d+(?:\.\d{0,2})$/),
     };
 
     const aditiveForLostInGood = {
@@ -79,7 +79,7 @@ export const isValidFields = (data, step, type) =>{
     };
 
     const validSchemaOne = 
-    step === 2 ? object(
+    step === 2 ? object (
         type === initialFormType[0] ? {...presetSchemaOne} 
         : 
         {...presetSchemaOne, ...aditiveOne},
