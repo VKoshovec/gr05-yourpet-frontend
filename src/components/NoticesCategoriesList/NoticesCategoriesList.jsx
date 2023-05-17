@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { getNoticesCategory } from "../../redux/data/operations";
 
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
-import css from './NoticesCategorieslist.module.scss';
-
-const NoticesCategoryList = ({noticies, onClick, onClickModal}) => {
+import css from './NoticesCategoriesList.module.scss';
+import {noticies} from '../../noticies';
+const NoticesCategoriesList = ({ onClick, onClickModal}) => {
     const dispatch = useDispatch();
 
     useEffect(()=> {
@@ -30,8 +30,8 @@ const NoticesCategoryList = ({noticies, onClick, onClickModal}) => {
     );
 };
 
-NoticesCategoryList.defaultProps = {
+NoticesCategoriesList.defaultProps = {
     noticies: [],
 }
 
-export default NoticesCategoryList;
+export default NoticesCategoriesList;

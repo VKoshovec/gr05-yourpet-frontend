@@ -1,5 +1,9 @@
-
+import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList';
+// import Section from 'components/Section/Section';
 const NewsPage = () => {
-  return <h1>NewsPage</h1>;
+  return (
+    <NoticesCategoriesList/>
+  )
+  
 };
 export default NewsPage;
