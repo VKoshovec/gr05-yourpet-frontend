@@ -1,4 +1,3 @@
-import { Carusel, Step, StepLine } from "./addPetCarusel.styled";
 import PropTypes from "prop-types";
 import css from '../AddPetCarusel/AddPetCarusel.module.scss'
 

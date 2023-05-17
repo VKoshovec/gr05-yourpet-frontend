@@ -75,18 +75,20 @@
 }
 
 .addPetImgButton {
-   width: 112px;
-   height: 112px;
+   width: 100%;
+   height: 100%;
    border-radius: 20px;
    background-color: #CCE4FB;
    border: 0px;
    font-size: xx-large;
-   margin-left: 27px;
+//    margin-left: 27px;
 
    @media screen and (min-width: 768px) {
-    width: 182px;
-    height: 182px;
-    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    // width: 182px;
+    // height: 182px;
+    // margin-left: 10px;
    }
 }
 
@@ -140,3 +142,79 @@
     padding: 0px;
     }
 };
+
+
+:global(.ant-upload ) {
+    width: 112px !important;
+    height: 112px !important;
+    border-radius: 40px !important;
+    border-color:  transparent !important;
+
+    @media screen and (min-width: 768px) {
+        width: 182px !important;
+        height: 182px !important;
+        border-radius: 40px !important;
+    }
+}
+
+:global(.ant-upload-list-item) {
+
+    width: 112px !important;
+    height: 112px !important;
+    border-radius: 20px !important;
+    border-color:  transparent !important;
+
+
+
+    @media screen and (min-width: 768px) {
+        width: 182px !important;
+        height: 182px !important;
+        border-radius: 20px !important;
+    }
+
+}
+
+:global(.ant-upload-list) {
+
+    width: 112px !important;
+    height: 112px !important;
+    border-radius: 20px !important;
+    border-color:  transparent !important;
+
+
+    @media screen and (min-width: 768px) {
+        width: 182px !important;
+        height: 182px !important;
+        border-radius: 20px !important;
+    }
+
+}
+
+.ant-upload-wrapper
+.ant-upload-picture-card-wrapper 
+.ant-upload-list
+.ant-upload-list-picture-card 
+.ant-upload-list-item-container
+
+:glonal(.ant-upload-list-item-container ) {
+    width: 182px !important;
+    height: 182px !important;
+    border-radius: 20px !important;
+}
+
+:glonal(.ant-upload-wrapper) {
+    border-radius: 40px !important;
+}
+:glonal(.ant-upload-list-item-thumbnail) {
+    border-radius: 40px !important;
+}
+:glonal(.ant-upload-list-picture-card) {
+    border-radius: 40px !important;
+}
+
+:glonal(.ant-upload-list-item-image){
+    border-radius: 40px !important;
+}
+
+
+
