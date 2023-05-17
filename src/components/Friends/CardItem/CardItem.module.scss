@@ -1,0 +1,49 @@
+// @import '../../styles/mixins/media.scss';
+
+@import '../../../styles/mixins/media.scss';
+
+.friendList {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+// .card {
+//   // max-width: 100%;
+// }
+.item {
+  background: #ffffff;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 40px;
+  padding: 12px;
+
+  @include tablet {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-basis: calc((100% - 64px) / 3);
+  }
+
+  // @include desktop {
+  //   flex-basis: calc((100% - 32px) / 3);
+  //   background-color: red;
+  // }
+}
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 12px;
+}

@@ -1,5 +1,6 @@
+import Friends from 'components/Friends/Friends';
 
 const OurFriendsPage = () => {
-  return <h1> Friends Page</h1>;
+  return <Friends />;
 };
 export default OurFriendsPage;
