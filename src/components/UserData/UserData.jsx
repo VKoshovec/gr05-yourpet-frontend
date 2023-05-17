@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 
@@ -15,19 +15,29 @@ import { ReactComponent as LogOutW } from '../assets/images/icon/logout-white.sv
 import { ReactComponent as EditPfoto } from '../assets/images/icon/edit-photo.svg';
 import { ReactComponent as Confirm } from '../assets/images/icon/check.svg';
 
+import { getCurrentUser } from 'redux/user/user-operations';
+import { getUser } from 'redux/user/user-selectors';
+
 import styles from './UserData.module.css';
 
 const UserData = () => {
   const [modalShow, setModalShow] = useState(false);
   const [logout, setLogout] = useState(false);
 
+  // const user = useSelector(getUser);
   const fileRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // console.log(user);
+
   const initialValues = {
     image: null,
   };
+
+  // useEffect(() => {
+  //   dispatch(getCurrentUser());
+  // }, [dispatch]);
 
   const toggleModal = () => {
     setModalShow(!modalShow);
@@ -67,7 +77,7 @@ const UserData = () => {
                     hidden
                     onChange={event => {
                       setFieldValue('image', event.target.files[0]);
-                      console.log(event.target.files);
+                      console.log(fileRef);
                     }}
                   />
 
@@ -84,6 +94,7 @@ const UserData = () => {
                     />
                   )}
                 </div>
+
                 {values.image ? (
                   <button
                     type="submit"

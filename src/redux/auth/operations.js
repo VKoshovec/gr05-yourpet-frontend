@@ -19,7 +19,11 @@ export const signup = createAsyncThunk(
       const { data } = await axios.post('api/auth/register', credentials);
       setAuthHeader(data.token);
       return data;
-    } catch ({ response: { data: { message }}}) {
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
       toast.error(message);
       return rejectWithValue(message);
     }
@@ -34,7 +38,11 @@ export const signin = createAsyncThunk(
       const { data } = await axios.post('api/auth/login', credentials);
       setAuthHeader(data.token);
       return data;
-    } catch ({ response: { data: { message }}}) {
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
       toast.error(message);
       return rejectWithValue(message);
     }
@@ -47,7 +55,11 @@ export const signout = createAsyncThunk(
     try {
       await axios.post('api/auth/logout');
       clearAuthHeader();
-    } catch ({ response: { data: { message }}}) {
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
       toast.error(message);
       return rejectWithValue(message);
     }
@@ -66,7 +78,11 @@ export const refresh = createAsyncThunk(
       setAuthHeader(token);
       const { data } = await axios.get('/auth/current');
       return data;
-    } catch ({ response: { data: { message }}}) {
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
       toast.error(message);
       return rejectWithValue(message);
     }
