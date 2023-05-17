@@ -19,8 +19,8 @@
   @include tabletAndDesktop {
     gap: 12px;
     padding: 8px 38px;
-    width: initial;
-    height: initial;
+    width:initial;
+    height: 40px;
     background-color: var(--white);
 
     &:global(.outlined) {

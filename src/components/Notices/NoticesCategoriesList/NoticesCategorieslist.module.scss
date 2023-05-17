@@ -1,0 +1,25 @@
+@import "./src/styles/mixins/media";
+
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    // padding-right: 20px;
+    // padding-left: 20px;
+    justify-content: center;
+    margin-top: 24px;
+    column-gap: 24px;
+
+    @include tablet {
+        margin-top: 40px;
+    }
+
+    @include tabletAndDesktop {
+        row-gap: 32px;
+        column-gap: 24px;
+    }
+
+    @include desktop {
+        margin-top: 42px;
+    }
+}
