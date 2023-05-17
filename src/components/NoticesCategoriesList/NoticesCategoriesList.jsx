@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { getNoticesCategory } from "../../redux/data/operations";
 
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
-import css from './NoticesCategoriesList.module.scss';
+import css from './NoticesCategorieslist.module.scss';
 import {noticies} from '../../noticies';
 const NoticesCategoriesList = ({ onClick, onClickModal}) => {
     const dispatch = useDispatch();
