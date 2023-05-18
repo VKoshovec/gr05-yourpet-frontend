@@ -24,20 +24,20 @@ const UserData = () => {
   const [modalShow, setModalShow] = useState(false);
   const [logout, setLogout] = useState(false);
 
-  // const user = useSelector(getUser);
+  const user = useSelector(getUser);
   const fileRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // console.log(user);
+  console.log(user);
 
   const initialValues = {
     image: null,
   };
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   const toggleModal = () => {
     setModalShow(!modalShow);
