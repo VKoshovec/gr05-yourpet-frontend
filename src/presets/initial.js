@@ -20,7 +20,7 @@ export const initialLocal = {
 export const initialAuth = {
   user: { name: null, email: null, birthDay: null, phone: null, city: null, pets: []},
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 

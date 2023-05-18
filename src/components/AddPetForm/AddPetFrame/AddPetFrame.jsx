@@ -1,6 +1,7 @@
 import { Form } from 'antd';
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { isValidFields } from '../AddPetValidation/AddPetValidation';
+
 
 import AddPetTitle from '../AddPetTitle/AddPetTitle';
 import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
@@ -15,9 +16,18 @@ export const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
 
 const AddPetFrame = () => {
 
+    const location = useLocation();
+    const navigator = useNavigate();
+
     const [fields, setFields] = useState();
     const [step, setStep] = useState(1);
     const [formType, setFormType] = useState();
+
+    const navigate = () => {
+        if (location) {
+            navigator( location.state , { replace: true });
+        }
+    };
 
     const ButtonSetResponse = (number) => {
         setFormType(initialFormType[number]);
@@ -34,6 +44,9 @@ const AddPetFrame = () => {
     };
 
     const PrevStep = () => {
+        if(step ===1 ){
+            navigate();
+        }
         if(step === 2) {
             setStep(1);
         }
@@ -48,7 +61,8 @@ const AddPetFrame = () => {
 
     const handleSubmit = () => {
         if (step === 3 && isValidFields(fields, step , formType)) {
-            console.log(fields)
+            console.log(fields);
+            navigate();
         }
     };
 
