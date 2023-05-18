@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import React, { useEffect } from 'react';
+// import { NavLink, useLocation } from 'react-router-dom';
 import { getNotices, fetchAddFavorite, fetchDeleteFavorite  } from "../../redux/data/operations";
 
 import { ReactComponent as HeartIcon } from '../../components/assets/images/icon/heart.svg';
@@ -14,6 +15,7 @@ import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
 
 const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) => {
 	const dispatch = useDispatch();
+    // const location = useLocation();
 
     const noticeFavorite = {id, category, image, location, date, sex}
 
@@ -29,7 +31,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) =
         dispatch(fetchDeleteFavorite(id));
     }
 
-  // console.log('---------',category);
+console.log('---------',category);
     // const openModal = () => {
     //     dispatch(Modal);
     // }
@@ -92,7 +94,10 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) =
             <PawIcon/>
         </button>
         <div className={styled.addPetBtnWrapper}>
-        <AddPetButton className={styled.addPetBtnIcon}/>
+            <AddPetButton className={styled.addPetBtnIcon}/>
+            {/* <NavLink to={/add-pet} className={styled.addButton} onClick={handleLinkClick} state={ location.pathname}>
+                <AddPetButton className={styled.addPetBtnIcon}/>
+            </NavLink> */}
         </div>
 
 		</li>
