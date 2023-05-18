@@ -1,6 +1,6 @@
 import styled from './AddPetButton.module.scss';
 import {  message } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as AddIcon } from '../../assets/images/icon/plus.svg';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../../redux/auth/selectors';
@@ -10,6 +10,7 @@ import { selectIsLoggedIn } from '../../../redux/auth/selectors';
 const AddPetButton = () => {
 
   const [messageApi, contextHolder] = message.useMessage();
+  const location = useLocation();
 
   const isLoggingIn = useSelector(selectIsLoggedIn);
   // const { category } = useParams();
@@ -28,7 +29,7 @@ const AddPetButton = () => {
   }
   return (<>
     {contextHolder}
-      <NavLink to={`/add-pet`} className={styled.addButton} onClick={handleLinkClick}>
+      <NavLink to={`/add-pet`} className={styled.addButton} onClick={handleLinkClick}  state={ location.pathname }>
         <AddIcon/><span className={styled.text}>Add pet</span>
       </NavLink>
   </>
