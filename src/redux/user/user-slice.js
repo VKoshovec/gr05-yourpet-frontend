@@ -74,5 +74,8 @@ const userSlice = createSlice({
   },
 });
 
+// export const { deletePet, deleteFavoriteObj } = userSlice.actions;
+// export default userSlice.reducer;
+
 const userReducer = userSlice.reducer;
 export default userReducer;
