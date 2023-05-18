@@ -29,7 +29,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
         dispatch(fetchDeleteFavorite(id));
     }
 
-  console.log('---------',category);
+  // console.log('---------',category);
     // const openModal = () => {
     //     dispatch(Modal);
     // }

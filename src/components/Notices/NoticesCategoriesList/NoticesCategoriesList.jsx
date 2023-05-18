@@ -7,6 +7,8 @@ import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selec
 import NoticeCategoryItem from '../../NoticeCategoryItem/NoticeCategoryItem';
 import {getCurrentAge} from 'helpers/getCurrentAge'
 import styled from './NoticesCategorieslist.module.scss'
+import Loader from '../../Loader/Loader';
+
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
 const queryParamsCategories = {
@@ -79,7 +81,6 @@ const NoticesCategoriesList = () => {
     const fetchNotices = async () => {
       try {
         setLoading(true);
-        console.log( encodeURIComponent('In good hands'));
         const data = await getNoticesByCategory(queryParamsCategories[category]);
         if (!data.length) {
           setMessage(true);
@@ -98,21 +99,24 @@ const NoticesCategoriesList = () => {
   }, [category]);
 
 
-  return (
+  return (<>
+
+    {loading && <Loader/>}
 
     <ul className={styled.list}>
-      {items.map(({id, category, image, location, date, sex, birthday}) => {
-     return( <NoticeCategoryItem
-       key={id}
-       category={category}
-       image={image}
-       location={location}
-       date={getCurrentAge(birthday)}
-       sex={sex}
-     />)
+      {items.map(({_id, category, image, location, date, sex, birthday}) => {
+        return( <NoticeCategoryItem
+          key={_id}
+          category={category}
+          image={image}
+          location={location}
+          date={getCurrentAge(birthday)}
+          sex={sex}
+        />)
       })}
+    </ul>
+  </>)
 
-    </ul>)
 };
 
 export default NoticesCategoriesList;

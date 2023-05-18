@@ -16,12 +16,12 @@ const NoticesList = ({ onClick, onClickModal}) => {
         <ul className={css.list}>
             {noticies.map(({ id, category, image, location, date, sex}) => (
                 <NoticeCategoryItem
-                    key={id} 
+                    key={id}
                     category={category}
                     image={image}
-                    location={location} 
+                    location={location}
                     date={date}
-                    sex={sex} 
+                    sex={sex}
                     onClick={onClick}
                     onClickModal={onClickModal}
                 />
