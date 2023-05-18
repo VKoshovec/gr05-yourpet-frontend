@@ -1,11 +1,14 @@
 import { Form } from 'antd';
+import { useNavigate, useLocation } from "react-router-dom";
+import { isValidFields } from '../AddPetValidation/AddPetValidation';
+
 
 import AddPetTitle from '../AddPetTitle/AddPetTitle';
 import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
 import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
 import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import css from '../AddPetFrame/AddPetFrame.module.scss'
 import { Validation } from '../AddPetValidation/AddPetValidation';
 
@@ -13,9 +16,18 @@ export const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
 
 const AddPetFrame = () => {
 
+    const location = useLocation();
+    const navigator = useNavigate();
+
     const [fields, setFields] = useState();
     const [step, setStep] = useState(1);
     const [formType, setFormType] = useState();
+
+    const navigate = () => {
+        if (location) {
+            navigator( location.state , { replace: true });
+        }
+    };
 
     const ButtonSetResponse = (number) => {
         setFormType(initialFormType[number]);
@@ -26,13 +38,15 @@ const AddPetFrame = () => {
             setStep(2);
         };
 
-        if(step ===2 && Validation.validateStepTwo(fields)
-            && Validation.isValidStepTwo(fields)) {
+        if(step ===2 && isValidFields(fields, step , formType)) {
             setStep(3);
         }      
     };
 
     const PrevStep = () => {
+        if(step ===1 ){
+            navigate();
+        }
         if(step === 2) {
             setStep(1);
         }
@@ -46,10 +60,11 @@ const AddPetFrame = () => {
     };
 
     const handleSubmit = () => {
-        if (step === 3 && Validation.isValidStepTwo) {
-            console.log(fields)
+        if (step === 3 && isValidFields(fields, step , formType)) {
+            console.log(fields);
+            navigate();
         }
-    }
+    };
 
     return (
         <Form 
@@ -57,7 +72,10 @@ const AddPetFrame = () => {
             step === 3 && formType === initialFormType [1] ? css.frameBig : 
             step === 3 && formType === initialFormType [2] ? css.frameBig : "" 
         ].join(" ") } 
-        initialValues={{remember: true }} 
+        initialValues={{ remember: true }} 
+        wrapperCol={{
+            span: 16,
+        }}
         autoComplete="off" 
         onFinish={ handleSubmit }>
 

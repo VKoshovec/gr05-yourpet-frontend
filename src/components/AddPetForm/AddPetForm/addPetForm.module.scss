@@ -68,6 +68,7 @@
     font-size: 16px;
     margin-left: 14px;
     font-weight: 400px;
+    background-color: transparent !important;
 }
 
 .addPetSexIcon {
@@ -116,8 +117,17 @@
 }
 
 :global(.ant-radio-button-wrapper)::before {
-    background-color: white !important;
+    background-color: transparent !important;
 }
+
+:global(.ant-radio-button-wrapper) {
+    background-color: transparent !important;
+}
+
+:global(.ant-input):focus {
+    border-color: red !important;
+}
+
 
 .mainContainer {
     @media screen and (min-width: 768px) {
