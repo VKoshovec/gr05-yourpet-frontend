@@ -39,6 +39,7 @@ const CustomSearch = ({ title, onChange, onSearch }) => {
         bordered={false}
         onChange={handleChange}
         onSearch={handleSearch}
+        maxLength={20}
       />
     </div>
   );

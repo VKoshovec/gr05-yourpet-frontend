@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 const UserNav = ({openMenu }) => {
-  console.log(openMenu);
 
   return ( <Link to={'/user'} className={cn(styled.userBtn, {[styled.hasUserName] : openMenu})}>
       <UserIcon /><span className={cn(styled.userName, {[styled.nameVisible] : openMenu })}>User</span>

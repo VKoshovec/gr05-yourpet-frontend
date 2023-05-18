@@ -54,4 +54,4 @@ const localSlice = createSlice({
 });
 
 export const localReducer = localSlice.reducer;
-export const { setFilter, modalState } = localSlice.actions;
+export const { setFilter, modalState, setError } = localSlice.actions;

@@ -9,7 +9,6 @@ import styled from './NoticesPage.module.scss';
 const NoticesPage = () => {
 
   const location = useLocation();
-  console.log(location.pathname);
 
   return (<>
     {location.pathname === '/notices' && <Navigate to='/notices/sell' replace={true} />}
@@ -19,7 +18,7 @@ const NoticesPage = () => {
     <Section className={styled.noticesCategoriesNavWrapper}>
       <NoticesCategoriesNav />
     </Section>
-    <Section>
+    <Section className={styled.noticesListItemWrapper}>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

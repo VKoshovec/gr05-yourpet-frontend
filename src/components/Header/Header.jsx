@@ -11,7 +11,7 @@ import cn from 'classnames';
 import UserNav from '../Navbar/UserNav/UserNav';
 import AuthNav from '../Navbar/AuthNav/AuthNav';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsLoggedIn, selectToken } from '../../redux/auth/selectors';
 
 
 const { Header } = Layout;
@@ -20,6 +20,7 @@ const HeaderPage = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
   const isLoggingIn = useSelector(selectIsLoggedIn);
+  const hasToken = useSelector(selectToken);
   // const isLoggingIn = true
   // console.log(isLoggingIn);
 
@@ -44,7 +45,7 @@ const HeaderPage = () => {
           <div className={styled.rightNavigationalBlock}>
             {!openMenu && isLoggingIn &&  <UserNav openMenu={openMenu}/>}
 
-            {!isLoggingIn && !openMenu && (<div className={styled.userNavigateBtn}>
+            {!isLoggingIn && !openMenu && !hasToken && (<div className={styled.userNavigateBtn}>
               <AuthNav />
             </div>)}
             {!openMenu && <Button

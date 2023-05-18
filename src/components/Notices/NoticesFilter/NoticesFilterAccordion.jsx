@@ -5,7 +5,7 @@ import styled from './NoticesFilter.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filters/noticesFilter/filterSlice';
 import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selectors';
-import { debounce } from "lodash"
+import  debounce  from "lodash/debounce"
 import { useCallback } from 'react';
 const { Panel } = Collapse;
 

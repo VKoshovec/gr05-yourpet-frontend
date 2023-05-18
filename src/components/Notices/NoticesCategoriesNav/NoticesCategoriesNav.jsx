@@ -8,9 +8,7 @@ import NoticesFilter from '../NoticesFilter';
 
 const NoticesCategoriesNav = () => {
 
-  // const location = useLocation();
   const isLoggingIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggingIn);
 
   return (<div className={styled.noticesNavWrapper}>
       <div className={styled.leftNavbarWrapper}>

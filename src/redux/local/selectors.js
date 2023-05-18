@@ -1,7 +1,7 @@
 // import { createSelector } from '@reduxjs/toolkit';
 
 export const selectIsLoading = state => state.local.isLoading;
-export const selectContactID = state => state.local.error;
+export const selectIsError = state => state.local.error;
 export const selectFilter = state => state.local.filter;
 export const selectModalState = state => state.local.modalShow;
 
