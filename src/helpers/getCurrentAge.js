@@ -12,6 +12,9 @@ export function getCurrentAge(dateString) {
     age--;
   }
   if (age === 0) {
+    if (birthDate.getMonth() < m) {
+      return m+ ' month';
+    }
     m = 12 + m;
     if (d < 0 || (d === 0 && today.getDate() < birthDate.getDate())) {
       m--;

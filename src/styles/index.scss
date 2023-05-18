@@ -15,44 +15,55 @@
 
   --gradientBtn: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
 
-  --fontFamily: 'Manrope-Regular';
+  --fontFamily: 'Manrope';
 }
 
 
 @font-face {
-  font-family: 'Manrope-Regular';
+  font-family: 'Manrope';
+  font-weight: 400;
   src: local('Manrope-Regular'),
   url('../components/assets/fonts/Manrope-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Manrope-Medium';
+  font-family: 'Manrope';
+  font-weight: 500;
   src: local('Manrope-Medium'),
   url('../components/assets/fonts/Manrope-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Manrope-SemiBold';
+  font-family: 'Manrope';
+  font-weight: 600;
   src: local('Manrope-SemiBold'),
   url('../components/assets/fonts/Manrope-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Manrope-Bold';
+  font-family: 'Manrope';
+  font-weight: 700;
   src: local('Manrope-Bold'),
   url('../components/assets/fonts/Manrope-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Manrope-ExtraBold';
+  font-family: 'Manrope';
+  font-weight: 800;
   src: local('Manrope-ExtraBold'),
   url('../components/assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: local('Manrope-ExtraBold'),
+  url('../components/assets/fonts/Inter-Regular.ttf') format('truetype');
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Manrope-Regular', serif;
+  font-family: 'Manrope', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -64,7 +75,7 @@ code {
 
 * {
   box-sizing: border-box;
-  font-family: 'Manrope-Regular', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 h1,
@@ -159,7 +170,7 @@ button {
 
 
 :where(.css-dev-only-do-not-override-ed5zg0)[class^="ant-layout"], :where(.css-dev-only-do-not-override-ed5zg0)[class*=" ant-layout"] {
-  font-family: 'Manrope-Regular', serif;
+  font-family: 'Manrope', serif;
   font-size: initial;
   font-weight: initial;
 }
