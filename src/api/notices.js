@@ -7,19 +7,19 @@ import axios from 'axios';
   // },
 // });
 
-export const getNoticesByCategory = async (category) => {
+export const getNoticesByCategory = async (category, search) => {
   const { data } = await axios.get('api/notices', {
-    params : {  category },
+    params : {  category, search },
   })
   return data;
   };
 
-export const getNoticesByFilter= async ({filterValue, category}) => {
-  const { data } = await axios.get('api/notices', {
-    params : {  ...filterValue.byAge, ...filterValue.byGender, ...filterValue.search, category },
-  })
-  return data;
-};
+// export const getNoticesByFilter= async ({filterValue, category}) => {
+//   const { data } = await axios.get('api/notices', {
+//     params : {  ...filterValue.byAge, ...filterValue.byGender, ...filterValue.search, category },
+//   })
+//   return data;
+// };
 
 
 

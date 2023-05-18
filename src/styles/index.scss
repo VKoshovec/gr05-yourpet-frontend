@@ -163,3 +163,71 @@ button {
   font-size: initial;
   font-weight: initial;
 }
+
+.customPagination {
+
+  &.ant-pagination{
+    display: inline-flex;
+    padding: 8px 12px;
+    border-radius: 45px;
+    background-color: var(--background);
+    box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--bluelinks) !important;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: var(--bluelinksActive) !important;
+
+        a {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 15px;
+          color: var(--white);
+        }
+
+        svg path {
+          stroke: var(--white);
+        }
+      }
+
+
+      a {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 15px;
+        color: var(--bluelinks);
+
+      }
+
+      &.ant-pagination-item-active {
+        background-color: var(--bluelinksActive);
+
+        a {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 15px;
+          color: var(--white);
+        }
+      }
+
+    }
+
+  }
+
+  .ant-pagination-item-link {
+
+    .ant-pagination-item-ellipsis{
+
+      color: var(--bluelinks) !important;
+    }
+
+  }
+
+
+}

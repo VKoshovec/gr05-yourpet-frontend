@@ -12,7 +12,7 @@ import { ReactComponent as PawIcon } from '../../components/assets/images/icon/p
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
 
-const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
+const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) => {
 	const dispatch = useDispatch();
 
     const noticeFavorite = {id, category, image, location, date, sex}
@@ -80,7 +80,7 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex}) => {
 
         </div>
 
-		<h2 className={styled.title}>Сute dog looking for a home</h2>
+		<h2 className={styled.title}>{title}</h2>
 		<button
             className={styled.buttonOnClickModal}
             type="button"

@@ -1,21 +1,31 @@
 import CustomSearch from '../../CustomSearch/CustomSearch';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selectors';
-import { setFilter } from '../../../redux/filters/noticesFilter/filterSlice';
+import { useSearchParams } from 'react-router-dom';
 
 const NoticesSearch = () => {
-  const dispatch = useDispatch();
-  const filterValue = useSelector(selectNoticesFilters);
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const onSearch = (value) => {
-    const updatedFilter = {
-      ...filterValue,
-    search: {
-      searchParams: value
+
+    let updatedSearchParams = { ...searchParams };
+
+    if (value) {
+      updatedSearchParams = { ...updatedSearchParams, search: value.trim() };
+    } else {
+      delete updatedSearchParams.search;
     }
-    };
-    dispatch(setFilter(updatedFilter));
-  }
+
+    setSearchParams(updatedSearchParams);
+
+    // const updatedFilter = {
+    //   ...filterValue,
+    //   search: {
+    //     searchParams: value.trim()
+    //   }
+    // };
+
+    // dispatch(setFilter(updatedFilter));
+  };
 
   return <CustomSearch title={"Find your favorite pet"} onSearch={onSearch}/>
 
