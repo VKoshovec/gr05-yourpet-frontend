@@ -3,13 +3,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { toast } from 'react-toastify';
 
 // import { getUserId } from './user-selectors';
-import { getUserToken } from 'redux/auth/selectors';
+// import { getUserToken } from 'redux/auth/selectors';
 
 axios.defaults.baseURL = 'https://yourpet-api.onrender.com/api/';
 
-const setUserHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setUserHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 // const clearUserHeader = () => {
 //   axios.defaults.headers.common.Authorization = '';
@@ -19,12 +19,12 @@ export const getCurrentUser = createAsyncThunk(
   'user/current',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const token = getState(getUserToken);
-      if (token === null) {
-        return rejectWithValue('Error');
-      }
+      //   const token = getState(getUserToken);
+      //   if (token === null) {
+      //     return rejectWithValue('Error');
+      //   }
 
-      setUserHeader(token);
+      //   setUserHeader(token);
 
       const data = await axios.get('user/current');
       console.log(data);
@@ -40,12 +40,12 @@ export const updateUser = createAsyncThunk(
   'user/updateInfoUser',
   async (updateUser, { rejectWithValue, getState }) => {
     try {
-      const token = getState(getUserToken);
-      if (token === null) {
-        return rejectWithValue('Error');
-      }
+      //   const token = getState(getUserToken);
+      //   if (token === null) {
+      //     return rejectWithValue('Error');
+      //   }
 
-      setUserHeader(token);
+      //   setUserHeader(token);
 
       const { data } = await axios.patch('/user/update', updateUser);
       console.log(data);
@@ -67,12 +67,12 @@ export const updateAvatar = createAsyncThunk(
     formData.append('avatar', image);
 
     try {
-      const token = getState(getUserToken);
-      if (token === null) {
-        return rejectWithValue('Error');
-      }
+      //   const token = getState(getUserToken);
+      //   if (token === null) {
+      //     return rejectWithValue('Error');
+      //   }
 
-      setUserHeader(token);
+      //   setUserHeader(token);
 
       const { data } = await axios.patch('/user/avatars', image, {
         headers: {
@@ -92,12 +92,12 @@ export const deletePets = createAsyncThunk(
   'user/deletePets',
   async (id, { rejectWithValue, getState }) => {
     try {
-      const token = getState(getUserToken);
-      if (token === null) {
-        return rejectWithValue('Error');
-      }
+      //   const token = getState(getUserToken);
+      //   if (token === null) {
+      //     return rejectWithValue('Error');
+      //   }
 
-      setUserHeader(token);
+      //   setUserHeader(token);
 
       const { data } = await axios.delete(`/pets/${id}`);
 
