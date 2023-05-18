@@ -8,18 +8,12 @@
     background: var(--white);
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 0px 0px 40px 40px;
-    margin-bottom: 24px;
-    margin-bottom:last-child{
-        margin-bottom: 0px;
-    }
-
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    } 
+    
     &:hover {
         box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
-    }
-
-    @include tablet {
-        // width: 336px;
-
     }
 
     @include tabletAndDesktop {
@@ -121,7 +115,7 @@
 .image {
     width: 280px;
     height: 288px;
-
+    
     @include tablet {
         width: 336px;
     }
