@@ -33,6 +33,7 @@ export const LoginForm = () => {
   };
 
   return (
+    <div className={css.bg}>
     <Section>
       <Container>
         <div className={css.authWrapper}>
@@ -66,5 +67,6 @@ export const LoginForm = () => {
         </div>
       </Container>
     </Section>
+    </div>
   );
 };
