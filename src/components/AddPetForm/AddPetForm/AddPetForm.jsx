@@ -43,27 +43,27 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
        switch (e.target.name) {
         case "title":
           setTitle(inputValue)
-          getformFields({ title: inputValue, name, dBirth, breed, comments, sex, photo, saveList });
+          getformFields({ title: inputValue, name, dBirth, breed, comments, price, location, sex, photo, saveList });
           break;
         case "name":
           setName(inputValue)
-          getformFields({ title, name: inputValue, dBirth, breed, comments, sex, photo, saveList});
+          getformFields({ title, name: inputValue, dBirth, breed, comments, price, location, sex, photo, saveList});
           break;
         case "dBirth":
           setDBirth(inputValue)
-          getformFields({ title, name, dBirth: inputValue, breed, comments, sex, photo, saveList});
+          getformFields({ title, name, dBirth: inputValue, breed, comments, price, location, sex, photo, saveList});
           break;
         case "breed":
           setBreed(inputValue)
-          getformFields({ title, name, dBirth, breed: inputValue, comments, sex, photo, saveList});
+          getformFields({ title, name, dBirth, breed: inputValue, price, location, comments, sex, photo, saveList});
           break;  
         case "comments":
           setComments(inputValue)
-          getformFields({ title, name, dBirth, breed, comments: inputValue, sex, photo, saveList});
+          getformFields({ title, name, dBirth, breed, price, location, comments: inputValue, sex, photo, saveList});
           break;  
         case "price":
           setPrice(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price:inputValue,  sex, photo, saveList});
+          getformFields({ title, name, dBirth, breed, comments, price:inputValue, location, sex, photo, saveList});
           break;   
         case "location":
           setLocation(inputValue)
@@ -108,7 +108,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
             rules={[
              {
                required: true,
-               message: 'Please input your username!',
+               message: 'Please input your username motherfacker',
              },
              ]}>
 

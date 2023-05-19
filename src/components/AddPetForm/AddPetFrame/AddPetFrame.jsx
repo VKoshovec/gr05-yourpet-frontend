@@ -1,4 +1,4 @@
-import { Form } from 'antd';
+import { Form, ConfigProvider } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
 import { isValidFields } from '../AddPetValidation/AddPetValidation';
 
@@ -10,7 +10,6 @@ import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
 import { useState, useEffect } from 'react';
 import css from '../AddPetFrame/AddPetFrame.module.scss'
-import { Validation } from '../AddPetValidation/AddPetValidation';
 
 export const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
 
@@ -34,13 +33,19 @@ const AddPetFrame = () => {
     };
 
     const NextStep = () => {
+ 
         if(formType && step === 1){
             setStep(2);
         };
 
         if(step ===2 && isValidFields(fields, step , formType)) {
             setStep(3);
-        }      
+        } 
+        
+        if(step === 3 && isValidFields(fields, step , formType)) {
+            console.log(fields);
+            navigate(); 
+        }; 
     };
 
     const PrevStep = () => {
@@ -59,11 +64,11 @@ const AddPetFrame = () => {
        setFields(fieldValues);
     };
 
-    const handleSubmit = () => {
-        if (step === 3 && isValidFields(fields, step , formType)) {
-            console.log(fields);
-            navigate();
-        }
+    const handleSubmit = ({ values, errorFields, outOfDate }) => {
+         console.log( values, errorFields, outOfDate );
+        // if (step === 3 && isValidFields(fields, step , formType)) {
+        //     console.log(fields);
+        // }
     };
 
     return (
@@ -73,11 +78,8 @@ const AddPetFrame = () => {
             step === 3 && formType === initialFormType [2] ? css.frameBig : "" 
         ].join(" ") } 
         initialValues={{ remember: true }} 
-        wrapperCol={{
-            span: 16,
-        }}
-        autoComplete="off" 
-        onFinish={ handleSubmit }>
+        wrapperCol={{span: 16,}}
+        autoComplete="off">
 
             <AddPetTitle formtype ={ formType } initialFormType={ initialFormType }/>
 
