@@ -15,11 +15,13 @@ const News = () => {
   useEffect(() => {
     const fetchNews = async () => {
       const { data } = await getAllNews();
-      console.log(data);
+      // console.log(data);
+
       setNews(data);
     };
     fetchNews();
   }, []);
+
   return (
     <Section className={styles.sectionNews}>
       <CustomSearch title={titlePageNews} />
