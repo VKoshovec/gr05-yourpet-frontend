@@ -1,6 +1,6 @@
 import styles from './CardImg.module.scss';
 
-import noImage from '../../no-image-min.jpg';
+import noImage from '../../no-image-min.png';
 
 const CardImg = ({ imageUrl, title }) => {
   const image = imageUrl ? imageUrl : noImage;

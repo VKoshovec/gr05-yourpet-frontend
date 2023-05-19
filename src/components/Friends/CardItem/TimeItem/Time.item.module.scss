@@ -1,3 +1,51 @@
+.infoItem {
+  position: relative;
+}
+
 .infoDesc {
   font-weight: 400;
+}
+
+.popup {
+  position: absolute;
+  top: 45px;
+  left: 0;
+
+  width: 128px;
+  padding: 12px;
+  outline: 2px solid teal;
+  background: #ffffff;
+  /* Голубой (ссылки) */
+
+  border: 1px solid #54adff;
+  /* Shadow default */
+
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 8px;
+}
+
+.popupItem {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.popupDay {
+  display: block;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.timePopup {
+  display: block;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #111111;
 }
