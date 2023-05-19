@@ -10,7 +10,7 @@ const MainPage = lazy(() => import('../pages/Main/MainPage'));
 const NewsPage = lazy(() => import('../pages/News/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/Notices/NoticesPage'));
 const NoticesCategoriesList = lazy(() =>
-  import('./Notices/NoticesCategoriesList/NoticesCategoriesList')
+  import('./Notices/NoticesCategoriesList/NoticesCategoriesList'),
 );
 const OurFriendsPage = lazy(() => import('../pages/OurFriends/OurFriendsPage'));
 const UserPage = lazy(() => import('../pages/User/UserPage'));
@@ -33,46 +33,46 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Navigate to="/notices" replace />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/notices" element={<NoticesPage />}>
-            <Route path=":category" element={<NoticesCategoriesList />} />
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Navigate to='/notices' replace />} />
+          <Route path='/main' element={<MainPage />} />
+          <Route path='/news' element={<NewsPage />} />
+          <Route path='/notices' element={<NoticesPage />}>
+            <Route path=':category' element={<NoticesCategoriesList />} />
           </Route>
-          <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path='/friends' element={<OurFriendsPage />} />
           {/* <Route path="/user" element={<UserPage />} /> */}
           <Route
-            path="/user"
+            path='/user'
             element={
-              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+              <PrivateRoute redirectTo='/login' component={<UserPage />} />
             }
           />
           <Route
-            path="/add-pet"
+            path='/add-pet'
             element={
-              <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
+              <PrivateRoute redirectTo='/login' component={<AddPetPage />} />
             }
           />
           <Route
-            path="/register"
+            path='/register'
             element={
               <RestrictedRoute
-                redirectTo="/user"
+                redirectTo='/user'
                 component={<RegisterPage />}
               />
             }
           />
           <Route
-            path="/login"
+            path='/login'
             element={
               <RestrictedRoute
-                redirectTo="/notices/sell"
+                redirectTo='/notices/sell'
                 component={<LoginPage />}
               />
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

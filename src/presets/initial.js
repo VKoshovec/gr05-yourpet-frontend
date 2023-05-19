@@ -11,10 +11,10 @@ export const initialValues = {
 };
 
 export const initialLocal = {
-  filter: '',
+  // filter: '',
   error: null,
   isLoading: false,
-  modalShow: false,
+  // modalShow: false,
 };
 
 export const initialAuth = {
@@ -23,6 +23,25 @@ export const initialAuth = {
   isLoggedIn: false,
   isRefreshing: false,
 };
+
+export const initialNotices = {
+  notices: {
+    data: [],
+    page: 0,
+    perPage: 0,
+  },
+  additionalFilter: {
+    byAge: {
+      '3-12m': false,
+      '1year': false,
+      '2year': false,
+    },
+    byGender: {
+      'female': false,
+      'male': false,
+    },
+  }
+}
 
 export const initialContactForm = {
   name: '',

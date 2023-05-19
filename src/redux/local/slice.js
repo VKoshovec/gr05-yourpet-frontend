@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialLocal } from '../../presets/initial';
 import { signup, signin, signout, refresh } from '../auth/operations';
 import { getPets, getNews } from '../data/operations';
+import { fetchNoticesByCategory} from '../notices/operation';
 
 const handlePending = state => {
   state.error = null;
@@ -19,15 +20,19 @@ const localSlice = createSlice({
   name: 'local',
   initialState: initialLocal,
   reducers: {
-    setFilter(state, { payload }) {
-      state.filter = payload;
+    setError(state, { payload }) {
+      state.setError = payload;
     },
-    modalState(state) {
-      state.modalShow = !state.modalShow;
-    },
+    // setFilter(state, { payload }) {
+    //   state.filter = payload;
+    // },
+    // modalState(state) {
+    //   state.modalShow = !state.modalShow;
+    // },
   },
   extraReducers: builder => {
     builder
+      // fulfilled
       .addCase(signup.fulfilled, handleFulfilled)
       .addCase(signin.fulfilled, handleFulfilled)
       .addCase(signout.fulfilled, handleFulfilled)
@@ -36,6 +41,9 @@ const localSlice = createSlice({
       .addCase(getPets.fulfilled, handleFulfilled)
       .addCase(getNews.fulfilled, handleFulfilled)
 
+      .addCase(fetchNoticesByCategory.fulfilled, handleFulfilled)
+
+      //pending
       .addCase(signup.pending, handlePending)
       .addCase(signin.pending, handlePending)
       .addCase(signout.pending, handlePending)
@@ -43,15 +51,22 @@ const localSlice = createSlice({
       .addCase(getPets.pending, handlePending)
       .addCase(getNews.pending, handlePending)
 
+      .addCase(fetchNoticesByCategory.pending, handlePending)
+
+      //rejected
       .addCase(signup.rejected, handleRejected)
       .addCase(signin.rejected, handleRejected)
       .addCase(signout.rejected, handleRejected)
       .addCase(refresh.rejected, handleRejected)
 
       .addCase(getPets.rejected, handleRejected)
-      .addCase(getNews.rejected, handleRejected);
+      .addCase(getNews.rejected, handleRejected)
+
+      .addCase(fetchNoticesByCategory.rejected, handleRejected)
+
   },
 });
 
 export const localReducer = localSlice.reducer;
-export const { setFilter, modalState, setError } = localSlice.actions;
+// export const { setFilter, modalState, setError } = localSlice.actions;
+export const { setError } = localSlice.actions;
