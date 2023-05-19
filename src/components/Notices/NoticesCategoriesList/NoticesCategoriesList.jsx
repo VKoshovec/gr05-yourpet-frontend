@@ -129,7 +129,7 @@ const NoticesCategoriesList = () => {
     fetchNotices();
   }, [category, searchParams]);
 
-
+  console.log(items);
   return (<>
     {contextHolder}
     {(message || error) && <p>No result {error}</p>}
