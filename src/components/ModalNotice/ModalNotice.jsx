@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../../components/assets/images/icon
 
 import styled from './ModalNotice.module.scss';
 
-const ModalNotice = ({id, category, image,  title, name, dateOfBirth, breed, location, sex, email, phone,
+const ModalNotice = ({id, category, image,  title, name, birthday, breed, location, sex, email, phone,
         comments, addAndDeleteFavorite}) => {
     return(
         <div className={styled.modalWrapper}>
@@ -19,36 +19,52 @@ const ModalNotice = ({id, category, image,  title, name, dateOfBirth, breed, loc
             <div className={styled.infoWrapper}>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Name:</span>
-                    {name}
+                    <span className={styled.infoContent}>
+                        {name}
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Birthday:</span>
-                    {dateOfBirth}
+                    <span className={styled.infoContent}>
+                        {birthday}
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Breed:</span>
-                    {breed}
+                    <span className={styled.infoContent}>
+                        {breed}
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Place:</span>
-                    {location}
+                    <span className={styled.infoContent}>
+                        {location} 
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>The sex:</span>
-                    {sex}
+                    <span className={styled.infoContent}>
+                        {sex} 
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Email:</span>
+                    <span className={styled.infoContent}>
                     {email}
+                    </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>Phone:</span>
-                    {phone}
+                    <span className={styled.infoContent}>
+                        {phone} 
+                    </span>
                 </div>
             </div>
             <div className={styled.comments}>
                 <span className={styled.commentsText}>Comments:</span> 
-                {comments}
+                <span className={styled.commentsContent}>
+                    {comments}
+                </span>
             </div>
             <button
                 className={styled.btnContact}
