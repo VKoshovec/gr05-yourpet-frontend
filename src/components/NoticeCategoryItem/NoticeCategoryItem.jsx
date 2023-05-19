@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { NavLink, useLocation } from 'react-router-dom';
 import { getNotices, fetchAddFavorite, fetchDeleteFavorite  } from "../../redux/data/operations";
 
@@ -12,9 +12,12 @@ import { ReactComponent as PawIcon } from '../../components/assets/images/icon/p
 
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from "components/Notices/AddPetButton/AddPetButton";
+import { Modal } from '../../components/Modal/Modal';
+import ModalNotice from '../../components/ModalNotice/ModalNotice'
 
 const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) => {
-	const dispatch = useDispatch();
+	const [modalShow, setModalShow] = useState(false);
+    const dispatch = useDispatch();
     // const location = useLocation();
 
     const noticeFavorite = {id, category, image, location, date, sex}
@@ -22,6 +25,10 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) =
     // useEffect(()=> {
     //     dispatch(getNotices());
     // }, [dispatch])
+
+    const toggleModal = () => {
+        setModalShow(!modalShow);
+        };
 
     const addAndDeleteFavorite = () => {
         if(!noticeFavorite) {
@@ -32,8 +39,9 @@ const NoticeCategoryItem = ({id, category, image, location, date, sex, title}) =
     }
 
 console.log('---------',category);
+
     // const openModal = () => {
-    //     dispatch(Modal);
+    //     setModalShow(!modalShow);
     // }
 
 	return (
@@ -42,11 +50,11 @@ console.log('---------',category);
             <span className={styled.categoryText}>
                 {category}
             </span>
-            </div>
+        </div>
 		<button
             className={styled.buttonOnClick}
             type="button"
-            onClick={() => addAndDeleteFavorite()}
+            onClick={addAndDeleteFavorite}
 		>
             <HeartIcon />
         </button>
@@ -86,7 +94,7 @@ console.log('---------',category);
 		<button
             className={styled.buttonOnClickModal}
             type="button"
-            // onClickModal={() => openModal()}
+            onClickModal={toggleModal}
 		>
             <span className={styled.buttonText}>
                 LearnMore
@@ -99,7 +107,11 @@ console.log('---------',category);
                 <AddPetButton className={styled.addPetBtnIcon}/>
             </NavLink> */}
         </div>
-
+        {modalShow && (
+            <Modal closeModal={toggleModal}>
+                <ModalNotice/>
+            </Modal>
+        )}
 		</li>
     );
 };
