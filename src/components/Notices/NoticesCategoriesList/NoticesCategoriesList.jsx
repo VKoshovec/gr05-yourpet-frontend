@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import {  message as messageAnt } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../../redux/auth/selectors';
-import NoticeCategoryItem from '../../NoticeCategoryItem/NoticeCategoryItem';
+import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import { getCurrentAge } from 'helpers/getCurrentAge';
 import styled from './NoticesCategorieslist.module.scss';
 import Loader from '../../Loader/Loader';
@@ -12,6 +12,9 @@ import CustomPagination from '../../CustomPagination/CustomPagination';
 import { fetchNoticesByCategory } from '../../../redux/notices/operation';
 import { selectNotices } from '../../../redux/notices/selector';
 import { selectIsLoading } from '../../../redux/local/selectors';
+import { Modal } from '../../Modal/Modal';
+import LearnMoveModal from '../LearnMoveModal/LearnMoveModal';
+import DeleteNoticesModal from '../DeleteNoticesModal/DeleteNoticesModal';
 
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
@@ -27,11 +30,11 @@ const NoticesCategoriesList = () => {
 
   const isLoggingIn = useSelector(selectIsLoggedIn);
 
-  const [messageApi, contextHolder] = messageAnt.useMessage();
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [message, setMessage] = useState(false);
+  // const [messageApi, contextHolder] = messageAnt.useMessage();
   const [current, setCurrent] = useState(3);
+  const [isOpenModal, setOpenModal] = useState({isOpen: false, typeModal:''})
+  const [dataLearnMoveModal, setDataLearnMoveModal] = useState({})
+
 
   const { category } = useParams();
   const navigate = useNavigate();
@@ -54,7 +57,28 @@ const NoticesCategoriesList = () => {
   //   setItems([]);
   // };
 
+  const handleCloseModal = () => {
+    setOpenModal(prevState => ({ ...prevState, isOpen: false }));
+  }
+  const handleOpenModal = (id, type) => {
+    console.log(type);
 
+    setOpenModal( { isOpen: true, typeModal: type });
+
+    console.log(isOpenModal);
+    console.log('id-------------',id);
+if (!id) {
+  return
+}
+    const desiredObject = notices.data.find(obj => obj._id === id);
+
+    if (desiredObject) {
+      setDataLearnMoveModal(desiredObject)
+    }
+
+
+
+  }
 
   const onChange = (page) => {
     console.log(page);
@@ -95,22 +119,27 @@ const NoticesCategoriesList = () => {
     {/*{loading && <Loader/>}*/}
     {notices.data.length === 0 && !isLoading &&  <p>No result</p> }
     <ul className={styled.list}>
-      {notices?.data.map(({_id, category, image, location, date, sex, birthday, title}) => {
+      {notices?.data.map((items) => {
         return( <NoticeCategoryItem
-          key={_id}
-          category={category}
-          image={image}
-          location={location}
-          date={getCurrentAge(birthday)}
-          sex={sex}
-          title={title}
+          key={items._id}
+          data={items}
+          toggleModal={handleOpenModal}
+          deleteNotices={handleOpenModal}
+
+
         />)
       })}
     </ul>
     <div className={styled.paginationWrapper}>
       <CustomPagination currentPage={current} totalItemsPage={60} onChangePage={onChange}/>
     </div>
+
+    { isOpenModal.isOpen &&  <Modal   closeModal={handleCloseModal} >
+      {isOpenModal.typeModal==='LeanMove'&& <LearnMoveModal data={dataLearnMoveModal}/> }
+      {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal/> }
+    </Modal>}
   </>)
+
 
 };
 

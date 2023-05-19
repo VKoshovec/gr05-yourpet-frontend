@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { ReactComponent as Close } from '../assets/images/icon/cross-bigl.svg';
-import css from './Modal.module.css';
+import css from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 

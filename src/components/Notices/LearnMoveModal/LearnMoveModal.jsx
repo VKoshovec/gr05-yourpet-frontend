@@ -1,10 +1,14 @@
 import React from 'react';
-import { ReactComponent as HeartIcon } from '../../components/assets/images/icon/heart.svg';
+import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 
-import styled from './ModalNotice.module.scss';
+import styled from './LearnMoveModal.module.scss';
 
-const ModalNotice = ({id, category, image,  title, name, birthday, breed, location, sex, email, phone,
-        comments, addAndDeleteFavorite}) => {
+const LearnMoveModal = ({data}) => {
+
+  console.log(data);
+  const { id, category, image,  title, name, birthday, breed, location, sex, email, phone,
+    comments, addAndDeleteFavorite } = data;
+
     return(
         <div className={styled.modalWrapper}>
             <div className={styled.category}>
@@ -38,13 +42,13 @@ const ModalNotice = ({id, category, image,  title, name, birthday, breed, locati
                 <div className={styled.info}>
                     <span className={styled.infoText}>Place:</span>
                     <span className={styled.infoContent}>
-                        {location} 
+                        {location}
                     </span>
                 </div>
                 <div className={styled.info}>
                     <span className={styled.infoText}>The sex:</span>
                     <span className={styled.infoContent}>
-                        {sex} 
+                        {sex}
                     </span>
                 </div>
                 <div className={styled.info}>
@@ -56,12 +60,12 @@ const ModalNotice = ({id, category, image,  title, name, birthday, breed, locati
                 <div className={styled.info}>
                     <span className={styled.infoText}>Phone:</span>
                     <span className={styled.infoContent}>
-                        {phone} 
+                        {phone}
                     </span>
                 </div>
             </div>
             <div className={styled.comments}>
-                <span className={styled.commentsText}>Comments:</span> 
+                <span className={styled.commentsText}>Comments:</span>
                 <span className={styled.commentsContent}>
                     {comments}
                 </span>
@@ -85,11 +89,11 @@ const ModalNotice = ({id, category, image,  title, name, birthday, breed, locati
                 </span>
                 <HeartIcon />
             </button>
-            
+
         </div>
     )
 
 }
 
 
-export default ModalNotice;
+export default LearnMoveModal;

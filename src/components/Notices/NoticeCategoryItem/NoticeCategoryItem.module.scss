@@ -1,4 +1,4 @@
-@import "./src/styles/mixins/media";
+@import "../../../styles/mixins/media";
 
 .item {
     position: relative;
@@ -12,8 +12,8 @@
     border-radius: 0px 0px 40px 40px;
     &:not(:last-child) {
         margin-bottom: 24px;
-    } 
-    
+    }
+
     &:hover {
         box-shadow: 7px 13px 14px rgba(116, 177, 232, 0.24);
     }
@@ -118,7 +118,7 @@
     width: 280px;
     height: 288px;
     object-fit: cover;
-    
+
     @include tablet {
         width: 336px;
     }
