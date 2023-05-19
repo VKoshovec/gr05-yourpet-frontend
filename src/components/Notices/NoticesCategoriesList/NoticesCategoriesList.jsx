@@ -134,12 +134,11 @@ if (!id) {
       <CustomPagination currentPage={current} totalItemsPage={60} onChangePage={onChange}/>
     </div>
 
-    { isOpenModal.isOpen &&  <Modal   closeModal={handleCloseModal} >
+    { isOpenModal.isOpen &&  <Modal closeModal={handleCloseModal} >
       {isOpenModal.typeModal==='LeanMove'&& <LearnMoveModal data={dataLearnMoveModal}/> }
       {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal/> }
     </Modal>}
   </>)
-
 
 };
 
