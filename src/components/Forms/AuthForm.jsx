@@ -36,50 +36,52 @@ export const AuthForm = () => {
   };
 
   return (
+    <div className={css.bg}>
     <Section>
-      <Container>
-        <div className={css.authWrapper}>
-          <div className={css.auth_form_wrap}>
-            <h2 className={css.authFormTitle}>Registration</h2>
-            <form
-              className={css.authForm}
-              onSubmit={handleSubmit}
-              autoComplete="off"
-            >
-              <div className={css.authItem}>
-                <BaseInput name="email" type="email" placeholder="Email" />
-              </div>
-
-              <div className={css.authItem}>
-                <BaseInput
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  isShow
-                />
-              </div>
-
-              <div className={css.authItem}>
-                <BaseInput
-                  name="confirm_password"
-                  type="password"
-                  placeholder="Confirm password"
-                  isShow
-                />
-              </div>
-
-              <MainButton>Registration</MainButton>
-
-              <div className={css.linkWrap}>
-                Already have an account?
-                <Link className={css.link} to="/login">
-                  Login
-                </Link>
-              </div>
-            </form>
+        <Container>
+          <div className={css.authWrapper}>
+            <div className={css.auth_form_wrap}>
+              <h2 className={css.authFormTitle}>Registration</h2>
+              <form
+                className={css.authForm}
+                onSubmit={handleSubmit}
+                autoComplete="off"
+              >
+                <div className={css.authItem}>
+                  <BaseInput name="email" type="email" placeholder="Email" />
+                </div>
+  
+                <div className={css.authItem}>
+                  <BaseInput
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    isShow
+                  />
+                </div>
+  
+                <div className={css.authItem}>
+                  <BaseInput
+                    name="confirm_password"
+                    type="password"
+                    placeholder="Confirm password"
+                    isShow
+                  />
+                </div>
+  
+                <MainButton>Registration</MainButton>
+  
+                <div className={css.linkWrap}>
+                  Already have an account?
+                  <Link className={css.link} to="/login">
+                    Login
+                  </Link>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
     </Section>
+    </div>
   );
 };
