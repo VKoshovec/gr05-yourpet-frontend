@@ -7,7 +7,6 @@ import BaseInput from 'components/fields/baseInput';
 import { MainButton } from 'components/buttons/MainButton';
 import { validationFormLogin } from 'helpers';
 import Section from 'components/Section/Section';
-import Container from 'components/Container/Container';
 
 import css from './Forms.module.scss';
 
@@ -25,17 +24,16 @@ export const LoginForm = () => {
     }
     dispatch(signin({ email, password }));
     // try {
-      // const res = await dispatch(signin({ email, password }));
-      // if (!res.payload.success) throw new Error(res.payload.errorCode);
+    // const res = await dispatch(signin({ email, password }));
+    // if (!res.payload.success) throw new Error(res.payload.errorCode);
     // } catch (error) {
-      // console.log(error);
+    // console.log(error);
     // }
   };
 
   return (
     <div className={css.bg}>
-    <Section>
-      <Container>
+      <Section>
         <div className={css.authWrapper}>
           <div className={css.auth_form_wrap}>
             <h2 className={css.authFormTitle}>Login</h2>
@@ -65,8 +63,7 @@ export const LoginForm = () => {
             </form>
           </div>
         </div>
-      </Container>
-    </Section>
+      </Section>
     </div>
   );
 };

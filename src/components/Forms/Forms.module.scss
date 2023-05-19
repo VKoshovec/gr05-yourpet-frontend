@@ -74,7 +74,8 @@
 @include tabletAndDesktop {
   .authWrapper {
     width: 608px;
-    margin: 50px auto 50px;
+    margin: auto;
+    padding: 50px 0 50px 0;
   }
   .auth_form_wrap {
     padding: 60px 75px;
@@ -90,13 +91,13 @@
   background-image: url('../../components/assets/images/mainPageImage/bgMob.png');
   background-repeat: no-repeat;
   background-position: center;
-  @include tablet{
-  max-width: 100vw;
-  background-image: url('../../components/assets/images/mainPageImage/bgTab.png');
-  background-position: center top;
+  @include tablet {
+    max-width: 100vw;
+    background-image: url('../../components/assets/images/mainPageImage/bgTab.png');
+    background-position: center top;
   }
-  @include desktop{
-  background-image: url('../../components/assets/images/mainPageImage/bg.png');
-  background-position: center;
+  @include desktop {
+    background-image: url('../../components/assets/images/mainPageImage/bg.png');
+    background-position: center;
   }
 }
