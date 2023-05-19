@@ -4,29 +4,29 @@ import { initialFormType } from "../AddPetFrame/AddPetFrame";
 export const isValidFields = (data, step, type) =>{
 
     const presetSchemaOne = { 
-        breed: string().required().min(5),
-        dBirth: date().required(),
-        name: string().required().min(3),
+        breed: string().required().min(2),
+        birthday: date().required(),
+        name: string().required().min(2),
     };
 
-    const aditiveOne =  { title: string().required().min(5) };
+    const aditiveOne =  { title: string().required().min(2) };
 
 
     const presetSchemaTwo = {
-        comments: string().required().min(5),
-        photo: string().required(),
+        comments: string().required().min(8),
+        image: string().required(),
     };
 
     const aditiveForSale =  { 
         sex: string().required(),
-        location: string().required(),
-        price: number().required(),
+        location: string().required().min(2),
+        price: number().required().min(1),
         // value => (value + "").match(/^\d+(?:\.\d{0,2})$/),
     };
 
     const aditiveForLostInGood = {
         sex: string().required(),
-        location: string().required(),
+        location: string().required().min(2),
     };
 
     const validSchema = 
@@ -49,8 +49,6 @@ export const isValidFields = (data, step, type) =>{
         alert(error)
     
     }
-
-    console.log(ValidationError.value);
 
     return validSchema.isValidSync(data);
 }

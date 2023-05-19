@@ -7,6 +7,7 @@ import { initialFormType } from '../AddPetFrame/AddPetFrame';
 
 import React, {  useState } from 'react';
 
+import { AddPetPhotoApi } from '../AddPetApi/AddPetApi';
 
 const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
 
@@ -17,8 +18,18 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
     const onChange = ({ fileList: newFileList }) => {
         setFileList(newFileList);
         getPhoto(newFileList);
-  
+       
     };
+
+    const methodload = async (param) => {
+      try {
+        await AddPetPhotoApi(param);
+      } catch (error) {
+        return error;
+      }
+    }
+
+
 
     const onPreview = async (file) => {
         let src = file.url;
@@ -37,17 +48,21 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
 
     return (
         <div 
-        className={ formtype === initialFormType[1] ? css.addPetImgLabel :
-        formtype === initialFormType[2] ? css.addPetImgLabel :
+        className={ 
+        formtype === initialFormType[1] ? css.addPetImgLabel :
+        formtype === initialFormType[2] ? css.addPetImgLabel : 
+        formtype === initialFormType[3] ? css.addPetImgLabel :
         css.addPetImgLabelBig }>
         <span>Add photo</span>
 
         <ImgCrop rotationSlider>
             <Upload
-            action={ () => {  }}
+            // action={ () =>{  }  }
             listType="picture-card"
             fileList={fileList}
             onChange={onChange}
+            // method={ (param) => methodload (param) }
+            action="https://yourpet-api.onrender.com/"
             onPreview={onPreview}
             maxCount={ 1 }
             className={ css.addPetImgUpload }

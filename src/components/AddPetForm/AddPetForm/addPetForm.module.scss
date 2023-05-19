@@ -36,6 +36,17 @@
         margin-top: 5px;
         margin-bottom: 10px;
         height: 92px !important;
+
+    }
+
+    &TextAreaBig {
+        @media screen and (min-width: 768px) {
+        border-radius: 20px;   
+        border-color: var(--bluelinks);
+        margin-top: 5px;
+        margin-bottom: 10px;
+        height: 182px !important;
+        }
     }
 
 };
@@ -82,14 +93,11 @@
    background-color: #CCE4FB;
    border: 0px;
    font-size: xx-large;
-//    margin-left: 27px;
 
    @media screen and (min-width: 768px) {
     width: 100%;
     height: 100%;
-    // width: 182px;
-    // height: 182px;
-    // margin-left: 10px;
+
    }
 }
 
@@ -132,6 +140,7 @@
 .mainContainer {
     @media screen and (min-width: 768px) {
         display: flex;
+        justify-content: space-around;
     }
 }
 .rightContainer {
@@ -147,7 +156,7 @@
     @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     width: 395px;
     padding: 0px;
     }
