@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialNotices } from '../../presets/initial';
-import { fetchNoticesByCategory, fetchAddNoticesFavorite, fetchRemoveNoticesFavorite } from './operation';
-import { logDOM } from '@testing-library/react';
+import { fetchAddNoticesFavorite, fetchNoticesByCategory, fetchRemoveNoticesFavorite } from './operation';
 
 const noticesSlice = createSlice({
   name: 'notices',

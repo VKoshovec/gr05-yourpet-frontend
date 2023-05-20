@@ -16,30 +16,6 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
 
   const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
 
-  //  const [isFavorite, setIsFavorite]= useState(false)
-  //
-  //  useEffect(() => {
-  //    if (data && data.favorite.length!==0) {
-  //      if (favorite.includes(userID)) {
-  //        setIsFavorite(true)
-  //        return
-  //      }
-  //    }
-  //    setIsFavorite(false)
-  //  }, [favorite])
-  //
-  //
-  //
-  //
-  //  const handleClickFavorite = () => {
-  // if(isFavorite) {
-  //   deleteFavorite(_id, userID)
-  //   return
-  // }
-  //    addFavorite(_id, userID)
-  //
-  //  }
-  // console.log(id===owner);
 
   return (<li className={styled.item}>
     <div className={styled.category}>
