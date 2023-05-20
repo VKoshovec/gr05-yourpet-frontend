@@ -61,6 +61,27 @@
   overflow: hidden;
 }
 
+.user_inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.user_label {
+  display: flex;
+  gap: 11px;
+  margin-bottom: 22px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.83;
+
+  cursor: pointer;
+}
+
 .button {
   display: flex;
   justify-content: center;
