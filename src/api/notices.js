@@ -8,8 +8,8 @@ import axios from 'axios';
 // });
 
 export const getNoticesByCategory = async ({ category, search }) => {
-  const { data } = await axios.get('api/notices', {
-    params : {  category, search },
+  const { data } = await axios.get(`api/notices/${category}`, {
+    params : { search },
   })
   return data;
   };
@@ -21,5 +21,10 @@ export const getNoticesByCategory = async ({ category, search }) => {
 //   return data;
 // };
 
+export const addNoticesFavorite = async (id ) => {
+  const { data } = await axios.post(`api/notices/favorite/${id}`);
+}
 
-
+export const removeNoticesFavorite = async (id ) => {
+  const { data } = await axios.delete(`api/notices/favorite/${id}`);
+}

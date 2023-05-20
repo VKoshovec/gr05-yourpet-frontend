@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialNotices } from '../../presets/initial';
-import { fetchNoticesByCategory } from './operation';
+import { fetchNoticesByCategory, fetchAddNoticesFavorite, fetchRemoveNoticesFavorite } from './operation';
 
 const noticesSlice = createSlice({
   name: 'notices',
@@ -14,6 +14,12 @@ const noticesSlice = createSlice({
     builder
       .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
         state.notices = payload;
+      })
+      .addCase(fetchAddNoticesFavorite.fulfilled, (state, { payload }) => {
+        state.notices.data.favorite.push(payload)
+      })
+      .addCase(fetchRemoveNoticesFavorite.fulfilled, (state, { payload }) => {
+        state.notices.data.favorite.push(payload)
       })
   },
 });

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getCurrentAge } from 'helpers/getCurrentAge';
 
 import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 import { ReactComponent as Trash } from '../../assets/images/icon/trash-2.svg';
@@ -10,12 +11,39 @@ import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.s
 
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from 'components/Notices/AddPetButton/AddPetButton';
+import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
+import { useDispatch } from 'react-redux';
+import { fetchAddNoticesFavorite } from '../../../redux/notices/operation';
 
 
-const NoticeCategoryItem = ({ data, toggleModal, deleteNotices }) => {
 
-  const { _id, category, image, location, date, sex, title, owner } = data;
 
+const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite  }) => {
+
+  const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
+
+  const [isFavorite, setIsFavorite]= useState(false)
+
+  useEffect(() => {
+    if (data && data.favorite.length!==0) {
+      console.log('ypa');
+      if (favorite.includes(userID)) {
+
+        setIsFavorite(true)
+      }
+    }
+  }, [])
+
+
+
+
+  const handleClickFavorite = () => {
+ if(isFavorite) {
+   addFavorite(_id)
+   return
+ }
+    deleteFavorite(_id)
+  }
   // console.log(id===owner);
 
   return (<li className={styled.item}>
@@ -24,13 +52,14 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices }) => {
                 {category}
             </span>
     </div>
-    <button
-      className={styled.buttonOnClick}
-      type='button'
-      // onClick={addAndDeleteFavorite}
-    >
-      <HeartIcon />
-    </button>
+    {/*<button*/}
+    {/*  className={styled.buttonOnClick}*/}
+    {/*  type='button'*/}
+    {/*  // onClick={addAndDeleteFavorite}*/}
+    {/*>*/}
+    {/*  <HeartIcon />*/}
+    {/*</button>*/}
+    <AddToFavoriteButton handleClick={handleClickFavorite} isFavorite={isFavorite}/>
     {/*{_id===owner &&  <button*/}
     {/*  className={styled.buttonDeleteOnClick}*/}
     {/*  type="button"*/}
@@ -58,7 +87,7 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices }) => {
       <div className={styled.info}>
         <Clock />
         <span className={styled.infoText}>
-                {date}
+                {getCurrentAge(birthday)}
             </span>
       </div>
       <div className={styled.info}>
