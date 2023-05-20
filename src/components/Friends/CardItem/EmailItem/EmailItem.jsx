@@ -5,15 +5,17 @@ import styles from './EmailItem.module.scss';
 const EmailItem = ({ text, email }) => {
   return (
     <Li className={styles.infoItem}>
-      <p>{text}:</p>
+      <a href={`mailto:${email}`}>
+        <div className={email ? `${styles.wrapper}` : ''}>
+          <p>{text}:</p>
 
-      {email ? (
-        <Paragraph>
-          <a href={`mailto:${email}`}>{email}</a>
-        </Paragraph>
-      ) : (
-        <Paragraph>phone only</Paragraph>
-      )}
+          {email ? (
+            <Paragraph>{email}</Paragraph>
+          ) : (
+            <Paragraph>phone only</Paragraph>
+          )}
+        </div>
+      </a>
     </Li>
   );
 };
