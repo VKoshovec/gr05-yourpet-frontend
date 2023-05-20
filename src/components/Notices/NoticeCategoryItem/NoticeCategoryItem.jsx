@@ -70,8 +70,10 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       </div>
 
     </div>
-
-    <h2 className={styled.title}>{title}</h2>
+    <div className={styled.titleBox}>
+      <h2 className={styled.title}>{title}</h2>
+    </div>
+    
     <button
       className={styled.buttonOnClickModal}
       type='button'
