@@ -1,11 +1,9 @@
 .Paragraph {
   font-weight: 400;
+  // color: var(--black);
 }
 
 .Paragraph > a {
-  //   color: var(--black);
-
-  text-decoration: none;
-  color: inherit;
+  // color: var(--black);
   transition: color 250ms linear;
 }

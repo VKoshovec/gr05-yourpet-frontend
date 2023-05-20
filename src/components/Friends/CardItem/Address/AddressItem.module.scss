@@ -1,0 +1,12 @@
+.infoItem a {
+  color: inherit;
+  transition: color 300ms linear;
+}
+
+.addressLink {
+  font-weight: 400;
+}
+
+.wrapper:hover {
+  color: var(--bluelinksActive);
+}
