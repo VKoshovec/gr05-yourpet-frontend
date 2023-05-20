@@ -136,7 +136,7 @@ if (!id) {
 
     { isOpenModal.isOpen &&  <Modal closeModal={handleCloseModal} >
       {isOpenModal.typeModal==='LeanMove'&& <LearnMoveModal data={dataLearnMoveModal}/> }
-      {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal/> }
+      {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal onCancel={handleCloseModal}/> }
     </Modal>}
   </>)
 

@@ -13,7 +13,7 @@ const noticesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
-        state.notices.data = payload;
+        state.notices = payload;
       })
   },
 });

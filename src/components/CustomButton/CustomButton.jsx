@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import styled from './CustomButton.module.scss'
 
-const CustomButton = ({ className, children, type }) => {
+const CustomButton = ({ className, children, type, ...props }) => {
 
   // type = outlined || flooded
 
-  return (<Button className={cn(className, type, styled.customButton )}>
+  return (<Button
+      className={cn(className, type, styled.customButton ) }
+      {...props}
+    >
       {children}
     </Button>
   );
