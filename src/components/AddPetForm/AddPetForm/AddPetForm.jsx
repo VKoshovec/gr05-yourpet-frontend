@@ -15,11 +15,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
    
     const [title, setTitle] = useState();
     const [name, setName] = useState();
-    const [dBirth, setDBirth] = useState();
+    const [birthday, setDBirth] = useState();
     const [breed, setBreed] = useState();
     const [comments, setComments] = useState();
     const [sex, setSex] = useState();
-    const [photo, setPhoto] = useState();
+    const [image, setImage] = useState();
     const [price, setPrice] = useState();
     const [location, setLocation] = useState();
     const [saveList, setSavelist] = useState();
@@ -28,11 +28,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
      if (initialFields) {
       setTitle(initialFields["title"]);
       setName(initialFields["name"]);
-      setDBirth(initialFields["dBirth"]);
+      setDBirth(initialFields["birthday"]);
       setBreed(initialFields["breed"]);
       setComments(initialFields["comments"]);
       setSex(initialFields["sex"]);
-      setPhoto(initialFields["photo"]);
+      setImage(initialFields["image"]);
       setPrice(initialFields["price"]);
       setLocation(initialFields["location"]);
     }
@@ -43,35 +43,35 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
        switch (e.target.name) {
         case "title":
           setTitle(inputValue)
-          getformFields({ title: inputValue, name, dBirth, breed, comments, sex, photo, saveList });
+          getformFields({ title: inputValue, name, birthday, breed, comments, price, location, sex, image, saveList });
           break;
         case "name":
           setName(inputValue)
-          getformFields({ title, name: inputValue, dBirth, breed, comments, sex, photo, saveList});
+          getformFields({ title, name: inputValue, birthday, breed, comments, price, location, sex, image, saveList});
           break;
-        case "dBirth":
+        case "birthday":
           setDBirth(inputValue)
-          getformFields({ title, name, dBirth: inputValue, breed, comments, sex, photo, saveList});
+          getformFields({ title, name, birthday: inputValue, breed, comments, price, location, sex, image, saveList});
           break;
         case "breed":
           setBreed(inputValue)
-          getformFields({ title, name, dBirth, breed: inputValue, comments, sex, photo, saveList});
+          getformFields({ title, name, birthday, breed: inputValue, price, location, comments, sex, image, saveList});
           break;  
         case "comments":
           setComments(inputValue)
-          getformFields({ title, name, dBirth, breed, comments: inputValue, sex, photo, saveList});
+          getformFields({ title, name, birthday, breed, price, location, comments: inputValue, sex, image, saveList});
           break;  
         case "price":
           setPrice(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price:inputValue,  sex, photo, saveList});
+          getformFields({ title, name, birthday, breed, comments, price:inputValue, location, sex, image, saveList});
           break;   
         case "location":
           setLocation(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price, location:inputValue, sex, photo, saveList});
+          getformFields({ title, name, birthday, breed, comments, price, location:inputValue, sex, image, saveList});
           break;   
         case "sex":
           setSex(inputValue)
-          getformFields({ title, name, dBirth, breed, comments, price, location, sex: inputValue, photo, saveList});
+          getformFields({ title, name, birthday, breed, comments, price, location, sex: inputValue, image, saveList});
           break;    
         default:
           break;
@@ -79,9 +79,9 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
     };
 
     const getPhoto = (photo) => {
-      setPhoto(photo[0].name);
+      setImage(photo[0].name);
       setSavelist(photo);
-      getformFields({ title, name, dBirth, breed, comments, price, location, sex, photo: photo[0].name, saveList: photo});
+      getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo[0].name, saveList: photo});
     };
 
     
@@ -108,7 +108,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
             rules={[
              {
                required: true,
-               message: 'Please input your username!',
+               message: 'Please input your username motherfacker',
              },
              ]}>
 
@@ -127,8 +127,8 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               <Input 
               required
               type='date'
-              name='dBirth' 
-              value={ dBirth }
+              name='birthday' 
+              value={ birthday }
               placeholder='Type date of birth' 
               className={ css.addPetInput }
               onInput={ getGield }/>
@@ -148,7 +148,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
     ) : stepnumber === 3 &&
     (
     <div className={ css.addPetContainer }>
-      <div className={ formtype === initialFormType[1] ? css.mainContainer : formtype === initialFormType[2] ? css.mainContainer : ""}>
+      <div className={ 
+         formtype === initialFormType[1] ? css.mainContainer :
+         formtype === initialFormType[2] ? css.mainContainer : 
+         formtype === initialFormType[3] ? css.mainContainer : 
+        ""}>
         <div className={ css.rightContainer }>
 
         {formtype !== initialFormType[0] && 
@@ -177,7 +181,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                </Radio.Button>
 
             </Radio.Group> 
-          </label>}
+        </label>}
 
 
           <AddPetPhoto formtype={ formtype } getPhoto = { getPhoto } initielFields={ initialFields }/>
@@ -220,7 +224,10 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               style={{ resize: "none" }}
               value={ comments }
               placeholder='Type comments' 
-              className={ css.addPetInputTextArea }
+              className={ formtype === initialFormType[2] ? 
+                css.addPetInputTextAreaBig :
+                 formtype === initialFormType[3] ? 
+                 css.addPetInputTextAreaBig : css.addPetInputTextArea}
               onInput={ getGield }/>
           </label>
         </div>   

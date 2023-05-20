@@ -1,20 +1,28 @@
+import css from '../AddPetFrame/AddPetFrame.module.scss';
+
 import { Form } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser, selectToken } from 'redux/auth/selectors';
+
 import { isValidFields } from '../AddPetValidation/AddPetValidation';
-
-
 import AddPetTitle from '../AddPetTitle/AddPetTitle';
 import AddPetCarusel from '../AddPetCarusel/AddPetCarusel';
 import AddPetFormButtonset from '../AddPetFormButtonset/AddPetFormButtonset';
 import AddPetNav from '../AddPetNav/AddPetNav';
 import AddPetForm from '../AddPetForm/AddPetForm';
-import { useState, useEffect } from 'react';
-import css from '../AddPetFrame/AddPetFrame.module.scss'
-import { Validation } from '../AddPetValidation/AddPetValidation';
 
-export const initialFormType = ["yourPet", "sel", "lostFound", "inGoodHands"];
+import { AddPetNotice } from '../AddPetApi/AddPetApi';
+
+const testUrl = "https://funart.pro/uploads/posts/2021-07/1627093090_22-funart-pro-p-duratskaya-sobaka-zhivotnie-krasivo-foto-28.jpg"
+
+export const initialFormType = ["yourPet", "sell", "lost/found", "In good hands"];
 
 const AddPetFrame = () => {
+
+    const token = useSelector(selectToken);
+    const user = useSelector(selectUser);
 
     const location = useLocation();
     const navigator = useNavigate();
@@ -34,13 +42,22 @@ const AddPetFrame = () => {
     };
 
     const NextStep = () => {
+ 
         if(formType && step === 1){
             setStep(2);
         };
 
         if(step ===2 && isValidFields(fields, step , formType)) {
             setStep(3);
-        }      
+        } 
+        
+        if(step === 3 && isValidFields(fields, step , formType)) {
+            AddPetNotice( user, token, fields, testUrl, formType).then((res) => { 
+                if (res.status === 200) {
+                    navigate() 
+                 }
+            } ).catch((err) => alert(err));           
+        }; 
     };
 
     const PrevStep = () => {
@@ -59,25 +76,21 @@ const AddPetFrame = () => {
        setFields(fieldValues);
     };
 
-    const handleSubmit = () => {
-        if (step === 3 && isValidFields(fields, step , formType)) {
-            console.log(fields);
-            navigate();
-        }
+    const handleSubmit = ({ values, errorFields, outOfDate }) => {
+         console.log( values, errorFields, outOfDate );
+
     };
 
     return (
         <Form 
         className={ [css.frame, 
             step === 3 && formType === initialFormType [1] ? css.frameBig : 
-            step === 3 && formType === initialFormType [2] ? css.frameBig : "" 
+            step === 3 && formType === initialFormType [2] ? css.frameBig : 
+            step === 3 && formType === initialFormType [3] ? css.frameBig : "" 
         ].join(" ") } 
         initialValues={{ remember: true }} 
-        wrapperCol={{
-            span: 16,
-        }}
-        autoComplete="off" 
-        onFinish={ handleSubmit }>
+        wrapperCol={{span: 16,}}
+        autoComplete="off">
 
             <AddPetTitle formtype ={ formType } initialFormType={ initialFormType }/>
 
