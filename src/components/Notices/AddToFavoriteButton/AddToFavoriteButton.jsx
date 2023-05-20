@@ -8,7 +8,7 @@ const AddToFavoriteButton = ({  handleClick, isFavorite }) => {
 
   return (
     <button
-      className={cn(styled.buttonOnClick, styled.isFavorite, {[styled.isFavorite]:isFavorite})}
+      className={cn(styled.buttonOnClick, {[styled.isFavorite]:isFavorite})}
       type='button'
       onClick={handleClick}
     >

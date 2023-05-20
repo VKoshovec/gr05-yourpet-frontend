@@ -22,13 +22,13 @@ import DeleteNoticesModal from '../DeleteNoticesModal/DeleteNoticesModal';
 
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
-const queryParamsCategories = {
-  'sell':"sell",
-  'lost-found': 'lost/found',
-  'for-free': 'In good hands',
-  'favorite': 'favorite',
-  'own': 'own',
-}
+// const queryParamsCategories = {
+//   'sell':"sell",
+//   'lost-found': 'lost/found',
+//   'for-free': 'In good hands',
+//   'favorite': 'favorite',
+//   'own': 'own',
+// }
 
 const NoticesCategoriesList = () => {
 
@@ -122,7 +122,8 @@ if (!id) {
       return;
     }
 
-    dispatch(fetchNoticesByCategory({ category: queryParamsCategories[category], search }));
+    // dispatch(fetchNoticesByCategory({ category: queryParamsCategories[category], search }));
+    dispatch(fetchNoticesByCategory({category, search }));
   }, [category, searchParams, dispatch]);
 
   // console.log(items);

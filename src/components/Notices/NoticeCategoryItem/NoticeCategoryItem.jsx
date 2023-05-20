@@ -24,8 +24,10 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
   const [isFavorite, setIsFavorite]= useState(false)
 
   useEffect(() => {
-    if (data && data.favorite.length!== 0) {
+    if (data && data.favorite.length!==0) {
+      console.log('ypa');
       if (favorite.includes(userID)) {
+
         setIsFavorite(true)
       }
     }
