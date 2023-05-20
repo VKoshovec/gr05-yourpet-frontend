@@ -1,5 +1,6 @@
 import axios from "axios";
 import { initialFormType } from "../AddPetFrame/AddPetFrame";
+import { Modal } from "components/Modal/Modal";
 
 const defautltUrs = "https://yourpet-api.onrender.com/api/";
 
@@ -15,10 +16,16 @@ export const AddPetPhotoApi = async ({ photo }) => {
 
 export const AddPetNotice = async (user, token, body, image, type) => {
 
-if (!user.phone) {
-    alert("You must add phone to your profile");
-    return;
-}     
+let ownPet;    
+
+if (type === initialFormType[0]) {
+   ownPet = true;
+};   
+
+if (!ownPet && !user.phone) {
+    // alert("You must add phone to your profile");
+    return <Modal>error</Modal>;
+};     
 
 const config = {
      headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +34,7 @@ const config = {
 
 const dateForSubmit = body.birthday.substr(8,2)+"."+body.birthday.substr(5,2)+"."+body.birthday.substr(0,4);
 
-const req = {
+const reqAll = {
     title: body.title,
     name: body.name,
     birthday: dateForSubmit,
@@ -44,10 +51,23 @@ const req = {
     // phone: "02284795",
 };
 
+const reqOwn = {
+    name: body.name,
+    birthday: dateForSubmit,
+    breed: body.breed,
+    comments: body.comments,
+    photoURL: image,
+};
+
+const ulr = `${defautltUrs}${!ownPet?'notices':'pets'}`;
+const req = !ownPet?reqAll:reqOwn;
+
+
 try {
-    const responce =  await axios.post(`${defautltUrs}notices`, req, config);
+    const responce =  await axios.post( ulr, req, config);
     return responce;
    } catch (error) {
-      alert(error)
+    //   alert(error)
+      return <Modal>error</Modal>
    }
 }
