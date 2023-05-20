@@ -1,58 +1,38 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import { ReactComponent as Trash } from '../assets/images/icon/trash-2.svg';
-import cat from '../assets/images/userPageImage/myPetsCat.png';
-import dog from '../assets/images/userPageImage/myPetsDog.png';
+
+import { getPets } from 'api/pets';
+import { deletePets } from 'api/pets';
 
 import styles from './PetsData.module.scss';
 
-const pets = [
-  {
-    _id: 11,
-    image: cat,
-    name: 'Jack',
-    dateOfBirth: '22.04.2018',
-    breed: 'Persian cat',
-    comments:
-      'Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys.',
-  },
-  {
-    _id: 21,
-    image: dog,
-    name: 'No Jack',
-    dateOfBirth: '22.04.2018',
-    breed: 'Basenji',
-    comments:
-      'Comments: Jack is a handsome Basenji with short, shiny red fur and perky ears.',
-  },
-  {
-    _id: 31,
-    image: cat,
-    name: 'Jack',
-    dateOfBirth: '22.04.2018',
-    breed: 'Persian cat',
-    comments:
-      'Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys.',
-  },
-  {
-    _id: 41,
-    image: dog,
-    name: 'No Jack',
-    dateOfBirth: '22.04.2018',
-    breed: 'Basenji',
-    comments:
-      'Comments: Jack is a handsome Basenji with short, shiny red fur and perky ears.',
-  },
-];
-
 const PetsData = () => {
-  // const [state, setState] = useState();
+  const [pets, setPets] = useState([]);
 
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  const hanleNavigate = () => {
-    navigate('/add-pet');
+  useEffect(() => {
+    const fetchPets = async () => {
+      const { data } = await getPets();
+
+      setPets(data);
+    };
+    fetchPets();
+  });
+
+  const handleDeletePet = id => {
+    const fetchDeletePet = async () => {
+      try {
+        const result = await deletePets(id);
+
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDeletePet();
   };
 
   return (
@@ -60,22 +40,26 @@ const PetsData = () => {
       <div className={styles.pets_wrap}>
         <div className={styles.pets_title_wrap}>
           <h2 className={styles.pets_title}>My pets:</h2>
-          <button
-            type="button"
+          <NavLink
+            to={`/add-pet`}
             className={styles.pets_navBtn}
-            onClick={hanleNavigate}
+            state={location.pathname}
           >
             Add Pet +
-          </button>
+          </NavLink>
         </div>
         {!pets ? (
           <div></div>
         ) : (
           <>
-            {pets.map(({ _id, image, name, dateOfBirth, breed, comments }) => {
+            {pets.map(({ _id, image, name, birthday, breed, comments }) => {
               return (
                 <div key={_id} className={styles.pets_info}>
-                  <img src={image} alt="cat" className={styles.pets_img} />
+                  <img
+                    src={image}
+                    alt="pet_image"
+                    className={styles.pets_img}
+                  />
                   <ul className={styles.pets_list}>
                     <li className={styles.pets_item}>
                       Name:{' '}
@@ -83,10 +67,7 @@ const PetsData = () => {
                     </li>
                     <li className={styles.pets_item}>
                       Date of birth:{' '}
-                      <span className={styles.pets_item_span}>
-                        {' '}
-                        {dateOfBirth}
-                      </span>
+                      <span className={styles.pets_item_span}> {birthday}</span>
                     </li>
                     <li className={styles.pets_item}>
                       Breed:{' '}
@@ -97,7 +78,13 @@ const PetsData = () => {
                       <span className={styles.pets_item_span}>{comments}</span>
                     </li>
                   </ul>
-                  <button className={styles.pets_btn} type="button">
+                  <button
+                    className={styles.pets_btn}
+                    type="button"
+                    onClick={() => {
+                      handleDeletePet(_id);
+                    }}
+                  >
                     <Trash />
                   </button>
                 </div>

@@ -9,19 +9,21 @@ import { userPhotoValidationSchema } from './UserDataValidation';
 import PreviewImage from './PreviewImage/PreviewImage';
 import UserDataItem from './UserDataItem/UserDataItem';
 
-import defaultImage from '../assets/images/userPageImage/defaultUser.png';
+import { useAuth } from 'services/hooks';
+
 import { ReactComponent as LogOut } from '../assets/images/icon/logout.svg';
 import { ReactComponent as LogOutW } from '../assets/images/icon/logout-white.svg';
 import { ReactComponent as EditPfoto } from '../assets/images/icon/edit-photo.svg';
 import { ReactComponent as Confirm } from '../assets/images/icon/check.svg';
 
-import styles from './UserData.module.css';
+import styles from './UserData.module.scss';
 
 const UserData = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [logout, setLogout] = useState(false);
+  const [btnChange, setBtnChange] = useState(false);
 
   const fileRef = useRef(null);
+  const user = useAuth().user;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,19 +35,17 @@ const UserData = () => {
     setModalShow(!modalShow);
   };
 
-  const hanleLogOut = () => {
-    navigate('/main');
-    setLogout(true);
-    dispatch(signout());
+  const handleChangeAvatar = value => {
+    if (value.image.size === 0) {
+      return;
+    }
+    console.log(value);
   };
 
-  //   const onInputChange = event => {
-  //     console.log(event.target.name);
-  //   };
-
-  //   const onBtnClick = event => {
-  //     console.log(event);
-  //   };
+  const hanleLogOut = () => {
+    navigate('/main');
+    dispatch(signout());
+  };
 
   return (
     <div className={styles.user_page}>
@@ -54,65 +54,65 @@ const UserData = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={userPhotoValidationSchema}
-          onSubmit={(values, actions) => console.log('submit', values)}
+          onSubmit={(values, actions) => {
+            console.log('submit', values);
+
+            setBtnChange(false);
+            handleChangeAvatar(values);
+          }}
         >
           {({ values, setFieldValue }) => (
             <Form>
               <div className={styles.user_input_wrapper}>
                 <div className={styles.user_input}>
-                  <input
-                    ref={fileRef}
-                    type="file"
-                    name="image"
-                    hidden
-                    onChange={event => {
-                      setFieldValue('image', event.target.files[0]);
-                      console.log(event.target.files);
-                    }}
-                  />
-
-                  <ErrorMessage name="image" />
-
                   {values.image ? (
                     <PreviewImage image={values.image} />
                   ) : (
                     <img
-                      src={defaultImage} // or user.image
+                      src={user.avatarURL}
                       alt="Default"
                       width="182px"
                       height="182px"
                     />
                   )}
                 </div>
-                {values.image ? (
+
+                <input
+                  id="#$%^&file"
+                  className={styles.user_inputfile}
+                  ref={fileRef}
+                  type="file"
+                  name="image"
+                  hidden
+                  onChange={event => {
+                    setFieldValue('image', event.target.files[0]);
+
+                    setBtnChange(true);
+                  }}
+                />
+                <ErrorMessage name="image" />
+
+                {btnChange ? (
                   <button
+                    htmlFor="#$%^&file"
                     type="submit"
-                    onClick={() => {
-                      fileRef.current.click();
-                    }}
                     className={styles.button}
                   >
                     <Confirm />
                     Confirm
                   </button>
                 ) : (
-                  <button
-                    type="submit"
-                    onClick={() => {
-                      fileRef.current.click();
-                    }}
-                    className={styles.button}
-                  >
+                  <label htmlFor="#$%^&file" className={styles.user_label}>
                     <EditPfoto />
                     Edit photo
-                  </button>
+                  </label>
                 )}
               </div>
             </Form>
           )}
         </Formik>
         <div className={styles.input_container}>
-          <UserDataItem />
+          <UserDataItem user={user} />
 
           <button
             type="button"

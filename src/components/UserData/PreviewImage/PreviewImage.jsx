@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import styles from './PreviewImage.module.css';
+import styles from './PreviewImage.module.scss';
 
 const PreviewImage = ({ image }) => {
   const [preview, setPreview] = useState(null);

@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-
 import { toast } from 'react-toastify';
-
-// import { validateUserForm } from 'helpers';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ReactComponent as Confirm } from '../../assets/images/icon/check.svg';
 import { ReactComponent as Edit } from '../../assets/images/icon/edit-2.svg';
 
-import styles from './UserDataItem.module.css';
+import styles from './UserDataItem.module.scss';
 
 const initialStateBlur = {
   name: false,
@@ -20,29 +18,42 @@ const initialStateBlur = {
   city: false,
 };
 
-const initialValues = {
-  name: 'Anna ',
-  email: 'anna00@gmail.com',
-  birthday: '00.00.0000',
-  phone: '+38000000000',
-  city: 'Kiev',
-};
-
-const UserDataItem = () => {
+const UserDataItem = ({ user }) => {
   const [blur, setBlur] = useState(initialStateBlur);
+
+  const initialValues = {
+    name: user.name || '',
+    email: user.email || '',
+    birthday: user.birthday || '',
+    phone: user.phone || '',
+    city: user.city || '',
+  };
+
+  // const initialValues = {
+  //   name: '',
+  //   email: '',
+  //   birthday: '',
+  //   phone: '',
+  //   city: '',
+  // };
 
   const onFocus = event => {
     const { name } = event.target;
-
     setBlur({ ...blur, [name]: true });
   };
 
   const onBlur = event => {
     const { name } = event.target;
-
-    console.log(event.target);
-
     setBlur({ ...blur, [name]: false });
+  };
+
+  const error = error => {
+    toast.warn(error, {
+      autoClose: 5000,
+      position: 'top-center',
+      closeOnClick: true,
+      pauseOnHover: true,
+    });
   };
 
   const formik = useFormik({
@@ -51,19 +62,13 @@ const UserDataItem = () => {
       console.log('submit', values);
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required('Required'),
+      name: yup.string(),
       email: yup.string().email().required('Required'),
       birthday: yup.string(),
-      phone: yup.string().required('Required'),
+      phone: yup.string(),
       city: yup.string(),
     }),
   });
-
-  // const handleError = error => {
-  //   return toast.error(error);
-  // };
-
-  // const { name, birthday, email, phone, city } = state; // or user
 
   return (
     <div className={styles.user_data_item}>
@@ -83,6 +88,7 @@ const UserDataItem = () => {
             />
           </div>
           <button
+            name="name"
             type="submit"
             className={styles.user_btn}
             onSubmit={formik.handleSubmit}
@@ -92,14 +98,9 @@ const UserDataItem = () => {
             ) : (
               <Edit className={styles.user_svg} />
             )}
-
-            {/* {formik.touched.name ? (
-              <Confirm className={styles.user_svg} />
-            ) : (
-              <Edit className={styles.user_svg} />
-            )} */}
           </button>
           {formik.errors.name && formik.touched.name && (
+            // toast.error(formik.errors.name)
             <div className={styles.user_error}>{formik.errors.name}</div>
           )}
         </div>
@@ -128,9 +129,13 @@ const UserDataItem = () => {
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {formik.errors.email && formik.touched.email && (
-              <div className={styles.user_error}>{formik.errors.email}</div>
-            )}
+            {
+              formik.errors.email &&
+                formik.touched.email &&
+                error(formik.errors.email)
+              // toast.error(formik.errors.email)
+              // <div className={styles.user_error}>{formik.errors.email}</div>
+            }
           </div>
         </div>
 
