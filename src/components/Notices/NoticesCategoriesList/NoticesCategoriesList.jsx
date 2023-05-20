@@ -5,7 +5,6 @@ import {  message as messageAnt } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
-import { getCurrentAge } from 'helpers/getCurrentAge';
 import styled from './NoticesCategorieslist.module.scss';
 import Loader from '../../Loader/Loader';
 import CustomPagination from '../../CustomPagination/CustomPagination';

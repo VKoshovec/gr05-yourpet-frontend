@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { getCurrentAge } from 'helpers/getCurrentAge';
 
 import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 import { ReactComponent as Trash } from '../../assets/images/icon/trash-2.svg';
@@ -19,7 +20,7 @@ import { fetchAddNoticesFavorite } from '../../../redux/notices/operation';
 
 const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite  }) => {
 
-  const { _id, category, image, location, date, sex, title, owner, favorite } = data;
+  const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
 
   const [isFavorite, setIsFavorite]= useState(false)
 
@@ -86,7 +87,7 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       <div className={styled.info}>
         <Clock />
         <span className={styled.infoText}>
-                {date}
+                {getCurrentAge(birthday)}
             </span>
       </div>
       <div className={styled.info}>
