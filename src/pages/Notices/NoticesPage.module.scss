@@ -1,6 +1,19 @@
+@import "./src/styles/mixins/media";
+
 .searchWrapper {
-  padding-top: 80px;
+  padding: 80px 20px 0 20px !important;
   margin: 0 auto 43px auto !important;
+
+  @include tabletAndDesktop {
+    padding: 80px 32px 0 32px !important;
+
+  }
+
+  @include desktop {
+    padding: 80px 16px 0 16px !important;
+
+  }
+
 }
 
 .noticesCategoriesNavWrapper{
