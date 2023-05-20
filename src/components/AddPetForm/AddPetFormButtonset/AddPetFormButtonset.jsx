@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "antd";
-import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss'
+import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss';
+import classNames from "classnames";
 
 
 const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
@@ -9,15 +10,25 @@ const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
 
     const isRendered = (step) => {
         return step === 1;
-    } 
+    }; 
+
+    const [up, setUp] = useState(css.buttonsethovered);
+    
+    //anime
+    setTimeout(( )=>{ 
+        setUp(css.buttonset)
+    }, '250');
+
 
     const getVarint = (num) => {
         ButtonSetResponse(num);
         setVariant(num);
-    }
+    };
+
 
     return isRendered (step) && (
-        <ul className={ css.buttonset }>
+
+        <ul className={ up } >
             <li className={ css.buttonsetItem }>
                 <Button 
                 className={[css.buttonItem, variant === 0 ? css.buttonItemActive : ""].join(" ")} 

@@ -1,6 +1,8 @@
-import css from '../AddPetTitle/AddPetTitle.module.scss'
+import css from '../AddPetTitle/AddPetTitle.module.scss';
+import { useState,  useEffect } from 'react';
 
 const AddPetTitle = ({ formtype, initialFormType }) => {
+
    return ( 
         formtype === initialFormType[0] ? 
         <h1 className={ css.title }>Add your pet</h1> :
