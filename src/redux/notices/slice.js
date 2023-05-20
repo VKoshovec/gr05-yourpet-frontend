@@ -18,6 +18,9 @@ const noticesSlice = createSlice({
       .addCase(fetchAddNoticesFavorite.fulfilled, (state, { payload }) => {
         state.notices.data.favorite.push(payload)
       })
+      .addCase(fetchRemoveNoticesFavorite.fulfilled, (state, { payload }) => {
+        state.notices.data.favorite.push(payload)
+      })
   },
 });
 

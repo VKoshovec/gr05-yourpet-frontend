@@ -3,13 +3,17 @@ import { getNoticesByCategory } from '../../../api/notices';
 import React, { useEffect, useState } from 'react';
 import {  message as messageAnt } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../../redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import { getCurrentAge } from 'helpers/getCurrentAge';
 import styled from './NoticesCategorieslist.module.scss';
 import Loader from '../../Loader/Loader';
 import CustomPagination from '../../CustomPagination/CustomPagination';
-import { fetchNoticesByCategory } from '../../../redux/notices/operation';
+import {
+  fetchAddNoticesFavorite,
+  fetchNoticesByCategory,
+  fetchRemoveNoticesFavorite,
+} from '../../../redux/notices/operation';
 import { selectNotices } from '../../../redux/notices/selector';
 import { selectIsLoading } from '../../../redux/local/selectors';
 import { Modal } from '../../Modal/Modal';
@@ -46,6 +50,7 @@ const NoticesCategoriesList = () => {
 
   const notices = useSelector(selectNotices)
   const isLoading = useSelector(selectIsLoading)
+  const user = useSelector(selectUser)
 
 
   // const filterValue = useSelector(selectNoticesFilters);
@@ -75,10 +80,18 @@ if (!id) {
     if (desiredObject) {
       setDataLearnMoveModal(desiredObject)
     }
-
-
-
   }
+
+  const handleDeleteFavorite = (id) => {
+
+    dispatch(fetchRemoveNoticesFavorite(id))
+  }
+
+  const handleAddFavorite = (id) => {
+
+    dispatch(fetchAddNoticesFavorite(id))
+  }
+
 
   const onChange = (page) => {
     console.log(page);
@@ -125,7 +138,9 @@ if (!id) {
           data={items}
           toggleModal={handleOpenModal}
           deleteNotices={handleOpenModal}
-
+          addFavorite={handleAddFavorite}
+          deleteFavorite={handleDeleteFavorite}
+          userID={user._id}
 
         />)
       })}
