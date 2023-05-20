@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { getCurrentAge } from 'helpers/getCurrentAge';
-
-import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 import { ReactComponent as Trash } from '../../assets/images/icon/trash-2.svg';
 import { ReactComponent as Location } from '../../assets/images/icon/location-1.svg';
 import { ReactComponent as Clock } from '../../assets/images/icon/clock.svg';
@@ -12,38 +10,35 @@ import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.s
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from 'components/Notices/AddPetButton/AddPetButton';
 import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
-import { useDispatch } from 'react-redux';
-import { fetchAddNoticesFavorite } from '../../../redux/notices/operation';
 
 
-
-
-const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite  }) => {
+const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite }) => {
 
   const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
 
-  const [isFavorite, setIsFavorite]= useState(false)
-
-  useEffect(() => {
-    if (data && data.favorite.length!==0) {
-      console.log('ypa');
-      if (favorite.includes(userID)) {
-
-        setIsFavorite(true)
-      }
-    }
-  }, [])
-
-
-
-
-  const handleClickFavorite = () => {
- if(isFavorite) {
-   addFavorite(_id)
-   return
- }
-    deleteFavorite(_id)
-  }
+  //  const [isFavorite, setIsFavorite]= useState(false)
+  //
+  //  useEffect(() => {
+  //    if (data && data.favorite.length!==0) {
+  //      if (favorite.includes(userID)) {
+  //        setIsFavorite(true)
+  //        return
+  //      }
+  //    }
+  //    setIsFavorite(false)
+  //  }, [favorite])
+  //
+  //
+  //
+  //
+  //  const handleClickFavorite = () => {
+  // if(isFavorite) {
+  //   deleteFavorite(_id, userID)
+  //   return
+  // }
+  //    addFavorite(_id, userID)
+  //
+  //  }
   // console.log(id===owner);
 
   return (<li className={styled.item}>
@@ -59,7 +54,8 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
     {/*>*/}
     {/*  <HeartIcon />*/}
     {/*</button>*/}
-    <AddToFavoriteButton handleClick={handleClickFavorite} isFavorite={isFavorite}/>
+    <AddToFavoriteButton  deleteFavorite={deleteFavorite}
+                         addFavorite={addFavorite} userID={userID} data={data}/>
     {/*{_id===owner &&  <button*/}
     {/*  className={styled.buttonDeleteOnClick}*/}
     {/*  type="button"*/}

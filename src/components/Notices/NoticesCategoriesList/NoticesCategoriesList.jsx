@@ -81,14 +81,14 @@ if (!id) {
     }
   }
 
-  const handleDeleteFavorite = (id) => {
+  const handleDeleteFavorite = (id, userId) => {
 
-    dispatch(fetchRemoveNoticesFavorite(id))
+    dispatch(fetchRemoveNoticesFavorite({ id, userId }))
   }
 
-  const handleAddFavorite = (id) => {
+  const handleAddFavorite = (id, userId) => {
 
-    dispatch(fetchAddNoticesFavorite(id))
+    dispatch(fetchAddNoticesFavorite({ id, userId }))
   }
 
 
