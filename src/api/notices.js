@@ -7,9 +7,9 @@ import axios from 'axios';
   // },
 // });
 
-export const getNoticesByCategory = async ({ category, search }) => {
+export const getNoticesByCategory = async ({ category, search, page }) => {
   const { data } = await axios.get(`api/notices/${category}`, {
-    params : { search },
+    params : { search, page, perpage : 6 },
   })
   return data;
   };

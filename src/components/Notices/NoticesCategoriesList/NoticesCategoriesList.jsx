@@ -1,12 +1,9 @@
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { getNoticesByCategory } from '../../../api/notices';
 import React, { useEffect, useState } from 'react';
-import {  message as messageAnt } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
 import NoticeCategoryItem from '../NoticeCategoryItem/NoticeCategoryItem';
 import styled from './NoticesCategorieslist.module.scss';
-import Loader from '../../Loader/Loader';
 import CustomPagination from '../../CustomPagination/CustomPagination';
 import {
   fetchAddNoticesFavorite,
@@ -21,23 +18,13 @@ import DeleteNoticesModal from '../DeleteNoticesModal/DeleteNoticesModal';
 
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
-// const queryParamsCategories = {
-//   'sell':"sell",
-//   'lost-found': 'lost/found',
-//   'for-free': 'In good hands',
-//   'favorite': 'favorite',
-//   'own': 'own',
-// }
-
 const NoticesCategoriesList = () => {
 
   const isLoggingIn = useSelector(selectIsLoggedIn);
 
-  // const [messageApi, contextHolder] = messageAnt.useMessage();
-  const [current, setCurrent] = useState(3);
+  const [current, setCurrent] = useState(1);
   const [isOpenModal, setOpenModal] = useState({isOpen: false, typeModal:''})
   const [dataLearnMoveModal, setDataLearnMoveModal] = useState({})
-
 
   const { category } = useParams();
   const navigate = useNavigate();
@@ -46,20 +33,9 @@ const NoticesCategoriesList = () => {
   const page = searchParams.get('page');
 
   const dispatch = useDispatch();
-
   const notices = useSelector(selectNotices)
   const isLoading = useSelector(selectIsLoading)
   const user = useSelector(selectUser)
-
-
-  // const filterValue = useSelector(selectNoticesFilters);
-  // const onSearchFilms = ({ searchFilm }) => {
-  //   if (search === searchFilm) {
-  //     return;
-  //   }
-  //   setSearchParams({ search: searchFilm, page: 1 });
-  //   setItems([]);
-  // };
 
   const handleCloseModal = () => {
     setOpenModal(prevState => ({ ...prevState, isOpen: false }));
@@ -87,17 +63,15 @@ if (!id) {
   }
 
 
-  const onChange = (page) => {
-    console.log(page);
+  const onChangePage = (page) => {
+    let updatedSearchParams = { ...searchParams };
+
+    if (page) {
+      updatedSearchParams = { ...updatedSearchParams, page };
+    }
+    setSearchParams(updatedSearchParams);
     setCurrent(page);
   };
-  // const onErrormessage = () => {
-  //   messageApi.open({
-  //     type: 'error',
-  //     content: 'Oops, try again now',
-  //   });
-  // };
-
 
   useEffect(() => {
     if ((category === 'favorite' || category === 'own') && !isLoggingIn) {
@@ -116,15 +90,10 @@ if (!id) {
       return;
     }
 
-    // dispatch(fetchNoticesByCategory({ category: queryParamsCategories[category], search }));
-    dispatch(fetchNoticesByCategory({category, search }));
+    dispatch(fetchNoticesByCategory({category, search, page, }));
   }, [category, searchParams, dispatch]);
 
-  // console.log(items);
   return (<>
-    {/*{contextHolder}*/}
-    {/*{(message || error) && <p>No result {error}</p>}*/}
-    {/*{loading && <Loader/>}*/}
     {notices.data.length === 0 && !isLoading &&  <p>No result</p> }
     <ul className={styled.list}>
       {notices?.data.map((items) => {
@@ -141,7 +110,13 @@ if (!id) {
       })}
     </ul>
     <div className={styled.paginationWrapper}>
-      <CustomPagination currentPage={current} totalItemsPage={60} onChangePage={onChange}/>
+      <CustomPagination
+        currentPage={current}
+        totalItemsPage={notices.total}
+        onChangePage={onChangePage}
+        itemsPerPage={6}
+        hideOnSinglePage
+      />
     </div>
 
     { isOpenModal.isOpen &&  <Modal closeModal={handleCloseModal} >

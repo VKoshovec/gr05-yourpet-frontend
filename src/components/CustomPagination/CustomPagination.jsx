@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { ReactComponent as ArrowIcon} from 'components/assets/images/icon/arrow-left.svg';
 
 
-const CustomPagination = ({ className, currentPage, itemsPerPage, totalItemsPage, onChangePage, ...props }) => {
+const   CustomPagination = ({ className, currentPage, itemsPerPage, totalItemsPage, onChangePage, ...props }) => {
 
   const customItemRender = (page, type, originalElement) => {
     if (type === 'prev') {
