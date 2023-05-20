@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Formik, Form, ErrorMessage } from 'formik';
 
 import { signout } from '../../redux/auth/operations';
@@ -15,17 +15,31 @@ import { ReactComponent as LogOut } from '../assets/images/icon/logout.svg';
 import { ReactComponent as LogOutW } from '../assets/images/icon/logout-white.svg';
 import { ReactComponent as EditPfoto } from '../assets/images/icon/edit-photo.svg';
 import { ReactComponent as Confirm } from '../assets/images/icon/check.svg';
+import { ReactComponent as Pawprint } from '../assets/images/icon/pawprint 1w.svg';
 
 import styles from './UserData.module.scss';
 
 const UserData = () => {
   const [modalShow, setModalShow] = useState(false);
   const [btnChange, setBtnChange] = useState(false);
+  const [fromPage, setFromPage] = useState(false);
 
   const fileRef = useRef(null);
   const user = useAuth().user;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state === '/register') {
+      setFromPage(true);
+      setModalShow(true);
+      location.state = null;
+    }
+  }, []);
+
+  console.log(location);
+  console.log(fromPage);
 
   const initialValues = {
     image: null,
@@ -33,6 +47,7 @@ const UserData = () => {
 
   const toggleModal = () => {
     setModalShow(!modalShow);
+    setFromPage(false);
   };
 
   const handleChangeAvatar = value => {
@@ -126,8 +141,47 @@ const UserData = () => {
       </div>
       {modalShow && (
         <Modal closeModal={toggleModal}>
+          {fromPage ? (
+            <div className={styles.user_modal_redirect}>
+              <h2 className={styles.user_modal_redirect_text}>Congrats!</h2>
+              <p className={styles.user_modal_redirect_p}>
+                Youre registration is success
+              </p>
+              <div className={styles.user_redirect_modalBtn}>
+                <button
+                  className={styles.user_redirect_modalBtn_goto}
+                  onClick={toggleModal}
+                >
+                  Go to profile <Pawprint />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.user_modal}>
+              <h2 className={styles.user_modal_text}>Already leaving?</h2>
+              <div className={styles.user_modalBtn}>
+                <button
+                  className={styles.user_modalBtn_cancel}
+                  onClick={toggleModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  className={styles.user_modalBtn_logout}
+                  onClick={hanleLogOut}
+                >
+                  Yes
+                  <LogOutW />
+                </button>
+              </div>
+            </div>
+          )}
+        </Modal>
+      )}
+      {/* {fromPage && (
+        <Modal closeModal={toggleModal}>
           <div className={styles.user_modal}>
-            <h2 className={styles.user_modal_text}>Already leaving?</h2>
+            <h2 className={styles.user_modal_text}>&&&&&&&&&&&&&&&&&&&&?</h2>
             <div className={styles.user_modalBtn}>
               <button
                 className={styles.user_modalBtn_cancel}
@@ -145,7 +199,7 @@ const UserData = () => {
             </div>
           </div>
         </Modal>
-      )}
+      )} */}
     </div>
   );
 };
