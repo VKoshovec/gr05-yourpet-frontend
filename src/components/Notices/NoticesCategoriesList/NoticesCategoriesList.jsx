@@ -65,12 +65,7 @@ const NoticesCategoriesList = () => {
     setOpenModal(prevState => ({ ...prevState, isOpen: false }));
   }
   const handleOpenModal = (id, type) => {
-    console.log(type);
-
     setOpenModal( { isOpen: true, typeModal: type });
-
-    console.log(isOpenModal);
-    console.log('id-------------',id);
 if (!id) {
   return
 }
