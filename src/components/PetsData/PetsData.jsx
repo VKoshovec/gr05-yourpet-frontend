@@ -5,7 +5,7 @@ import { ReactComponent as Trash } from '../assets/images/icon/trash-2.svg';
 import cat from '../assets/images/userPageImage/myPetsCat.png';
 import dog from '../assets/images/userPageImage/myPetsDog.png';
 
-import styles from './PetsData.module.css';
+import styles from './PetsData.module.scss';
 
 const pets = [
   {

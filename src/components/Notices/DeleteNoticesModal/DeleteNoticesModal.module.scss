@@ -1,4 +1,4 @@
-@import "./src/styles/mixins/media";
+@import "../../../styles/mixins/media";
 
 .modalWrapper {
     width: 280px;
@@ -19,7 +19,6 @@
 }
 
 .categoryText {
-    font-family: 'Manrope';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -39,7 +38,7 @@
     height: 240px;
     object-fit: cover;
     border-radius: 0px 0px 40px 40px;
-    
+
     @include tablet {
         width: 336px;
     }
@@ -53,7 +52,6 @@
     padding-left: 12px;
     padding-right: 70px;
     margin-bottom: 20px;
-    // font-family: 'Manrope';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -164,3 +162,96 @@
 //        stroke:inherit;
 //    }
 //}
+
+
+.buttonOnClickModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 28px;
+  gap: 10px;
+  margin: 0 auto;
+  // position: absolute;
+  width: 248px;
+  height: 38px;
+  // left: 16px;
+  // top: 394px;
+
+  border: 2px solid var(--bluelinksActive);
+  border-radius: 40px;
+  background: transparent;
+  color: var(--bluelinksActive);
+  //stroke: var(--bluelinksActive);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    border: none;
+    background: var(--gradientBtn);
+    color: var(--white);
+    //stroke: var(--white);
+
+    svg path {
+      fill:var(--white)
+
+    }
+  }
+}
+
+//.buttonOnClickModal svg path {
+//    stroke:inherit;
+//
+//    &:hover {
+//        stroke:inherit;
+//    }
+//}
+
+.buttonText {
+  //font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color:inherit;
+
+  &:hover {
+    color:inherit;
+  }
+}
+
+.buttonOnClickModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 28px;
+  gap: 10px;
+  margin: 0 auto;
+  // position: absolute;
+  width: 248px;
+  height: 38px;
+  // left: 16px;
+  // top: 394px;
+
+  border: 2px solid var(--bluelinksActive);
+  border-radius: 40px;
+  background: transparent;
+  color: var(--bluelinksActive);
+  //stroke: var(--bluelinksActive);
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    border: none;
+    background: var(--gradientBtn);
+    color: var(--white);
+    //stroke: var(--white);
+
+    svg path {
+      fill:var(--white)
+
+    }
+  }
+}

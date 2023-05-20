@@ -3,10 +3,10 @@ import { ReactComponent as ChevronIcon } from '../../assets/images/icon/chevron-
 import cn from 'classnames';
 import styled from './NoticesFilter.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/filters/noticesFilter/filterSlice';
-import { selectNoticesFilters } from '../../../redux/filters/noticesFilter/selectors';
 import  debounce  from "lodash/debounce"
 import { useCallback } from 'react';
+import { selectNoticesAdditionalFilters } from '../../../redux/notices/selector';
+import { setFilter } from '../../../redux/notices/slice';
 const { Panel } = Collapse;
 
 const optionsByAge = [
@@ -39,7 +39,7 @@ const optionsByGender = [
 const NoticesFilterAccordion = () => {
 
   const dispatch = useDispatch();
-  const filterValue = useSelector(selectNoticesFilters);
+  const filterValue = useSelector(selectNoticesAdditionalFilters);
 
   const debouncedSetFilter = useCallback(
     debounce((filter) => {
@@ -64,7 +64,7 @@ const NoticesFilterAccordion = () => {
         [value]: checked,
       };
     }
-
+    // dispatch(setFilter(updatedFilter));
     debouncedSetFilter(updatedFilter);
   };
 

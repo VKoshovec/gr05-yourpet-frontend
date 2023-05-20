@@ -1,20 +1,11 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import dataReducer from './data/slice';
 
 import { localReducer } from './local/slice';
 import authReducer from './auth/slice';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
-import { noticesFilterSlice } from './filters/noticesFilter/filterSlice';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import { noticesReducer } from './notices/slice';
 
 
 const persistConfig = {
@@ -27,7 +18,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(persistConfig, authReducer),
   data: dataReducer,
   local: localReducer,
-  noticesFilter:noticesFilterSlice,
+  notices: noticesReducer,
 });
 
 const middleware = getDefaultMiddleware =>
@@ -37,7 +28,7 @@ const middleware = getDefaultMiddleware =>
     },
   });
 
-  export const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   middleware,
 });
