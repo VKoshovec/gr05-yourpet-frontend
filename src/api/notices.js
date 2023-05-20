@@ -21,5 +21,10 @@ export const getNoticesByCategory = async ({ category, search }) => {
 //   return data;
 // };
 
+export const addNoticesFavorite = async (id ) => {
+  const { data } = await axios.post(`notices/favorite/${id}`);
+}
 
-
+export const removeNoticesFavorite = async (id ) => {
+  const { data } = await axios.delete(`notices/favorite/${id}`);
+}

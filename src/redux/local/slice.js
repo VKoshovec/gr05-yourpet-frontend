@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialLocal } from '../../presets/initial';
 import { signup, signin, signout, refresh } from '../auth/operations';
 import { getPets, getNews } from '../data/operations';
-import { fetchNoticesByCategory} from '../notices/operation';
+import { fetchNoticesByCategory, fetchRemoveNoticesFavorite, fetchAddNoticesFavorite} from '../notices/operation';
 
 const handlePending = state => {
   state.error = null;
@@ -42,6 +42,8 @@ const localSlice = createSlice({
       .addCase(getNews.fulfilled, handleFulfilled)
 
       .addCase(fetchNoticesByCategory.fulfilled, handleFulfilled)
+      .addCase(fetchAddNoticesFavorite.fulfilled, handleFulfilled)
+      .addCase(fetchRemoveNoticesFavorite().fulfilled, handleFulfilled)
 
       //pending
       .addCase(signup.pending, handlePending)
@@ -52,6 +54,8 @@ const localSlice = createSlice({
       .addCase(getNews.pending, handlePending)
 
       .addCase(fetchNoticesByCategory.pending, handlePending)
+      .addCase(fetchAddNoticesFavorite.pending, handlePending)
+      .addCase(fetchRemoveNoticesFavorite.pending, handlePending)
 
       //rejected
       .addCase(signup.rejected, handleRejected)
@@ -63,6 +67,8 @@ const localSlice = createSlice({
       .addCase(getNews.rejected, handleRejected)
 
       .addCase(fetchNoticesByCategory.rejected, handleRejected)
+      .addCase(fetchAddNoticesFavorite.rejected, handleRejected)
+      .addCase(fetchRemoveNoticesFavorite.rejected, handleRejected)
 
   },
 });
