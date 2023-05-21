@@ -33,7 +33,7 @@ const config = {
 };
 
 
-const ulr = `${defautltUrs}${!ownPet?'notices':'pets/update'}`;
+const ulr = `${defautltUrs}${!ownPet?'notices':'pets'}`;
 
 const formdata = body.saveList;
 
@@ -59,7 +59,7 @@ if (!ownPet) {
   }
 
 try {
-    const responce =  await axios.patch( ulr, formdata, config);
+    const responce =  await axios.post( ulr, formdata, config);
     return responce;
    } catch (error) {
     alert(error);
