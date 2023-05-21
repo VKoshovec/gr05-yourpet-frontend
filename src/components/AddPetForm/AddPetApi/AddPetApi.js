@@ -59,12 +59,9 @@ if (!ownPet) {
   }
 
 try {
-
-    const responce = ownPet && await axios.patch( ulr, formdata, config);
-
+    const responce =  await axios.patch( ulr, formdata, config);
     return responce;
    } catch (error) {
-      alert(error)
+    alert(error);
    }
-
 }

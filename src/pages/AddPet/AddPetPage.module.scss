@@ -5,13 +5,16 @@
   background-image: url('../../components/assets/images/mainPageImage/bgMob.png');
   background-repeat: no-repeat;
   background-position: center;
+  padding-top: 24px;
   @include tablet{
   max-width: 100vw;
   background-image: url('../../components/assets/images/mainPageImage/bgTab.png');
   background-position: center top;
+  padding-top: 70px;
   }
   @include desktop{
   background-image: url('../../components/assets/images/mainPageImage/bg.png');
   background-position: center;
+  padding-top: 51px;
   }
 }
