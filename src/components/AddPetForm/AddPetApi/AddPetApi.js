@@ -20,9 +20,9 @@ if (type === initialFormType[0]) {
    ownPet = true;
 };   
 
-if (!ownPet && !user.phone) {
-    alert("You must add phone to your profile");
-};     
+// if (!ownPet && !user.phone) {
+//     alert("You must add phone to your profile");
+// };     
 
 const dateForSubmit = body.birthday.substr(8,2)+"."+body.birthday.substr(5,2)+"."+body.birthday.substr(0,4);
 
