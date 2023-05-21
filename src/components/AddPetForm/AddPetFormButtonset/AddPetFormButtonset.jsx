@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Button } from "antd";
 import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss';
-import classNames from "classnames";
-
 
 const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
 
@@ -14,7 +12,6 @@ const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
 
     const [up, setUp] = useState(css.buttonsethovered);
     
-    //anime
     setTimeout(( )=>{ 
         setUp(css.buttonset)
     }, '250');

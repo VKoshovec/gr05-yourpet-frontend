@@ -1,7 +1,7 @@
-import { object, string, number, date, ValidationError } from "yup";
+import { object, string, number, date } from "yup";
 import { initialFormType } from "../AddPetFrame/AddPetFrame";
 
-export const isValidFields = (data, step, type, funcSet) => {
+export const isValidFields = (data, step, type) => {
 
     let nameErrorField = "";
     let errorMessage = "";
@@ -24,7 +24,6 @@ export const isValidFields = (data, step, type, funcSet) => {
         sex: string().required(),
         location: string().required().min(2),
         price: number().required().min(1),
-        // value => (value + "").match(/^\d+(?:\.\d{0,2})$/),
     };
 
     const aditiveForLostInGood = {
