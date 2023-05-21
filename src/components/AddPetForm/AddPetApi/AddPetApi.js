@@ -1,10 +1,8 @@
 import axios from "axios";
 import { initialFormType } from "../AddPetFrame/AddPetFrame";
-import { Modal } from "components/Modal/Modal";
 
 const defautltUrs = "https://yourpet-api.onrender.com/api/";
-
-
+ 
 export const AddPetPhotoApi = async ({ photo }) => {
     try {
         const responce =  await axios.post("https://yourpet-api.onrender.com/api/");
@@ -24,50 +22,49 @@ if (type === initialFormType[0]) {
 
 if (!ownPet && !user.phone) {
     alert("You must add phone to your profile");
-    // return <Modal>error</Modal>;
 };     
-
-const config = {
-     headers: { Authorization: `Bearer ${token}` },
-     'Content-Type': 'application/json'
-};
 
 const dateForSubmit = body.birthday.substr(8,2)+"."+body.birthday.substr(5,2)+"."+body.birthday.substr(0,4);
 
-const reqAll = {
-    title: body.title,
-    name: body.name,
-    birthday: dateForSubmit,
-    breed: body.breed,
-    location: body.location,
-    sex: body.sex,
-    category: type,
-    price: body.price,
-    comments: body.comments,
-    image: image,
-    owner: user._id,
-    email: user.email,
-    phone: user.phone,
-    // phone: "02284795",
+const config = {
+    headers: { Authorization: `Bearer ${token}` },
+    // 'Content-Type': 'application/json'
+    'Content-Type': 'multipart/form-data'
 };
 
-const reqOwn = {
-    name: body.name,
-    birthday: dateForSubmit,
-    breed: body.breed,
-    comments: body.comments,
-    photoURL: image,
-};
 
-const ulr = `${defautltUrs}${!ownPet?'notices':'pets'}`;
-const req = !ownPet?reqAll:reqOwn;
+const ulr = `${defautltUrs}${!ownPet?'notices':'pets/update'}`;
 
+const formdata = body.saveList;
+
+if (ownPet) {
+   formdata.append("name", body.name);
+   formdata.append("birthday", dateForSubmit);
+   formdata.append("breed", body.breed);
+}
+
+if (!ownPet) {
+    formdata.append("title", body.title);
+    formdata.append("name", body.name);
+    formdata.append("birthday", dateForSubmit);
+    formdata.append("breed", body.breed);
+    formdata.append("location", body.location);
+    formdata.append("sex", body.sex);
+    formdata.append("category", type);
+    formdata.append("prise", body.price);
+    formdata.append("comments", body.pcomments);
+    formdata.append("owner", user._id);
+    formdata.append("email", user._email);
+    formdata.append("phone", user._phone);
+  }
 
 try {
-    const responce =  await axios.post( ulr, req, config);
+
+    const responce = ownPet && await axios.patch( ulr, formdata, config);
+
     return responce;
    } catch (error) {
       alert(error)
-    //   return <Modal>error</Modal>
    }
+
 }
