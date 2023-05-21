@@ -33,8 +33,6 @@ const UserData = () => {
   const location = useLocation();
   const avatarImg = useSelector(getAvatarUrl);
 
-  console.log(avatarImg);
-
   useEffect(() => {
     if (location.state === '/register') {
       setFromPage(true);
@@ -146,7 +144,7 @@ const UserData = () => {
         </div>
       </div>
       {modalShow && (
-        <Modal closeModal={toggleModal}>
+        <Modal closeModal={toggleModal} new_owerlay={styles.overlay}>
           {fromPage ? (
             <div className={styles.user_modal_redirect}>
               <h2 className={styles.user_modal_redirect_text}>Congrats!</h2>

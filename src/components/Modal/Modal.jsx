@@ -7,7 +7,7 @@ import css from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ closeModal, children }) => {
+export const Modal = ({ closeModal, children, new_owerlay, new_content }) => {
   useEffect(() => {
     document.addEventListener('keydown', onCloseModal);
 
@@ -21,8 +21,15 @@ export const Modal = ({ closeModal, children }) => {
   };
 
   return createPortal(
-    <div className={css.overlay} onClick={onCloseModal}>
-      <div className={css.modal_content}>
+    <div
+      className={[new_owerlay ? `${new_owerlay}` : css.overlay].join(' ')}
+      onClick={onCloseModal}
+    >
+      <div
+        className={[new_content ? `${new_content}` : css.modal_content].join(
+          ' '
+        )}
+      >
         <button className={css.modalBtn} onClick={closeModal}>
           <Close />
         </button>
@@ -56,7 +63,7 @@ Modal.propTypes = {
 //     <div>
 //       <button onClick={toggleModal}>Modal</button>
 //       {modalShow && (
-//         <Modal closeModal={toggleModal}>
+//         <Modal closeModal={toggleModal} new_owerlay={styles.новые_стили} new_content={styles.новые_стили}>
 //           <h2>Congrats!</h2>
 //           <p>Youre registration is success</p>
 //           <button onClick={onNavigateBtnClick}>Go to main (profile?)</button>
