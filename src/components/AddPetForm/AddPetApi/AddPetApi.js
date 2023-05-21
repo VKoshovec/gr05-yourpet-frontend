@@ -52,7 +52,7 @@ if (!ownPet) {
     formdata.append("sex", body.sex);
     formdata.append("category", type);
     formdata.append("price", body.price);
-    formdata.append("comments", body.pcomments);
+    formdata.append("comments", body.comments);
     // formdata.append("owner", user._id);
     // formdata.append("email", user._email);
     // formdata.append("phone", user._phone);
