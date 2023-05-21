@@ -43,33 +43,3 @@ export const Modal = ({ closeModal, children, new_owerlay, new_content }) => {
 Modal.propTypes = {
   closeModal: PropTypes.func.isRequired,
 };
-
-/////// Образец /////////
-//
-// const Page = () => {
-//   const [modalShow, setModalShow] = useState(false);
-//   const navigate = useNavigate();
-//
-//   const toggleModal = () => {
-//     setModalShow(!modalShow);
-//   };
-//
-//   const onNavigateBtnClick = () => {
-//     navigate('/main');
-//   };
-//
-//   return (
-//
-//     <div>
-//       <button onClick={toggleModal}>Modal</button>
-//       {modalShow && (
-//         <Modal closeModal={toggleModal} new_owerlay={styles.новые_стили} new_content={styles.новые_стили}>
-//           <h2>Congrats!</h2>
-//           <p>Youre registration is success</p>
-//           <button onClick={onNavigateBtnClick}>Go to main (profile?)</button>
-//         </Modal>
-//       )}
-//     </div>
-//
-//   );
-// };

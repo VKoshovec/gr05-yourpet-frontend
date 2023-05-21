@@ -9,7 +9,6 @@ const PreviewImage = ({ image }) => {
   reader.readAsDataURL(image);
   reader.onload = () => {
     setPreview(reader.result);
-    // console.log(preview);
   };
 
   return (

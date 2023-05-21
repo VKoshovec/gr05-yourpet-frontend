@@ -26,8 +26,6 @@ const PetsData = () => {
     const fetchDeletePet = async () => {
       try {
         const result = await deletePets(id);
-
-        console.log(result);
       } catch (error) {
         console.log(error);
       }
@@ -52,11 +50,11 @@ const PetsData = () => {
           <div></div>
         ) : (
           <>
-            {pets.map(({ _id, image, name, birthday, breed, comments }) => {
+            {pets.map(({ _id, petsURL, name, birthday, breed, comments }) => {
               return (
                 <div key={_id} className={styles.pets_info}>
                   <img
-                    src={image}
+                    src={petsURL}
                     alt="pet_image"
                     className={styles.pets_img}
                   />

@@ -73,8 +73,6 @@ const UserData = () => {
             initialValues={initialValues}
             validationSchema={userPhotoValidationSchema}
             onSubmit={(values, actions) => {
-              // console.log('submit', values);
-
               setBtnChange(false);
               handleChangeAvatar(values);
             }}
@@ -87,10 +85,9 @@ const UserData = () => {
                       <PreviewImage image={values.image} />
                     ) : (
                       <img
+                        className={styles.user_img}
                         src={avatarImg}
                         alt="Default"
-                        width="182px"
-                        height="182px"
                       />
                     )}
                   </div>
