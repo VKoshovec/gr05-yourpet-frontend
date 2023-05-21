@@ -1,7 +1,10 @@
 import { object, string, number, date, ValidationError } from "yup";
 import { initialFormType } from "../AddPetFrame/AddPetFrame";
 
-export const isValidFields = (data, step, type) =>{
+export const isValidFields = (data, step, type, funcSet) => {
+
+    let nameErrorField = "";
+    let errorMessage = "";
 
     const presetSchemaOne = { 
         breed: string().required().min(2),
@@ -46,9 +49,9 @@ export const isValidFields = (data, step, type) =>{
     try {
         validSchema.validateSync(data);
     } catch (error) {
-        alert(error)
-    
+        nameErrorField = error.errors[0].split(" ")[0];
+        errorMessage = error.errors[0];
     }
 
-    return validSchema.isValidSync(data);
+    return [validSchema.isValidSync(data), nameErrorField, errorMessage ];
 }

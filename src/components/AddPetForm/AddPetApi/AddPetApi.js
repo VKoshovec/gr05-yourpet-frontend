@@ -23,8 +23,8 @@ if (type === initialFormType[0]) {
 };   
 
 if (!ownPet && !user.phone) {
-    // alert("You must add phone to your profile");
-    return <Modal>error</Modal>;
+    alert("You must add phone to your profile");
+    // return <Modal>error</Modal>;
 };     
 
 const config = {
@@ -67,7 +67,7 @@ try {
     const responce =  await axios.post( ulr, req, config);
     return responce;
    } catch (error) {
-    //   alert(error)
-      return <Modal>error</Modal>
+      alert(error)
+    //   return <Modal>error</Modal>
    }
 }

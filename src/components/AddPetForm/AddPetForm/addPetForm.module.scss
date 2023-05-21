@@ -133,7 +133,7 @@
 }
 
 :global(.ant-input):focus {
-    border-color: red !important;
+    // border-color: red !important;
 }
 
 
@@ -235,5 +235,10 @@
     border-radius: 40px !important;
 }
 
+.errorSex { border: solid 1px red; 
+  border-radius: 20px; 
+  padding: 7px 
 
+  
+};
 

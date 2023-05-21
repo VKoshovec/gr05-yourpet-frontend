@@ -8,10 +8,12 @@ import {ReactComponent as PlusBig} from '../../assets/images/icon/plus-big.svg';
 import {ReactComponent as Plus} from '../../assets/images/icon/plus.svg';
 import AddPetPhoto from '../AddPetPhoto/AddPetPhoto';
 
+import { isValidFields } from '../AddPetValidation/AddPetValidation';
+
 import css from '../AddPetForm/addPetForm.module.scss'
 import { useState } from 'react';
 
-const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
+const AddPetForm = ({stepnumber, formtype, getformFields, initialFields, errorField, errorMessage }) => {
    
     const [title, setTitle] = useState();
     const [name, setName] = useState();
@@ -44,30 +46,37 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
         case "title":
           setTitle(inputValue)
           getformFields({ title: inputValue, name, birthday, breed, comments, price, location, sex, image, saveList });
+          errorField = ''
           break;
         case "name":
           setName(inputValue)
           getformFields({ title, name: inputValue, birthday, breed, comments, price, location, sex, image, saveList});
+          errorField = ''
           break;
         case "birthday":
           setDBirth(inputValue)
           getformFields({ title, name, birthday: inputValue, breed, comments, price, location, sex, image, saveList});
+          errorField = ''
           break;
         case "breed":
           setBreed(inputValue)
           getformFields({ title, name, birthday, breed: inputValue, price, location, comments, sex, image, saveList});
+          errorField = ''
           break;  
         case "comments":
           setComments(inputValue)
           getformFields({ title, name, birthday, breed, price, location, comments: inputValue, sex, image, saveList});
+          errorField = ''
           break;  
         case "price":
           setPrice(inputValue)
           getformFields({ title, name, birthday, breed, comments, price:inputValue, location, sex, image, saveList});
+          errorField = ''
           break;   
         case "location":
           setLocation(inputValue)
           getformFields({ title, name, birthday, breed, comments, price, location:inputValue, sex, image, saveList});
+          errorField = ''
           break;   
         case "sex":
           setSex(inputValue)
@@ -83,7 +92,6 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
       setSavelist(photo);
       getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo[0].name, saveList: photo});
     };
-
     
     return stepnumber === 2 ? (
         <div className={ css.addPetContainer }>
@@ -91,6 +99,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
             {formtype !== initialFormType[0] &&
              <label className={ css.addPetInput__Label }>Title of add
               <Input 
+              status={ errorField === 'title' && "error" }
               required
               type='text'
               name="title" 
@@ -98,6 +107,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               placeholder='Title of add' 
               className={ css.addPetInput }
               onInput={ getGield }/>
+
+              {errorField === 'title' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
             </label>}
 
 
@@ -105,14 +119,10 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
             <Form.Item 
             noStyle 
             initialValue={ initialFields && initialFields["name"] } 
-            rules={[
-             {
-               required: true,
-               message: 'Please input your username motherfacker',
-             },
-             ]}>
+            >
 
               <Input 
+              status={ errorField === 'name' && "error" }
               required
               type='text'
               name='name' 
@@ -120,11 +130,17 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               placeholder='Type name pet' 
               className={ css.addPetInput }
               onInput={ getGield }/>
+
+              {errorField === 'name' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
             </Form.Item>  
             </label>
 
             <label className={ css.addPetInput__Label }>Date of birth
               <Input 
+              status={ errorField === 'birthday' && "error" }
               required
               type='date'
               name='birthday' 
@@ -132,10 +148,16 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               placeholder='Type date of birth' 
               className={ css.addPetInput }
               onInput={ getGield }/>
+
+              {errorField === 'birthday' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
             </label>
 
             <label className={ css.addPetInput__Label }>Breed
               <Input 
+              status={ errorField === 'breed' && "error" }
               required
               type='text'
               name='breed' 
@@ -143,6 +165,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
               placeholder='Type breed' 
               className={ css.addPetInput }
               onInput={ getGield }/>
+
+              {errorField === 'breed' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
             </label>
         </div>
     ) : stepnumber === 3 &&
@@ -156,7 +183,9 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
         <div className={ css.rightContainer }>
 
         {formtype !== initialFormType[0] && 
-         <label className={ css.addPetInput__Label }>Sex
+        <div>
+         <div className={ errorField ==='sex' && css.errorSex }>
+          <label className={ css.addPetInput__Label }>Sex
           <Radio.Group 
             required
             name='sex'
@@ -179,12 +208,23 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                 <Male/>
                  <span className={ css.sexCaption }>Male</span>
                </Radio.Button>
-
             </Radio.Group> 
-        </label>}
+          </label>
+         </div>
+         {errorField === 'sex' && <p style={{ color:'red', marginLeft: '15px', marginTop: '0px', marginBottom: '5px', fontSize: '12px' }}>
+                { errorMessage }
+          </p>}
+         </div>
+        }
 
 
-          <AddPetPhoto formtype={ formtype } getPhoto = { getPhoto } initielFields={ initialFields }/>
+          <AddPetPhoto 
+          formtype={ formtype }
+          getPhoto = { getPhoto }
+          initielFields={ initialFields }
+          errorField = { errorField }
+          errorMessage={ errorMessage }
+          />
 
 
           </div>
@@ -193,6 +233,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
           {formtype !== initialFormType[0] && 
           <label className={ css.addPetInput__Label }>Location
                     <Input
+                    status={ errorField === 'location' && "error" }
                     required
                     name='location' 
                     type="text"
@@ -200,11 +241,16 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                     placeholder='Type location' 
                     className={ css.addPetInputText }
                     onInput={ getGield }/>
+
+              {errorField === 'location' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
           </label>}
 
          { formtype === initialFormType[1] && 
          <label className={ css.addPetInput__Label }>Price
                     <Input
+                    status={ errorField === 'price' && "error" }
                     required
                     name='price' 
                     type="number"
@@ -212,12 +258,18 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                     placeholder='Type price' 
                     className={ css.addPetInputText }
                     onInput={ getGield }/>
+
+              {errorField === 'price' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-10px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
           </label>}
 
          
 
           <label className={ css.addPetInput__Label }>Comments
               <Input.TextArea 
+              status={ errorField === 'comments' && "error" }
               required
               name='comments' 
               type="text"
@@ -229,6 +281,11 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields}) => {
                  formtype === initialFormType[3] ? 
                  css.addPetInputTextAreaBig : css.addPetInputTextArea}
               onInput={ getGield }/>
+
+              {errorField === 'comments' && <p style={{ color:'red', marginLeft: '15px', marginTop: '-5px', fontSize: '12px' }}>
+                { errorMessage }
+              </p>}
+
           </label>
         </div>   
       </div> 
