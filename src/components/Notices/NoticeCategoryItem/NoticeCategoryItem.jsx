@@ -70,20 +70,24 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       </div>
 
     </div>
-    <div className={styled.titleBox}>
-      <h2 className={styled.title}>{title}</h2>
-    </div>
+
+    <div className={styled.titleWrapper}>
+      <div className={styled.titleBox}>
+        <h2 className={styled.title}>{title}</h2>
+      </div>
     
-    <button
-      className={styled.buttonOnClickModal}
-      type='button'
-      onClick={() => toggleModal(_id, 'LeanMove')}
-    >
-            <span className={styled.buttonText}>
-                LearnMore
-            </span>
-      <PawIcon />
-    </button>
+      <button
+        className={styled.buttonOnClickModal}
+        type='button'
+        onClick={() => toggleModal(_id, 'LeanMove')}
+      >
+        <span className={styled.buttonText}>
+          LearnMore
+        </span>
+        <PawIcon />
+      </button>
+    </div>
+
     <div className={styled.addPetBtnWrapper}>
       <AddPetButton className={styled.addPetBtnIcon} />
     </div>

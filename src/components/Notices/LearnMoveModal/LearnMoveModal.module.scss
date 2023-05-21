@@ -1,8 +1,30 @@
 @import "../../../styles/mixins/media";
 
 .modalWrapper {
-    width: 280px;
-    height: 786px;
+  width: 280px;
+  height: 786px;
+
+  @include tabletAndDesktop {
+    width: 681px;
+    height: 540px;
+
+  }
+
+  @include tabletAndDesktop {
+    
+
+  }
+}
+
+.aboutBox {
+  @include tablet {
+    // display: flex;
+    // row-gap: 24px;
+  }
+}
+
+.imageBox {
+  position: relative;
 }
 
 .category {
@@ -31,6 +53,8 @@
 
 .imageWrapper {
     margin-bottom: 12px;
+    overflow: hidden;
+    
 }
 
 .image {
@@ -40,7 +64,9 @@
     border-radius: 0px 0px 40px 40px;
 
     @include tablet {
-        width: 336px;
+      width: 262px;
+      height: 298px;
+      
     }
 
     @include desktop {
@@ -48,10 +74,36 @@
     }
 }
 
+.aboutWrapper {
+  @include tablet {
+    // display: flex;
+    
+    
+  }
+  
+}
+
+
+.titleBox {
+  // flex-direction: column;
+  // justify-content: flex-start;
+  height: 66px;
+  // padding-left: 12px;
+  padding-right: 70px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  // &__description {    margin-bottom: 20px;
+  //     max-height: calc(1em * 1.4 * 3);    overflow: hidden;
+  // }
+  @include tablet {
+    height: 76px;
+  }
+}
+
 .title {
-    padding-left: 12px;
-    padding-right: 70px;
-    margin-bottom: 20px;
+    // padding-left: 12px;
+    // padding-right: 70px;
+    // margin-bottom: 20px;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -60,27 +112,77 @@
     color: var(--black);
 }
 
-// .infoWrapper {
+.infoWrapper {
+  display: flex;
+  column-gap: 25px;
+  margin-bottom: 20px;
+}
 
-// }
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  // justify-content: flex-start;
 
-// .info {
+}
 
-// }
+.infoText {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-// .infoText {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 
-// }
+  @include tabletAndDesktop {
+    font-size: 16px;
+    line-height: 22px;
 
-// .infoContent {
+  }
+}
 
-// }
+.infoContent {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  @include tabletAndDesktop {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.infoContentLink {
+  text-decoration-line: underline;
+  color: var(--yellow);
+}
 
 .comments {
-    padding-left: 12px;
-    padding-right: 12px;
+    height: 95px;
     margin-bottom: 12px;
     color: var(--black);
+    display: flex;
+    justify-content: flex-start;
+
+    @include tabletAndDesktop {
+      height: 48px;
+      // margin-bottom: 70px;
+
+    }
 }
 
 .commentsText {
@@ -92,19 +194,36 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.04em;
+
+    @include tabletAndDesktop {
+      font-size: 16px;
+      line-height: 24px;
+    }
 }
 
-// .commentsContent {
+.btnWrapper {
 
-// }
+  @include tabletAndDesktop {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    // row-gap: 17px;
+    // margin-left: auto;
+    // margin-right: 0px;
+  }
+  
+}
 
 .btnContact {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px 20px;
-    gap: 8px;
-    margin: 0 auto;
+    // gap: 8px;
+    // margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
     width: 256px;
     height: 40px;
 
@@ -113,6 +232,12 @@
     background: transparent;
     color: var(--bluelinksActive);
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    @include tabletAndDesktop {
+      width: 129px;
+      height: 40px;
+      margin-left: auto;
+    }
 
     &:hover {
         border: none;
@@ -134,124 +259,25 @@
     height: 40px;
     // left: 16px;
     // top: 394px;
-
-    border: 2px solid var(--bluelinksActive);
+    border: none;
     border-radius: 40px;
-    background: transparent;
-    color: var(--bluelinksActive);
-    //stroke: var(--bluelinksActive);
+    background:  var(--bluelinksActive);
+    color: var(--white);
+    stroke: var(--white);
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+    @include tabletAndDesktop {
+      width: 129px;
+      height: 40px;
+      // margin-right: 17px;
+      
+    }
+
     &:hover {
-        border: none;
-        background: var(--gradientBtn);
-        color: var(--white);
-      //stroke: var(--white);
-
-    svg path {
-        fill:var(--white)
-
-    }
+      background: var(--gradientBtn);
     }
 }
 
-//.buttonOnClickModal svg path {
-//    stroke:inherit;
-//
-//    &:hover {
-//        stroke:inherit;
-//    }
-//}
-
-
-.buttonOnClickModal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 28px;
-  gap: 10px;
-  margin: 0 auto;
-  // position: absolute;
-  width: 248px;
-  height: 38px;
-  // left: 16px;
-  // top: 394px;
-
-  border: 2px solid var(--bluelinksActive);
-  border-radius: 40px;
-  background: transparent;
-  color: var(--bluelinksActive);
-  //stroke: var(--bluelinksActive);
-  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  &:hover {
-    border: none;
-    background: var(--gradientBtn);
-    color: var(--white);
-    //stroke: var(--white);
-
-    svg path {
-      fill:var(--white)
-
-    }
-  }
-}
-
-//.buttonOnClickModal svg path {
-//    stroke:inherit;
-//
-//    &:hover {
-//        stroke:inherit;
-//    }
-//}
-
-.buttonText {
-  //font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-
-  color:inherit;
-
-  &:hover {
-    color:inherit;
-  }
-}
-
-.buttonOnClickModal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 28px;
-  gap: 10px;
-  margin: 0 auto;
-  // position: absolute;
-  width: 248px;
-  height: 38px;
-  // left: 16px;
-  // top: 394px;
-
-  border: 2px solid var(--bluelinksActive);
-  border-radius: 40px;
-  background: transparent;
-  color: var(--bluelinksActive);
-  //stroke: var(--bluelinksActive);
-  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  &:hover {
-    border: none;
-    background: var(--gradientBtn);
-    color: var(--white);
-    //stroke: var(--white);
-
-    svg path {
-      fill:var(--white)
-
-    }
-  }
+.btnAdd  svg path {
+  stroke:inherit;
 }
