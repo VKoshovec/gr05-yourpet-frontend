@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 import styles from './Friends.module.scss';
 
-//Componets
 import Section from 'components/Section/Section';
 import MainTitle from './MainTitle/MainTitle';
 import CardItem from './CardItem/CardItem';

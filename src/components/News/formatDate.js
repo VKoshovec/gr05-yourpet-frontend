@@ -18,7 +18,7 @@ const formatDate = (...date) => {
 
   date = new Date(...date);
 
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat('ru-RU', {
     day: '2-digit',
     month: '2-digit',
     year: '2-digit',

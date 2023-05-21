@@ -4,9 +4,19 @@ import dataReducer from './data/slice';
 
 import { localReducer } from './local/slice';
 import authReducer from './auth/slice';
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 import { noticesReducer } from './notices/slice';
 
+import { newsReducer } from './news/newsSlice';
 
 const persistConfig = {
   key: 'auth',
@@ -19,6 +29,8 @@ const rootReducer = combineReducers({
   data: dataReducer,
   local: localReducer,
   notices: noticesReducer,
+
+  news: newsReducer,
 });
 
 const middleware = getDefaultMiddleware =>
