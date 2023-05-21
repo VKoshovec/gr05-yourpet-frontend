@@ -1,3 +1,13 @@
+.user_page {
+  display: flex;
+  justify-content: center;
+}
+
+.user_page_item {
+  display: flex;
+  flex-direction: column;
+}
+
 .user_form_title {
   font-style: normal;
   font-weight: 500;

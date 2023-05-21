@@ -1,4 +1,7 @@
 .pets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 40px;
   @media screen and (min-width: 1280px) {
     margin-top: 0;
