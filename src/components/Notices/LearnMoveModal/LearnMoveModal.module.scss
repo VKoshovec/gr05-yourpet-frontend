@@ -2,12 +2,11 @@
 
 .modalWrapper {
   width: 280px;
-  height: 786px;
+  // height: 786px;
 
   @include tabletAndDesktop {
     width: 681px;
-    height: 540px;
-
+    // height: 540px;
   }
 
   @include tabletAndDesktop {
@@ -16,10 +15,18 @@
   }
 }
 
+.aboutWrapper {
+  @include tabletAndDesktop {
+    display: flex;
+    gap: 24px;
+
+  }
+}
+
 .aboutBox {
   @include tablet {
-    // display: flex;
-    // row-gap: 24px;
+    // min-width: 220px;
+    // min-height: 200px;
   }
 }
 
@@ -58,8 +65,8 @@
 }
 
 .image {
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    min-height: 240px;
     object-fit: cover;
     border-radius: 0px 0px 40px 40px;
 
@@ -74,21 +81,8 @@
     }
 }
 
-.aboutWrapper {
-  @include tablet {
-    // display: flex;
-    
-    
-  }
-  
-}
-
-
 .titleBox {
-  // flex-direction: column;
-  // justify-content: flex-start;
   height: 66px;
-  // padding-left: 12px;
   padding-right: 70px;
   margin-bottom: 20px;
   margin-right: auto;
@@ -101,33 +95,40 @@
 }
 
 .title {
-    // padding-left: 12px;
-    // padding-right: 70px;
-    // margin-bottom: 20px;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 33px;
     letter-spacing: -0.01em;
     color: var(--black);
+
+    @include tabletAndDesktop {
+      font-size: 28px;
+      line-height: 38px;
+      letter-spacing: -0.01em;
+    }
+
 }
 
 .infoWrapper {
   display: flex;
   column-gap: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  @include tabletAndDesktop {
+    column-gap: 50px;
+    margin-bottom: 20px;
+  }
+
 }
 
 .info {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  // justify-content: flex-start;
 
 }
 
 .infoText {
-  font-family: 'Manrope';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -148,7 +149,6 @@
 }
 
 .infoContent {
-  font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -157,12 +157,16 @@
   align-items: center;
 
   &:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 11px;
   }
 
   @include tabletAndDesktop {
     font-size: 16px;
     line-height: 22px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 }
 
@@ -172,29 +176,29 @@
 }
 
 .comments {
-    height: 95px;
-    margin-bottom: 12px;
-    color: var(--black);
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  height: 95px;
+  // margin-top: 12px;
+  margin-bottom: 12px;
+  color: var(--black);
 
-    @include tabletAndDesktop {
-      height: 48px;
-      // margin-bottom: 70px;
-
-    }
+  @include tabletAndDesktop {
+    height: 48px;
+    // margin-top: 28px;
+    margin-bottom: 70px;
+  }
 }
 
 .commentsText {
-    // font-family: 'Manrope';
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.04em;
-
+    
     @include tabletAndDesktop {
       font-size: 16px;
       line-height: 24px;
@@ -202,14 +206,15 @@
 }
 
 .btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   @include tabletAndDesktop {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
-    // row-gap: 17px;
-    // margin-left: auto;
-    // margin-right: 0px;
+    justify-content: flex-start;
+    
   }
   
 }
@@ -219,11 +224,7 @@
     justify-content: center;
     align-items: center;
     padding: 8px 20px;
-    // gap: 8px;
-    // margin: 0 auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 8px;
+    margin: 0 auto;
     width: 256px;
     height: 40px;
 
@@ -236,7 +237,9 @@
     @include tabletAndDesktop {
       width: 129px;
       height: 40px;
-      margin-left: auto;
+      margin-left: 0px;
+      margin-right: 0px;
+      
     }
 
     &:hover {
@@ -254,11 +257,8 @@
     padding: 8px 20px;
     gap: 8px;
     margin: 0 auto;
-    // position: absolute;
     width: 256px;
     height: 40px;
-    // left: 16px;
-    // top: 394px;
     border: none;
     border-radius: 40px;
     background:  var(--bluelinksActive);
@@ -269,8 +269,8 @@
     @include tabletAndDesktop {
       width: 129px;
       height: 40px;
-      // margin-right: 17px;
-      
+      margin-left: 0px;
+      margin-right: 0px;
     }
 
     &:hover {

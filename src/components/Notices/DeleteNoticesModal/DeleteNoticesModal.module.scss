@@ -2,29 +2,27 @@
 
 .modalWrapper {
     width: 280px;
-    height: 287px;
-
+    
     @include tabletAndDesktop {
       width: 608px;
-      height: 352px;
+      
     }
 }
 
 .title {
-  // font-family: 'Manrope';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 28px;
+  margin-bottom: 40px;
+  letter-spacing: 0.04em;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-
   @include tabletAndDesktop {
-    margin-bottom: 40px;
     font-weight: 700;
     font-size: 28px;
     line-height: 38px;
@@ -33,7 +31,6 @@
 }
 
 .text {
-  // font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -46,8 +43,7 @@
   letter-spacing: 0.04em;
 
   @include tabletAndDesktop {
-    
-      letter-spacing: -0.01em;
+    letter-spacing: -0.01em;
   }
   
 }
@@ -58,18 +54,17 @@
 
 .btnWrapper {
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 48px;
 
   @include tabletAndDesktop {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 0px;
     margin-top: 48px;
-
-    // row-gap: 17px;
-    // margin-left: auto;
-    // margin-right: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+    margin-bottom: 28px;
+    gap: 17px;
   }
   
 }
@@ -79,8 +74,6 @@
   justify-content: center;
   align-items: center;
   padding: 8px 20px;
-  // gap: 8px;
-  // margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 8px;
@@ -89,13 +82,14 @@
 
   @include tabletAndDesktop {
     width: 129px;
-  height: 40px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 20px;
-  // gap: 8px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
 
   }
   
@@ -105,9 +99,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   padding: 8px 20px;
-  // gap: 8px;
-  // margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 8px;
@@ -117,18 +110,17 @@
 
   @include tabletAndDesktop {
     width: 129px;
-  height: 40px;
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  padding: 8px 20px;
-  // gap: 8px;
-  
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
   }
 
   &:hover {
-
     background: var(--gradientBtn);
 }
 }

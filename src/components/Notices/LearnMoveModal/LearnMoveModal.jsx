@@ -6,23 +6,24 @@ import styled from './LearnMoveModal.module.scss';
 const LearnMoveModal = ({data}) => {
 
     console.log(data);
-    const { id, category, image,  title, name, birthday, breed, location, sex, email, phone,
+    const { id, category, image,  title, name, birthday, breed, location, sex='', email, phone,
     comments, addAndDeleteFavorite } = data;
 
     return(
         <div className={styled.modalWrapper}>
-            <div className={styled.imageBox}>
-            <div className={styled.category}>
-                <span className={styled.categoryText}>
-                    {category}
-                </span>
-            </div>
-            <div className={styled.aboutBox}>
-            <div className={styled.imageWrapper}>
-                <img className={styled.image} src={image} alt="Your pet" width="240" />
-            </div>
-            </div>
             <div className={styled.aboutWrapper}>
+                <div className={styled.imageBox}>
+                <div className={styled.category}>
+                    <span className={styled.categoryText}>
+                        {category}
+                    </span>
+                </div>    
+                <div className={styled.imageWrapper}>
+                    <img className={styled.image} src={image} alt="Your pet" width="240" />
+                </div>
+            </div>
+                
+                <div className={styled.aboutBox}>
             <div className={styled.titleBox}>
                 <h2 className={styled.title}>{title}</h2>
             </div>
@@ -46,52 +47,9 @@ const LearnMoveModal = ({data}) => {
                     <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li>
                     <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li>
                 </ul>
-                    {/* <div className={styled.info}>
-                    <span className={styled.infoText}>Name:</span>
-                    <span className={styled.infoContent}>
-                        {name}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>Birthday:</span>
-                    <span className={styled.infoContent}>
-                        {birthday}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>Breed:</span>
-                    <span className={styled.infoContent}>
-                        {breed}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>Place:</span>
-                    <span className={styled.infoContent}>
-                        {location}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>The sex:</span>
-                    <span className={styled.infoContent}>
-                        {sex}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>Email:</span>
-                    <span className={styled.infoContent}>
-                    {email}
-                    </span>
-                </div>
-                <div className={styled.info}>
-                    <span className={styled.infoText}>Phone:</span>
-                    <span className={styled.infoContent}>
-                        {phone}
-                    </span>
-                </div> */}
             </div>
+                </div>
             </div>
-            </div>
-            
             
             <div className={styled.comments}>
                 <span className={styled.commentsText}>Comments: {comments}

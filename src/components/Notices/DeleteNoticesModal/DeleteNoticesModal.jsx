@@ -12,9 +12,10 @@ const DeleteNoticesModal = ({data, onCancel}) => {
         <h2 className={styled.title}>Delete adverstiment?</h2>
         <div>
           <span className={styled.text}>
-          Are you sure you want to delete  “<span className={styled.textBold}>{/* {title} */}</span>”? 
-          You can`t undo this action.
-          </span>
+          Are you sure you want to delete  “<span className={styled.textBold}>{/* {title} */}”?</span></span> 
+          <span>You can`t undo this action.</span>
+          
+          
         </div>
         
         <div className={styled.btnWrapper}>
