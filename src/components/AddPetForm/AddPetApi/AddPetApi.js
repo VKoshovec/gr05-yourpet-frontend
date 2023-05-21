@@ -51,11 +51,11 @@ if (!ownPet) {
     formdata.append("location", body.location);
     formdata.append("sex", body.sex);
     formdata.append("category", type);
-    formdata.append("prise", body.price);
+    formdata.append("price", body.price);
     formdata.append("comments", body.pcomments);
-    formdata.append("owner", user._id);
-    formdata.append("email", user._email);
-    formdata.append("phone", user._phone);
+    // formdata.append("owner", user._id);
+    // formdata.append("email", user._email);
+    // formdata.append("phone", user._phone);
   }
 
 try {
