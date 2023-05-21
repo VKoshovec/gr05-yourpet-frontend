@@ -17,7 +17,7 @@ export const fetchNoticesByCategory = createAsyncThunk(
 
 export const fetchAddNoticesFavorite = createAsyncThunk(
   'notices/addNoticesFavorite',
-  async (id, thunkAPI) => {
+  async ({id, userID}, thunkAPI) => {
     try {
      await addNoticesFavorite(id);
     } catch (e) {
@@ -28,7 +28,7 @@ export const fetchAddNoticesFavorite = createAsyncThunk(
 
 export const fetchRemoveNoticesFavorite = createAsyncThunk(
   'notices/removeNoticesFavorite',
-  async (id, thunkAPI) => {
+  async ({id, userID}, thunkAPI) => {
     try {
     await removeNoticesFavorite(id);
     } catch (e) {

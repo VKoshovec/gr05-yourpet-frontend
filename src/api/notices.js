@@ -7,9 +7,9 @@ import axios from 'axios';
   // },
 // });
 
-export const getNoticesByCategory = async ({ category, search }) => {
+export const getNoticesByCategory = async ({ category, search, page }) => {
   const { data } = await axios.get(`api/notices/${category}`, {
-    params : { search },
+    params : { search, page, perpage : 6 },
   })
   return data;
   };
@@ -22,9 +22,9 @@ export const getNoticesByCategory = async ({ category, search }) => {
 // };
 
 export const addNoticesFavorite = async (id ) => {
-  const { data } = await axios.post(`api/notices/favorite/${id}`);
+  await axios.post(`api/notices/favorite/${id}`);
 }
 
 export const removeNoticesFavorite = async (id ) => {
-  const { data } = await axios.delete(`api/notices/favorite/${id}`);
+  await axios.delete(`api/notices/favorite/${id}`);
 }

@@ -42,8 +42,8 @@ const localSlice = createSlice({
       .addCase(getNews.fulfilled, handleFulfilled)
 
       .addCase(fetchNoticesByCategory.fulfilled, handleFulfilled)
-      // .addCase(fetchAddNoticesFavorite.fulfilled, handleFulfilled)
-      // .addCase(fetchRemoveNoticesFavorite().fulfilled, handleFulfilled)
+      .addCase(fetchAddNoticesFavorite.fulfilled, handleFulfilled)
+      .addCase(fetchRemoveNoticesFavorite.fulfilled, handleFulfilled)
 
       //pending
       .addCase(signup.pending, handlePending)
@@ -54,8 +54,8 @@ const localSlice = createSlice({
       .addCase(getNews.pending, handlePending)
 
       .addCase(fetchNoticesByCategory.pending, handlePending)
-      // .addCase(fetchAddNoticesFavorite.pending, handlePending)
-      // .addCase(fetchRemoveNoticesFavorite.pending, handlePending)
+      .addCase(fetchAddNoticesFavorite.pending, handlePending)
+      .addCase(fetchRemoveNoticesFavorite.pending, handlePending)
 
       //rejected
       .addCase(signup.rejected, handleRejected)
@@ -67,8 +67,12 @@ const localSlice = createSlice({
       .addCase(getNews.rejected, handleRejected)
 
       .addCase(fetchNoticesByCategory.rejected, handleRejected)
-      // .addCase(fetchAddNoticesFavorite.rejected, handleRejected)
-      // .addCase(fetchRemoveNoticesFavorite.rejected, handleRejected)
+      .addCase(fetchAddNoticesFavorite.rejected, (state, { payload }) => {
+        state.error = 'Available only to registered users'
+        state.isLoading = false;
+      })
+
+      .addCase(fetchRemoveNoticesFavorite.rejected, handleRejected)
 
   },
 });
