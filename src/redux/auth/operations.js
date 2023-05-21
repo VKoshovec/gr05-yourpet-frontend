@@ -110,3 +110,21 @@ export const updateAvatar = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  'user/updateUser',
+  async (updateUser, { rejectWithValue, getState }) => {
+    try {
+      const { data } = await axios.patch('api/user/update', updateUser);
+
+      return data;
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
+      // toast.error(message);
+      return rejectWithValue(message);
+    }
+  }
+);
