@@ -9,7 +9,7 @@ import React, {  useState } from 'react';
 
 import { AddPetPhotoApi } from '../AddPetApi/AddPetApi';
 
-const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
+const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessage }) => {
 
     const [fileList, setFileList] = useState(
       initielFields["saveList"] ? initielFields["saveList"] : []
@@ -47,6 +47,8 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
       };
 
     return (
+      <div>
+      <div className={ errorField ==='image' && css.errorSex }>
         <div 
         className={ 
         formtype === initialFormType[1] ? css.addPetImgLabel :
@@ -73,7 +75,12 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields }) => {
                        </Button>}
             </Upload>
         </ImgCrop>
-        </div>
+       </div>
+      </div>
+      {errorField === 'image' && <p style={{ color:'red', marginLeft: '15px', marginTop: '0px', marginBottom: '5px', fontSize: '12px' }}>
+                { errorMessage }
+      </p>}
+      </div>
     )
 };
 

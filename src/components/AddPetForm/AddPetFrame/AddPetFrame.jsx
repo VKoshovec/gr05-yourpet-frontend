@@ -1,4 +1,5 @@
 import css from '../AddPetFrame/AddPetFrame.module.scss';
+import 'antd/dist/reset.css';
 
 import { Form } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
@@ -46,15 +47,14 @@ const AddPetFrame = () => {
     const [fields, setFields] = useState();
     const [step, setStep] = useState(1);
     const [formType, setFormType] = useState();
+    const [err, setErr] = useState();
+    const [errMess, setErrMess] = useState();
 
     const navigate = () => {
         if (location) {
             navigator( location.state , { replace: true });
         }
     };
-
-
-    console.log(formType);
 
     const ButtonSetResponse = (number) => {
         setFormType(initialFormType[number]);
@@ -66,11 +66,17 @@ const AddPetFrame = () => {
             setStep(2);
         };
 
-        if(step ===2 && isValidFields(fields, step , formType)) {
+        if(step === 2 || step === 3){
+            const error = isValidFields(fields, step , formType);
+            setErr(error[1]);
+            setErrMess(error[2]);
+        };
+
+        if(step ===2 && isValidFields(fields, step , formType)[0] === true) {
             setStep(3);
         } 
         
-        if(step === 3 && isValidFields(fields, step , formType)) {
+        if(step === 3 && isValidFields(fields, step , formType)[0] === true) {
             AddPetNotice( user, token, fields, testUrl, formType).then((res) => { 
                 if (res.status === 200) {
                     navigate() 
@@ -100,6 +106,8 @@ const AddPetFrame = () => {
 
     // };
 
+
+
     return (
         <Form 
         className={ [css.frame, 
@@ -109,7 +117,8 @@ const AddPetFrame = () => {
         ].join(" ") } 
         initialValues={{ remember: true }} 
         wrapperCol={{span: 16,}}
-        autoComplete="off">
+        autoComplete="off"
+        >
 
             <AddPetTitle formtype ={ formType } initialFormType={ initialFormType }/>
 
@@ -122,10 +131,11 @@ const AddPetFrame = () => {
             formtype={ formType } 
             getformFields={ GetFields }
             initialFields={ fields }
+            errorField={ err }
+            errorMessage={ errMess }
             /> : ""}
             
             <AddPetNav NextStep = { NextStep } PrevStep = { PrevStep } curStep ={ step }/>
-
         </Form>
     );
 };
