@@ -3,7 +3,7 @@ import 'antd/dist/reset.css';
 
 import { Form } from 'antd';
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser, selectToken } from 'redux/auth/selectors';
 
@@ -27,22 +27,6 @@ const AddPetFrame = () => {
 
     const location = useLocation();
     const navigator = useNavigate();
-
-    // useEffect(()=>{
-
-    //     const firstInitFormType = ['sell',  'lost-found', 'for-free'];
-
-    //     if(location.state === 'user') {
-    //         setFormType(initialFormType[0]);
-    //     }
-
-    //     if(location.state !== 'user') {
-    //         const loc = location.state.slice(1).split('/')[1];
-    //         setFormType(firstInitFormType.indexOf(loc) + 1);
-    //     }
-        
-    // },[location])
-  
 
     const [fields, setFields] = useState();
     const [step, setStep] = useState(1);
@@ -78,7 +62,7 @@ const AddPetFrame = () => {
         
         if(step === 3 && isValidFields(fields, step , formType)[0] === true) {
             AddPetNotice( user, token, fields, testUrl, formType).then((res) => { 
-                if (res.status === 200) {
+                if (res.status === 200 || res.status === 201) {
                     navigate() 
                  }
             } ).catch((err) => alert(err));           
@@ -100,13 +84,6 @@ const AddPetFrame = () => {
     const GetFields = (fieldValues) => {
        setFields(fieldValues);
     };
-
-    // const handleSubmit = ({ values, errorFields, outOfDate }) => {
-    //      console.log( values, errorFields, outOfDate );
-
-    // };
-
-
 
     return (
         <Form 

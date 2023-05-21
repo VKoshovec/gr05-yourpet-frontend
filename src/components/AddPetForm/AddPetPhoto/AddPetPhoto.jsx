@@ -1,5 +1,4 @@
 import css from '../AddPetForm/addPetForm.module.scss';
-import {ReactComponent as PlusBig} from '../../assets/images/icon/plus-big.svg';
 import {ReactComponent as Plus} from '../../assets/images/icon/plus.svg';
 import { Button, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
@@ -7,48 +6,25 @@ import { initialFormType } from '../AddPetFrame/AddPetFrame';
 
 import React, {  useState } from 'react';
 
-import { AddPetPhotoApi } from '../AddPetApi/AddPetApi';
-
 const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessage }) => {
+
+    let formData = new FormData();
 
     const [fileList, setFileList] = useState(
       initielFields["saveList"] ? initielFields["saveList"] : []
     );
 
-    const onChange = ({ fileList: newFileList }) => {
+    const onChange = ({ file, fileList: newFileList, event }) => {
+
+        formData.append("pet", newFileList[0].originFileObj);
         setFileList(newFileList);
-        getPhoto(newFileList);
+        getPhoto(formData);
        
     };
 
-    const methodload = async (param) => {
-      try {
-        await AddPetPhotoApi(param);
-      } catch (error) {
-        return error;
-      }
-    }
-
-
-
-    const onPreview = async (file) => {
-        let src = file.url;
-        if (!src) {
-          src = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file.originFileObj);
-            reader.onload = () => resolve(reader.result);
-          });
-        }
-        const image = new Image();
-        image.src = src;
-        const imgWindow = window.open(src);
-        imgWindow?.document.write(image.outerHTML);
-      };
-
     return (
       <div>
-      <div className={ errorField ==='image' && css.errorSex }>
+      <div className={ errorField ==='image' ? css.errorSex : "" }>
         <div 
         className={ 
         formtype === initialFormType[1] ? css.addPetImgLabel :
@@ -57,15 +33,11 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
         css.addPetImgLabelBig }>
         <span>Add photo</span>
 
-        <ImgCrop rotationSlider>
+        <ImgCrop rotationSlider >
             <Upload
-            // action={ () =>{  }  }
             listType="picture-card"
             fileList={fileList}
-            onChange={onChange}
-            // method={ (param) => methodload (param) }
-            action="https://yourpet-api.onrender.com/"
-            onPreview={onPreview}
+            onChange={ onChange }
             maxCount={ 1 }
             className={ css.addPetImgUpload }
             >

@@ -1,14 +1,9 @@
-import { Input, Radio, Button, Form } from 'antd';
-import { theme } from 'antd';
+import { Input, Radio, Form } from 'antd';
 import { initialFormType } from '../AddPetFrame/AddPetFrame';
 import React, { useEffect } from 'react';
 import {ReactComponent as Male} from '../../assets/images/icon/male.svg';
 import {ReactComponent as Female} from '../../assets/images/icon/female-red.svg';
-import {ReactComponent as PlusBig} from '../../assets/images/icon/plus-big.svg';
-import {ReactComponent as Plus} from '../../assets/images/icon/plus.svg';
 import AddPetPhoto from '../AddPetPhoto/AddPetPhoto';
-
-import { isValidFields } from '../AddPetValidation/AddPetValidation';
 
 import css from '../AddPetForm/addPetForm.module.scss'
 import { useState } from 'react';
@@ -88,9 +83,9 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields, errorFi
     };
 
     const getPhoto = (photo) => {
-      setImage(photo[0].name);
+      setImage(photo);
       setSavelist(photo);
-      getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo[0].name, saveList: photo});
+      getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo, saveList: photo});
     };
     
     return stepnumber === 2 ? (
@@ -184,7 +179,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields, errorFi
 
         {formtype !== initialFormType[0] && 
         <div>
-         <div className={ errorField ==='sex' && css.errorSex }>
+         <div className={ errorField ==='sex' ? css.errorSex : ""}>
           <label className={ css.addPetInput__Label }>Sex
           <Radio.Group 
             required
