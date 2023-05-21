@@ -127,7 +127,7 @@ const UserData = () => {
             )}
           </Formik>
           <div className={styles.input_container}>
-            <UserDataItem user={user} />
+            <UserDataItem />
 
             <button
               type="button"

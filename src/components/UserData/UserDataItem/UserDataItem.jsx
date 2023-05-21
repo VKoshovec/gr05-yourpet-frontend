@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { updateUser } from 'redux/auth/operations';
+import { useAuth } from 'services/hooks';
 
 import { ReactComponent as Confirm } from '../../assets/images/icon/check.svg';
 import { ReactComponent as Edit } from '../../assets/images/icon/edit-2.svg';
@@ -20,10 +21,11 @@ const initialStateBlur = {
   city: false,
 };
 
-const UserDataItem = ({ user }) => {
+const UserDataItem = () => {
   const [blur, setBlur] = useState(initialStateBlur);
 
   const dispatch = useDispatch();
+  const user = useAuth().user;
 
   const initialValues = {
     name: user.name || '',

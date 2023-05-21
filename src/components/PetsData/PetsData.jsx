@@ -13,12 +13,13 @@ const PetsData = () => {
 
   const location = useLocation();
 
-  useEffect(() => {
-    const fetchPets = async () => {
-      const { data } = await getPets();
+  const fetchPets = async () => {
+    const { data } = await getPets();
 
-      setPets(data);
-    };
+    setPets(data);
+  };
+
+  useEffect(() => {
     fetchPets();
   }, []);
 
@@ -26,6 +27,7 @@ const PetsData = () => {
     const fetchDeletePet = async () => {
       try {
         const result = await deletePets(id);
+        fetchPets();
       } catch (error) {
         console.log(error);
       }
