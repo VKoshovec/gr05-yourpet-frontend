@@ -2,256 +2,137 @@
 
 .modalWrapper {
     width: 280px;
-    height: 786px;
-}
+    height: 287px;
 
-.category {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 16px;
-    left: 0px;
-    width: 126px;
-    height: 32px;
-    background: var(--bluelinks);
-    border-radius: 0px 16px 16px 0px;
-}
-
-.categoryText {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19px;
-    color: var(--black);
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-
-.imageWrapper {
-    margin-bottom: 12px;
-}
-
-.image {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 0px 0px 40px 40px;
-
-    @include tablet {
-        width: 336px;
-    }
-
-    @include desktop {
-        width: 286px;
+    @include tabletAndDesktop {
+      width: 608px;
+      height: 352px;
     }
 }
 
 .title {
-    padding-left: 12px;
-    padding-right: 70px;
-    margin-bottom: 20px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 33px;
-    letter-spacing: -0.01em;
-    color: var(--black);
-}
+  // font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
 
-// .infoWrapper {
-
-// }
-
-// .info {
-
-// }
-
-// .infoText {
-
-// }
-
-// .infoContent {
-
-// }
-
-.comments {
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-bottom: 12px;
-    color: var(--black);
-}
-
-.commentsText {
-    // font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.04em;
-}
-
-// .commentsContent {
-
-// }
-
-.btnContact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 20px;
-    gap: 8px;
-    margin: 0 auto;
-    width: 256px;
-    height: 40px;
-
-    border: 2px solid var(--bluelinksActive);
-    border-radius: 40px;
-    background: transparent;
-    color: var(--bluelinksActive);
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-    &:hover {
-        border: none;
-        background: var(--gradientBtn);
-        color: var(--white);
-
-    }
-}
-
-.btnAdd {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 20px;
-    gap: 8px;
-    margin: 0 auto;
-    // position: absolute;
-    width: 256px;
-    height: 40px;
-    // left: 16px;
-    // top: 394px;
-
-    border: 2px solid var(--bluelinksActive);
-    border-radius: 40px;
-    background: transparent;
-    color: var(--bluelinksActive);
-    //stroke: var(--bluelinksActive);
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-    &:hover {
-        border: none;
-        background: var(--gradientBtn);
-        color: var(--white);
-      //stroke: var(--white);
-
-    svg path {
-        fill:var(--white)
-
-    }
-    }
-}
-
-//.buttonOnClickModal svg path {
-//    stroke:inherit;
-//
-//    &:hover {
-//        stroke:inherit;
-//    }
-//}
-
-
-.buttonOnClickModal {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 28px;
-  gap: 10px;
-  margin: 0 auto;
-  // position: absolute;
-  width: 248px;
-  height: 38px;
-  // left: 16px;
-  // top: 394px;
-
-  border: 2px solid var(--bluelinksActive);
-  border-radius: 40px;
-  background: transparent;
-  color: var(--bluelinksActive);
-  //stroke: var(--bluelinksActive);
-  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  &:hover {
-    border: none;
-    background: var(--gradientBtn);
-    color: var(--white);
-    //stroke: var(--white);
-
-    svg path {
-      fill:var(--white)
-
-    }
-  }
-}
-
-//.buttonOnClickModal svg path {
-//    stroke:inherit;
-//
-//    &:hover {
-//        stroke:inherit;
-//    }
-//}
-
-.buttonText {
-  //font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-
-  display: flex;
-  align-items: center;
+  text-align: center;
   letter-spacing: 0.04em;
 
-  color:inherit;
-
-  &:hover {
-    color:inherit;
+  @include tabletAndDesktop {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: -0.01em;
   }
 }
 
-.buttonOnClickModal {
+.text {
+  // font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+    
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 28px;
-  gap: 10px;
-  margin: 0 auto;
-  // position: absolute;
-  width: 248px;
-  height: 38px;
-  // left: 16px;
-  // top: 394px;
+  text-align: center;
+  letter-spacing: 0.04em;
 
-  border: 2px solid var(--bluelinksActive);
-  border-radius: 40px;
-  background: transparent;
-  color: var(--bluelinksActive);
-  //stroke: var(--bluelinksActive);
-  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  @include tabletAndDesktop {
+    
+      letter-spacing: -0.01em;
+  }
+  
+}
+
+.textBold {
+  font-weight: 700;
+}
+
+.btnWrapper {
+    justify-content: center;
+    margin-top: 20px;
+
+  @include tabletAndDesktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0px;
+    margin-top: 48px;
+
+    // row-gap: 17px;
+    // margin-left: auto;
+    // margin-right: 0px;
+  }
+  
+}
+
+.btnCancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  // gap: 8px;
+  // margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px;
+  width: 256px;
+  height: 40px;
+
+  @include tabletAndDesktop {
+    width: 129px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  // gap: 8px;
+
+  }
+  
+}
+
+.btnConfirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  // gap: 8px;
+  // margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px;
+  width: 256px;
+  height: 40px;
+  stroke: var(--white);
+
+  @include tabletAndDesktop {
+    width: 129px;
+  height: 40px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  // gap: 8px;
+  
+  }
 
   &:hover {
-    border: none;
+
     background: var(--gradientBtn);
-    color: var(--white);
-    //stroke: var(--white);
+}
+}
 
-    svg path {
-      fill:var(--white)
-
-    }
-  }
+.btnConfirm  svg path {
+  stroke:inherit;
 }
