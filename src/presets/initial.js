@@ -18,7 +18,16 @@ export const initialLocal = {
 };
 
 export const initialAuth = {
-  user: { _id: null, name: null, email: null, birthDay: null, phone: null, city: null, pets: []},
+  user: {
+    _id: null,
+    name: null,
+    email: null,
+    birthDay: null,
+    phone: null,
+    city: null,
+    pets: [],
+    avatarURL: null,
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -37,11 +46,11 @@ export const initialNotices = {
       '2year': false,
     },
     byGender: {
-      'female': false,
-      'male': false,
+      female: false,
+      male: false,
     },
-  }
-}
+  },
+};
 
 export const initialContactForm = {
   name: '',

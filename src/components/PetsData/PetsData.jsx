@@ -20,7 +20,7 @@ const PetsData = () => {
       setPets(data);
     };
     fetchPets();
-  });
+  }, []);
 
   const handleDeletePet = id => {
     const fetchDeletePet = async () => {
