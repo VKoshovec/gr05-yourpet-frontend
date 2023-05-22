@@ -49,12 +49,16 @@ const LearnMoveModal = ({data, closeMenu, openMenu }) => {
                     <li className={styled.infoContent}>{breed}</li>
                     <li className={styled.infoContent}>{location}</li>
                     <li className={styled.infoContent}>{sex}</li>
-                    <Link to={"/user"} className={styled.btnLink} onClick={handleClickBtn}>
+                    <a href="mailto:{email}" class="sc-bFqpvU bFAucp">
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li></a>
+                    <a href="tel:{phone}" class="sc-bFqpvU bFAucp">
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li></a>
+                    {/* <Link to={"/user"} className={styled.btnLink} onClick={handleClickBtn}>
                         <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li>
                     </Link>
                     <Link to={"/user"} className={styled.btnLink} onClick={handleClickBtn}>
                         <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li>
-                    </Link>
+                    </Link> */}
                 </ul>
             </div>
                 </div>
