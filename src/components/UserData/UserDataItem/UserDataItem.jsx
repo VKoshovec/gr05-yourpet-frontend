@@ -22,7 +22,7 @@ const initialStateBlur = {
 };
 
 const UserDataItem = () => {
-  const [blur, setBlur] = useState(initialStateBlur);
+  const [changeBtn, setChangeBtn] = useState(initialStateBlur);
 
   const dispatch = useDispatch();
   const user = useAuth().user;
@@ -41,16 +41,21 @@ const UserDataItem = () => {
     );
 
     dispatch(updateUser(filteredUser));
+
+    setChangeBtn(initialStateBlur);
   };
 
   const onFocus = event => {
     const { name } = event.target;
-    setBlur({ ...blur, [name]: true });
+    setChangeBtn({ ...initialStateBlur, [name]: true });
   };
 
   const onBlur = event => {
+    if (event.relatedTarget !== null) {
+      return;
+    }
     const { name } = event.target;
-    setBlur({ ...blur, [name]: false });
+    setChangeBtn({ ...initialStateBlur, [name]: false });
   };
 
   const error = error => {
@@ -94,12 +99,11 @@ const UserDataItem = () => {
             />
           </div>
           <button
-            name="name"
             type="submit"
             className={styles.user_btn}
             onSubmit={formik.handleSubmit}
           >
-            {blur.name === true ? (
+            {changeBtn.name === true ? (
               <Confirm className={styles.user_svg} />
             ) : (
               <Edit className={styles.user_svg} />
@@ -128,7 +132,7 @@ const UserDataItem = () => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.email === true ? (
+              {changeBtn.email === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
@@ -158,7 +162,7 @@ const UserDataItem = () => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.birthday === true ? (
+              {changeBtn.birthday === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
@@ -188,7 +192,7 @@ const UserDataItem = () => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.phone === true ? (
+              {changeBtn.phone === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
@@ -218,7 +222,7 @@ const UserDataItem = () => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.city === true ? (
+              {changeBtn.city === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
