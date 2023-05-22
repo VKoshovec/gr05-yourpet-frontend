@@ -31,7 +31,7 @@ const config = {
 
 const ulr = `${defautltUrs}${!ownPet?'notices':'pets'}`;
 
-const formdata = body.saveList;
+const formdata = body.image;
 
 if (ownPet) {
    formdata.append("name", body.name);

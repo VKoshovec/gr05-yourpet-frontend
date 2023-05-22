@@ -82,10 +82,10 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields, errorFi
        }
     };
 
-    const getPhoto = (photo) => {
+    const getPhoto = (photo, data) => {
       setImage(photo);
-      setSavelist(photo);
-      getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo, saveList: photo});
+      setSavelist(data);
+      getformFields({ title, name, birthday, breed, comments, price, location, sex, image: photo, saveList: data});
     };
     
     return stepnumber === 2 ? (
@@ -242,7 +242,7 @@ const AddPetForm = ({stepnumber, formtype, getformFields, initialFields, errorFi
               </p>}
           </label>}
 
-         { formtype === initialFormType[1] && 
+         {formtype === initialFormType[1] && 
          <label className={ css.addPetInput__Label }>Price
                     <Input
                     status={ errorField === 'price' && "error" }
