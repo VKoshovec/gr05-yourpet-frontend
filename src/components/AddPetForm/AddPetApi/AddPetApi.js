@@ -12,7 +12,7 @@ export const AddPetPhotoApi = async ({ photo }) => {
     }
 };
 
-export const AddPetNotice = async (user, token, body, image, type) => {
+export const AddPetNotice = async ( token, body, type) => {
 
 let ownPet;    
 
