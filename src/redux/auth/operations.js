@@ -24,7 +24,7 @@ export const signup = createAsyncThunk(
         data: { message },
       },
     }) {
-      toast.error(message);
+      // toast.error(message);
       return rejectWithValue(message);
     }
   }
@@ -33,7 +33,6 @@ export const signup = createAsyncThunk(
 export const signin = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post('api/auth/login', credentials);
       setAuthHeader(data.token);
@@ -43,7 +42,7 @@ export const signin = createAsyncThunk(
         data: { message },
       },
     }) {
-      toast.error(message);
+      // toast.error(message);
       return rejectWithValue(message);
     }
   }
@@ -60,7 +59,7 @@ export const signout = createAsyncThunk(
         data: { message },
       },
     }) {
-      toast.error(message);
+      // toast.error(message);
       return rejectWithValue(message);
     }
   }
@@ -69,7 +68,7 @@ export const signout = createAsyncThunk(
 export const refresh = createAsyncThunk(
   'auth/refresh',
   async (_, { rejectWithValue, getState }) => {
-    const { token, isLoggedIn } = getState().auth;
+    const { token } = getState().auth;
     // if (!isLoggedIn) return rejectWithValue();
     // if (token === 'null') return rejectWithValue('Unable to fetch user');
     if (!token) return rejectWithValue('Unable to fetch user');

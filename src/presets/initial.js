@@ -25,12 +25,10 @@ export const initialAuth = {
     birthDay: null,
     phone: null,
     city: null,
-    pets: [],
     avatarURL: null,
   },
   token: null,
   isLoggedIn: false,
-  isRefreshing: false,
 };
 
 export const initialNotices = {
