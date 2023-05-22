@@ -68,8 +68,7 @@ const LearnMoveModal = ({data, closeMenu, openMenu }) => {
             <button
                 className={styled.btnContact}
                 type="button"
-                // onClick={callToContact}
-                >
+            >
                 <span className={styled.btnContactText}>
                 Contact
                 </span>
