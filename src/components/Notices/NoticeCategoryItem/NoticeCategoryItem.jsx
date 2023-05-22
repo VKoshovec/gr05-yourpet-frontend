@@ -6,14 +6,12 @@ import { ReactComponent as Clock } from '../../assets/images/icon/clock.svg';
 import { ReactComponent as Female } from '../../assets/images/icon/female.svg';
 import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.svg';
 
-
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from 'components/Notices/AddPetButton/AddPetButton';
 import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
 
 
 const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite }) => {
-
   const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
 
 
@@ -39,13 +37,13 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
     {/*>*/}
     {/*  <Trash />*/}
     {/*</button>}*/}
-    <button
+    { userID === owner && <button
       className={styled.buttonDeleteOnClick}
       type='button'
-      onClick={() => deleteNotices(null, 'deleteNotices')}
+      onClick={() => deleteNotices(_id, 'deleteNotices')}
     >
       <Trash />
-    </button>
+    </button>}
     <div className={styled.imageWrapper}>
       <img className={styled.image} src={image} alt='Your pet' width='280' />
     </div>

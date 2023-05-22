@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getNoticesByCategory, addNoticesFavorite, removeNoticesFavorite } from '../../api/notices';
+import { getNoticesByCategory, addNoticesFavorite, removeNoticesFavorite, deleteNotices } from '../../api/notices';
 
 
 export const fetchNoticesByCategory = createAsyncThunk(
@@ -31,6 +31,17 @@ export const fetchRemoveNoticesFavorite = createAsyncThunk(
   async ({id, userID}, thunkAPI) => {
     try {
     await removeNoticesFavorite(id);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchDeleteNotices = createAsyncThunk(
+  'notices/deleteNotices',
+  async ( id, thunkAPI) => {
+    try {
+    await deleteNotices(id);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

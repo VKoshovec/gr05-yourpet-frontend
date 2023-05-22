@@ -9,6 +9,7 @@ import {
   fetchAddNoticesFavorite,
   fetchNoticesByCategory,
   fetchRemoveNoticesFavorite,
+  fetchDeleteNotices,
 } from '../../../redux/notices/operation';
 import { selectNotices } from '../../../redux/notices/selector';
 import { selectIsLoading } from '../../../redux/local/selectors';
@@ -21,7 +22,7 @@ const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 const NoticesCategoriesList = () => {
 
   const isLoggingIn = useSelector(selectIsLoggedIn);
-
+  const [deletedID, setDeletedID] = useState('');
   const [current, setCurrent] = useState(1);
   const [isOpenModal, setOpenModal] = useState({isOpen: false, typeModal:''})
   const [dataLearnMoveModal, setDataLearnMoveModal] = useState({})
@@ -31,7 +32,6 @@ const NoticesCategoriesList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
   const page = searchParams.get('page');
-
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices)
   const isLoading = useSelector(selectIsLoading)
@@ -42,14 +42,31 @@ const NoticesCategoriesList = () => {
   }
   const handleOpenModal = (id, type) => {
     setOpenModal( { isOpen: true, typeModal: type });
-if (!id) {
-  return
-}
+    if (type === "deleteNotices") setDeletedID(id);
+// if (!id) {
+//   return
+// }
     const desiredObject = notices.data.find(obj => obj._id === id);
 
     if (desiredObject) {
       setDataLearnMoveModal(desiredObject)
     }
+  }
+  const handleAddFavoriteClick = (id) => {
+    const { favorite } = notices.data.find(notice => notice._id === id);
+const inFavorites = favorite.includes(user._id);
+    if (inFavorites) {
+      dispatch(fetchRemoveNoticesFavorite({ id }))
+    } else {
+      dispatch(fetchAddNoticesFavorite({ id }))
+    }
+    handleCloseModal();
+    dispatch(fetchNoticesByCategory({category, search, page, }));
+  }
+
+  
+  const handleDeleteNotice = () => {
+    dispatch(fetchDeleteNotices(deletedID)).then(()=> {setDeletedID(''); handleCloseModal(); dispatch(fetchNoticesByCategory({category, search, page, }));});
   }
 
   const handleDeleteFavorite = (id, userId) => {
@@ -91,7 +108,7 @@ if (!id) {
     }
 
     dispatch(fetchNoticesByCategory({category, search, page, }));
-  }, [category, searchParams, dispatch]);
+  }, [category, searchParams, dispatch ]);
 
   return (<>
     {notices.data.length === 0 && !isLoading &&  <p>No result</p> }
@@ -120,8 +137,8 @@ if (!id) {
     </div>
 
     { isOpenModal.isOpen &&  <Modal closeModal={handleCloseModal} >
-      {isOpenModal.typeModal==='LeanMove'&& <LearnMoveModal data={dataLearnMoveModal}/> }
-      {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal onCancel={handleCloseModal}/> }
+      {isOpenModal.typeModal==='LeanMove'&& <LearnMoveModal data={dataLearnMoveModal} onClickAdd={handleAddFavoriteClick}/> }
+      {isOpenModal.typeModal ==='deleteNotices' && <DeleteNoticesModal title={dataLearnMoveModal.title} onCancel={handleCloseModal} onDelete={handleDeleteNotice}/> }
     </Modal>}
   </>)
 

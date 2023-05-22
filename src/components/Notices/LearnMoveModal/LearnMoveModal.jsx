@@ -4,12 +4,10 @@ import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg'
 import cn from 'classnames';
 import styled from './LearnMoveModal.module.scss';
 
-const LearnMoveModal = ({data, closeMenu, openMenu }) => {
+const LearnMoveModal = ({data, closeMenu, openMenu, onClickAdd }) => {
 
-    console.log(data);
-    const { id, category, image,  title, name, birthday, breed, location, sex='', email, phone,
-    comments, addAndDeleteFavorite } = data;
-
+    // console.log(data);
+    const { _id, category, image,  title, name, birthday, breed, location, sex='', email, phone, comments, addAndDeleteFavorite } = data;
     const handleClickBtn = () => {
         if(openMenu) closeMenu(false)
     }
@@ -81,7 +79,8 @@ const LearnMoveModal = ({data, closeMenu, openMenu }) => {
             <button
                 className={styled.btnAdd}
                 type="button"
-                onClick={addAndDeleteFavorite}
+                onClick={() => onClickAdd(_id)}
+                // onClick={addAndDeleteFavorite}
             >
                 <span className={styled.btnAddText}>
                 Add to

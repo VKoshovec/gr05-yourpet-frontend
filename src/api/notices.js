@@ -28,3 +28,7 @@ export const addNoticesFavorite = async (id ) => {
 export const removeNoticesFavorite = async (id ) => {
   await axios.delete(`api/notices/favorite/${id}`);
 }
+
+export const deleteNotices = async (id) => {
+  await axios.delete(`api/notices/${id}`);
+}
