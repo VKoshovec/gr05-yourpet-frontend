@@ -152,8 +152,7 @@
 
 .info {
     display: flex;
-    // flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 2px 4px;
     gap: 4px;
