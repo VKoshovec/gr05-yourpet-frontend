@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 import cn from 'classnames';
 import styled from './LearnMoveModal.module.scss';
 
-const LearnMoveModal = ({data}) => {
+const LearnMoveModal = ({data, closeMenu, openMenu }) => {
 
     console.log(data);
     const { id, category, image,  title, name, birthday, breed, location, sex='', email, phone,
     comments, addAndDeleteFavorite } = data;
+
+    const handleClickBtn = () => {
+        if(openMenu) closeMenu(false)
+    }
 
     return(
         <div className={styled.modalWrapper}>
@@ -44,8 +49,16 @@ const LearnMoveModal = ({data}) => {
                     <li className={styled.infoContent}>{breed}</li>
                     <li className={styled.infoContent}>{location}</li>
                     <li className={styled.infoContent}>{sex}</li>
-                    <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li>
-                    <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li>
+                    <a href="mailto:{email}" class="sc-bFqpvU bFAucp">
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li></a>
+                    <a href="tel:{phone}" class="sc-bFqpvU bFAucp">
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li></a>
+                    {/* <Link to={"/user"} className={styled.btnLink} onClick={handleClickBtn}>
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{email}</li>
+                    </Link>
+                    <Link to={"/user"} className={styled.btnLink} onClick={handleClickBtn}>
+                        <li className={cn(styled.infoContent, styled.infoContentLink)}>{phone}</li>
+                    </Link> */}
                 </ul>
             </div>
                 </div>
@@ -59,12 +72,12 @@ const LearnMoveModal = ({data}) => {
             <button
                 className={styled.btnContact}
                 type="button"
-                // onClick={callToContact}
             >
                 <span className={styled.btnContactText}>
                 Contact
                 </span>
             </button>
+
             <button
                 className={styled.btnAdd}
                 type="button"
