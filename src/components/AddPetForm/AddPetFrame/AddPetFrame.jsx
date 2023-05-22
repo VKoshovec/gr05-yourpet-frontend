@@ -61,7 +61,7 @@ const AddPetFrame = () => {
         } 
         
         if(step === 3 && isValidFields(fields, step , formType)[0] === true) {
-            AddPetNotice( user, token, fields, testUrl, formType).then((res) => { 
+            AddPetNotice( token, fields, formType).then((res) => { 
                 if (res.status === 200 || res.status === 201) {
                     navigate() 
                  }
