@@ -103,6 +103,7 @@
 
 .addPetImgLabel {
    display: flex;
+   flex-direction: row;
    align-items: center;
    margin-bottom: 24px;
 
@@ -113,6 +114,13 @@
 }
 
 .addPetImgLabelBig{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        & span {
+            margin-right: 33px;
+        }
     @media screen and (min-width: 768px) {
         display: flex;
         flex-direction: row;
@@ -131,11 +139,6 @@
 :global(.ant-radio-button-wrapper) {
     background-color: transparent !important;
 }
-
-:global(.ant-input):focus {
-    // border-color: red !important;
-}
-
 
 .mainContainer {
     @media screen and (min-width: 768px) {
@@ -209,11 +212,11 @@
 
 }
 
-.ant-upload-wrapper
-.ant-upload-picture-card-wrapper 
-.ant-upload-list
-.ant-upload-list-picture-card 
-.ant-upload-list-item-container
+// .ant-upload-wrapper
+// .ant-upload-picture-card-wrapper 
+// .ant-upload-list
+// .ant-upload-list-picture-card 
+// .ant-upload-list-item-container
 
 :glonal(.ant-upload-list-item-container ) {
     width: 182px !important;
@@ -223,22 +226,115 @@
 
 :glonal(.ant-upload-wrapper) {
     border-radius: 40px !important;
+    display: inherit !important;
 }
 :glonal(.ant-upload-list-item-thumbnail) {
     border-radius: 40px !important;
 }
-:glonal(.ant-upload-list-picture-card) {
+
+:glonal(.ant-upload-list-item-done)::before {
     border-radius: 40px !important;
+    overflow: hidden !important;
 }
 
-:glonal(.ant-upload-list-item-image){
+:glonal(.ant-upload-list-item)::before{
     border-radius: 40px !important;
+    overflow: hidden !important;
 }
+
+:glonal(.ant-upload-list-item-thumbnail) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    & a{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+
+    & img{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+}
+
+:glonal(.ant-upload-list-item .ant-upload-list-item-done)::before {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    & a{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+}
+
+:glonal(.ant-upload-list-picture-card) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    & a{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+}
+
+:glonal(.ant-upload-list) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    & a{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+}
+
+:glonal(.ant-upload-list-item-done) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    & a{
+        border-radius: 20px !important;
+        overflow: hidden !important;
+    }
+}
+
+:glonal(.ant-upload-list-item) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+
+}
+
+:glonal(.ant-upload-list-item-image) {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+// .thumaAntd {
+//     width: 112px !important;
+//     height: 112px !important;
+//     padding: 0px;
+//     border-radius: 40px !important;
+//     border-color:  transparent !important;
+//     overflow: hidden !important;
+
+//     @media screen and (min-width: 768px) {
+//         width: 182px !important;
+//         height: 182px !important;
+//         padding: 0px;
+//         border-radius: 40px !important;
+//         overflow: hidden !important;
+//     }
+// }
+// :glonal(.ant-upload-list-item){
+//     border-radius: 40px !important;
+//     overflow: hidden !important;
+// }
 
 .errorSex { border: solid 1px red; 
   border-radius: 20px; 
   padding: 7px 
-
-  
 };
 
+// .addPetImgUpload{
+//     display: flex !important;
+//     justify-content:center !important;
+//     align-items: center !important;
+//     padding: 0px !important;
+//     margin: 0px !important;
+//     border-radius: 40px !important;
+//     overflow: hidden !important;
+// }
