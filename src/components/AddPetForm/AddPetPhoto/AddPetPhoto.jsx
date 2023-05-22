@@ -14,12 +14,15 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
       initielFields["saveList"] ? initielFields["saveList"] : []
     );
 
-    const onChange = ({ file, fileList: newFileList, event }) => {
+    const onChange = ({ fileList: newFileList }) => {
 
-        formData.append("pet", newFileList[0].originFileObj);
+        if (newFileList.length !== 0) {
+          formData.append("pet", newFileList[0].originFileObj);
+          getPhoto(formData, newFileList);
+        }
+        
         setFileList(newFileList);
-        getPhoto(formData);
-       
+        
     };
 
     return (
@@ -33,13 +36,17 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
         css.addPetImgLabelBig }>
         <span>Add photo</span>
 
-        <ImgCrop rotationSlider >
+        <ImgCrop rotationSlider>
             <Upload
+            action={""}
             listType="picture-card"
             fileList={fileList}
             onChange={ onChange }
             maxCount={ 1 }
             className={ css.addPetImgUpload }
+            customRequest={({ onSuccess }) => 
+            onSuccess("ok")
+            }
             >
                        { fileList.length === 0 && 
                        <Button className={ css.addPetImgButton } >
