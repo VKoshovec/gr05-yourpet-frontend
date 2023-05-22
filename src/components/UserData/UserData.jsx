@@ -11,8 +11,6 @@ import UserDataItem from './UserDataItem/UserDataItem';
 import { updateAvatar } from '../../redux/auth/operations';
 import { getAvatarUrl } from 'redux/auth/selectors';
 
-import { useAuth } from 'services/hooks';
-
 import { ReactComponent as LogOut } from '../assets/images/icon/logout.svg';
 import { ReactComponent as LogOutW } from '../assets/images/icon/logout-white.svg';
 import { ReactComponent as EditPfoto } from '../assets/images/icon/edit-photo.svg';
@@ -27,7 +25,6 @@ const UserData = () => {
   const [fromPage, setFromPage] = useState(false);
 
   const fileRef = useRef(null);
-  const user = useAuth().user;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -73,8 +70,6 @@ const UserData = () => {
             initialValues={initialValues}
             validationSchema={userPhotoValidationSchema}
             onSubmit={(values, actions) => {
-              // console.log('submit', values);
-
               setBtnChange(false);
               handleChangeAvatar(values);
             }}
@@ -87,10 +82,9 @@ const UserData = () => {
                       <PreviewImage image={values.image} />
                     ) : (
                       <img
+                        className={styles.user_img}
                         src={avatarImg}
                         alt="Default"
-                        width="182px"
-                        height="182px"
                       />
                     )}
                   </div>
@@ -130,7 +124,7 @@ const UserData = () => {
             )}
           </Formik>
           <div className={styles.input_container}>
-            <UserDataItem user={user} />
+            <UserDataItem />
 
             <button
               type="button"

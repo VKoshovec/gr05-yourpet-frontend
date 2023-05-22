@@ -71,6 +71,12 @@
   overflow: hidden;
 }
 
+.user_img {
+  width: 182px;
+  height: 182px;
+  object-fit: cover;
+}
+
 .user_inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -279,10 +285,6 @@
     font-size: 36px;
     line-height: 49px;
   }
-
-  // @media screen and (min-width: 1280px) {
-  //   font-size: 36px;
-  // }
 }
 
 .user_modal_redirect_p {
@@ -334,7 +336,5 @@
 
   @media screen and (min-width: 768px) {
     padding: 8px 20px;
-    // width: 129px;
-    // height: 40px;
   }
 }

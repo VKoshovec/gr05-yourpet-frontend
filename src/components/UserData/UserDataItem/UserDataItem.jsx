@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { updateUser } from 'redux/auth/operations';
+import { useAuth } from 'services/hooks';
 
 import { ReactComponent as Confirm } from '../../assets/images/icon/check.svg';
 import { ReactComponent as Edit } from '../../assets/images/icon/edit-2.svg';
@@ -20,10 +21,11 @@ const initialStateBlur = {
   city: false,
 };
 
-const UserDataItem = ({ user }) => {
-  const [blur, setBlur] = useState(initialStateBlur);
+const UserDataItem = () => {
+  const [changeBtn, setChangeBtn] = useState(initialStateBlur);
 
   const dispatch = useDispatch();
+  const user = useAuth().user;
 
   const initialValues = {
     name: user.name || '',
@@ -33,18 +35,27 @@ const UserDataItem = ({ user }) => {
     city: user.city || '',
   };
 
-  const updateUserInfo = user => {
-    dispatch(updateUser(user));
+  const updateUserInfo = values => {
+    let filteredUser = Object.fromEntries(
+      Object.entries(values).filter(([_, item]) => item !== '')
+    );
+
+    dispatch(updateUser(filteredUser));
+
+    setChangeBtn(initialStateBlur);
   };
 
   const onFocus = event => {
     const { name } = event.target;
-    setBlur({ ...blur, [name]: true });
+    setChangeBtn({ ...initialStateBlur, [name]: true });
   };
 
   const onBlur = event => {
+    if (event.relatedTarget !== null) {
+      return;
+    }
     const { name } = event.target;
-    setBlur({ ...blur, [name]: false });
+    setChangeBtn({ ...initialStateBlur, [name]: false });
   };
 
   const error = error => {
@@ -59,7 +70,6 @@ const UserDataItem = ({ user }) => {
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
-      // console.log('submit', values);
       updateUserInfo(values);
     },
     validationSchema: yup.object().shape({
@@ -89,23 +99,19 @@ const UserDataItem = ({ user }) => {
             />
           </div>
           <button
-            name="name"
             type="submit"
             className={styles.user_btn}
             onSubmit={formik.handleSubmit}
           >
-            {blur.name === true ? (
+            {changeBtn.name === true ? (
               <Confirm className={styles.user_svg} />
             ) : (
               <Edit className={styles.user_svg} />
             )}
           </button>
-          {
-            formik.errors.name &&
-              formik.touched.name &&
-              error(formik.errors.name)
-            // <div className={styles.user_error}>{formik.errors.name}</div>
-          }
+          {formik.errors.name &&
+            formik.touched.name &&
+            error(formik.errors.name)}
         </div>
 
         <div className={styles.user_form_wrapper}>
@@ -126,19 +132,15 @@ const UserDataItem = ({ user }) => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.email === true ? (
+              {changeBtn.email === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {
-              formik.errors.email &&
-                formik.touched.email &&
-                error(formik.errors.email)
-
-              // <div className={styles.user_error}>{formik.errors.email}</div>
-            }
+            {formik.errors.email &&
+              formik.touched.email &&
+              error(formik.errors.email)}
           </div>
         </div>
 
@@ -160,7 +162,7 @@ const UserDataItem = ({ user }) => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.birthday === true ? (
+              {changeBtn.birthday === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
@@ -190,18 +192,15 @@ const UserDataItem = ({ user }) => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.phone === true ? (
+              {changeBtn.phone === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {
-              formik.errors.phone &&
-                formik.touched.phone &&
-                error(formik.errors.phone)
-              // <div className={styles.user_error}>{formik.errors.phone}</div>
-            }
+            {formik.errors.phone &&
+              formik.touched.phone &&
+              error(formik.errors.phone)}
           </div>
         </div>
 
@@ -223,18 +222,15 @@ const UserDataItem = ({ user }) => {
               className={styles.user_btn}
               onSubmit={formik.handleSubmit}
             >
-              {blur.city === true ? (
+              {changeBtn.city === true ? (
                 <Confirm className={styles.user_svg} />
               ) : (
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {
-              formik.errors.city &&
-                formik.touched.city &&
-                error(formik.errors.city)
-              // <div className={styles.user_error}>{formik.errors.city}</div>
-            }
+            {formik.errors.city &&
+              formik.touched.city &&
+              error(formik.errors.city)}
           </div>
         </div>
       </form>
