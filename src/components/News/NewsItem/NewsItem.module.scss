@@ -4,8 +4,7 @@
   margin-top: 24px;
   display: flex;
   flex-direction: column;
-  //   align-items: center;
-  //   justify-content: center;
+
   row-gap: 24px;
 
   @include tablet {
@@ -97,7 +96,7 @@
   //   padding: 16px 0 40px;
   margin-bottom: 40px;
   font-family: 'Manrope';
-  // min-height: 132px;
+  min-height: 100px;
 
   font-weight: 400;
   font-size: 16px;

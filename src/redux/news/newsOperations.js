@@ -8,8 +8,8 @@ export const getNews = createAsyncThunk(
       const data = await getAllNews(params);
       console.log('data-operation =========', data);
       return data;
-    } catch ({ response }) {
-      return thunkAPI.rejectWithValue(response.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

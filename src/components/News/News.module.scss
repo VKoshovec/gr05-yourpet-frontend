@@ -2,7 +2,6 @@
 
 .sectionNews {
   padding-top: 40px;
-  padding-bottom: 147px;
 
   @include tablet {
     padding-top: 40px;
@@ -10,6 +9,12 @@
   }
 
   @include desktop {
-    margin-bottom: 60px;
   }
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 0 0;
+  padding-bottom: 60px;
 }
