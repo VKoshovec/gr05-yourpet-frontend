@@ -38,6 +38,7 @@ if (ownPet) {
    formdata.append("birthday", dateForSubmit);
    formdata.append("breed", body.breed);
    formdata.append("comments", body.comments);
+   
 }
 
 if (!ownPet) {
