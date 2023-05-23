@@ -81,29 +81,12 @@ const NoticesCategoriesList = () => {
   const handleOpenModal = (id, type) => {
     setOpenModal({ isOpen: true, typeModal: type });
     if (type === 'deleteNotices') setDeletedID(id);
-// if (!id) {
-//   return
-// }
     const desiredObject = notices.data.find(obj => obj._id === id);
 
     if (desiredObject) {
       setDataLearnMoveModal(desiredObject);
     }
   };
-
-  const handleAddFavoriteClick = (id) => {
-    const { favorite } = notices.data.find(notice => notice._id === id);
-    const inFavorites = favorite.includes(user._id);
-    if (inFavorites) {
-      dispatch(fetchRemoveNoticesFavorite({ id }));
-    } else {
-      dispatch(fetchAddNoticesFavorite({ id }));
-    }
-
-    handleCloseModal();
-    dispatch(fetchNoticesByCategory({ category, search, page }));
-  };
-
 
   const handleDeleteNotice = () => {
     dispatch(fetchDeleteNotices(deletedID)).then(() => {
@@ -114,7 +97,6 @@ const NoticesCategoriesList = () => {
   };
 
   const handleDeleteFavorite = (id, userId) => {
-
     dispatch(fetchRemoveNoticesFavorite({ id, userId }));
   };
 
@@ -165,10 +147,10 @@ const NoticesCategoriesList = () => {
 
   }, [category, searchParams, dispatch]);
 
-  useEffect(()=> {
-    dispatch(setFilter(initialNotices.additionalFilter))
+  useEffect(() => {
+    dispatch(setFilter(initialNotices.additionalFilter));
 
-  }, [category])
+  }, [category]);
 
   return (<>
     {notices.data.length === 0 && !isLoading && <p className={styled.noResult}>No result</p>}
@@ -204,10 +186,17 @@ const NoticesCategoriesList = () => {
 
     {isOpenModal.isOpen && <Modal closeModal={handleCloseModal}>
       {isOpenModal.typeModal === 'LeanMove' &&
-        <LearnMoveModal data={dataLearnMoveModal} onClickAdd={handleAddFavoriteClick} />}
+        <LearnMoveModal data={dataLearnMoveModal}
+                        addFavorite={handleAddFavorite}
+                        deleteFavorite={handleDeleteFavorite}
+                        userID={user._id}
+                        closeModal={handleCloseModal}
+        />}
       {isOpenModal.typeModal === 'deleteNotices' &&
-        <DeleteNoticesModal title={dataLearnMoveModal.title} onCancel={handleCloseModal}
-                            onDelete={handleDeleteNotice} />}
+        <DeleteNoticesModal title={dataLearnMoveModal.title}
+                            onCancel={handleCloseModal}
+                            onDelete={handleDeleteNotice}
+        />}
     </Modal>}
   </>);
 

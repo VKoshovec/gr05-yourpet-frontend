@@ -263,7 +263,10 @@
     }
 }
 
-.btnAdd {
+:global(.addFavorite) {
+
+  &.btnAdd {
+    position: initial;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,14 +289,22 @@
       margin-right: 0;
     }
 
+    svg path {
+      stroke: var(--white);
+      //fill: var(--white);
+    }
+
     &:hover {
       background: var(--gradientBtn);
     }
+  }
+
 }
 
-.btnAdd  svg path {
-  stroke:inherit;
-}
+
+//.btnAdd  svg path {
+//  stroke:inherit;
+//}
 
 .btnLink {
   text-decoration: none;

@@ -4,7 +4,7 @@ import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg'
 import cn from 'classnames';
 
 
-const AddToFavoriteButton = ({  deleteFavorite, addFavorite, userID, data }) => {
+const AddToFavoriteButton = ({  deleteFavorite, addFavorite, userID, data, textVisible, onClickBtn, classStyled }) => {
 
   const [isFavorite, setIsFavorite]= useState(false)
 
@@ -18,26 +18,24 @@ const AddToFavoriteButton = ({  deleteFavorite, addFavorite, userID, data }) => 
     setIsFavorite(false)
   }, [data])
 
-
-
-
   const handleClickFavorite = () => {
+    if (onClickBtn) {
+      onClickBtn()
+    }
     if(isFavorite) {
       deleteFavorite(data._id, userID)
       return
     }
     addFavorite(data._id, userID)
-
   }
-
-
 
   return (
     <button
-      className={cn(styled.buttonOnClick, {[styled.isFavorite]:isFavorite})}
+      className={cn('addFavorite',styled.buttonOnClick, classStyled, {[styled.isFavorite]:isFavorite})}
       type='button'
       onClick={handleClickFavorite}
     >
+      {textVisible ? (isFavorite ? <span className={styled.btnAddText}>Remove</span> : <span className={styled.btnAddText}>Add to </span>) : null}
       <HeartIcon />
     </button>
   )
