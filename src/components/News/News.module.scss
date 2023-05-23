@@ -4,17 +4,13 @@
   padding-top: 40px;
 
   @include tablet {
-    padding-top: 40px;
-    padding-bottom: 109px;
-  }
-
-  @include desktop {
+    padding-top: 80px;
   }
 }
 
 .paginationWrapper {
   display: flex;
   justify-content: center;
-  margin: 60px 0 0 0;
-  padding-bottom: 60px;
+  // margin: 60px 0 0 0;
+  padding: 60px 0 109px;
 }

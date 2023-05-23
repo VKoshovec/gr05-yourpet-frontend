@@ -1,14 +1,12 @@
 @import '../../../styles/mixins/media.scss';
 
 .listNews {
-  margin-top: 24px;
   display: flex;
   flex-direction: column;
 
   row-gap: 24px;
 
   @include tablet {
-    margin-top: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -85,6 +83,7 @@
   letter-spacing: -0.01em;
 
   color: var(--black);
+
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -93,20 +92,19 @@
 }
 
 .itemText {
-  //   padding: 16px 0 40px;
   margin-bottom: 40px;
   font-family: 'Manrope';
-  min-height: 100px;
+  min-height: 86px;
 
   font-weight: 400;
   font-size: 16px;
-  line-height: 22px;
+  line-height: calc(22 / 16);
 
   color: var(--black);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 

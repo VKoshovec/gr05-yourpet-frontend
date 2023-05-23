@@ -23,6 +23,12 @@
   border-radius: 40px;
   padding: 16px;
 
+  &:not(:last-child) {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 20px;
+    }
+  }
+
   @include tablet {
     flex-basis: calc((100% - 32px) / 2);
   }
