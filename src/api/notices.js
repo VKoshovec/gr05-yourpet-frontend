@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getNoticesByCategory = async ({ category, search, page, gender }) => {
+export const getNoticesByCategory = async ({ category, search, page, gender, age }) => {
   const { data } = await axios.get(`api/notices/${category}`, {
-    params : { search, page, perpage : 12, gender },
+    params : { search, page, perpage : 12, gender, age },
   })
   return data;
   };
