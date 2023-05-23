@@ -25,6 +25,11 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
         
     };
 
+    const onRemove = () => {   
+      setFileList([]);
+      getPhoto("", []);
+    }
+
     return (
       <div>
       <div className={ errorField ==='image' ? css.errorSex : "" }>
@@ -36,12 +41,14 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
         css.addPetImgLabelBig }>
         <span>Add photo</span>
 
+        <div className={ css.thumaAntd }>
         <ImgCrop rotationSlider>
             <Upload
             action={""}
             listType="picture-card"
             fileList={fileList}
             onChange={ onChange }
+            onRemove={ onRemove }
             maxCount={ 1 }
             className={ css.addPetImgUpload }
             customRequest={({ onSuccess }) => 
@@ -54,6 +61,7 @@ const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessa
                        </Button>}
             </Upload>
         </ImgCrop>
+        </div>
        </div>
       </div>
       {errorField === 'image' && <p style={{ color:'red', marginLeft: '15px', marginTop: '0px', marginBottom: '5px', fontSize: '12px' }}>
