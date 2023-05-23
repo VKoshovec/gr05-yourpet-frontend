@@ -40,6 +40,7 @@ const NoticesCategoriesList = () => {
   const handleCloseModal = () => {
     setOpenModal(prevState => ({ ...prevState, isOpen: false }));
   }
+
   const handleOpenModal = (id, type) => {
     setOpenModal( { isOpen: true, typeModal: type });
     if (type === "deleteNotices") setDeletedID(id);
@@ -52,6 +53,7 @@ const NoticesCategoriesList = () => {
       setDataLearnMoveModal(desiredObject)
     }
   }
+
   const handleAddFavoriteClick = (id) => {
     const { favorite } = notices.data.find(notice => notice._id === id);
 const inFavorites = favorite.includes(user._id);
@@ -60,11 +62,12 @@ const inFavorites = favorite.includes(user._id);
     } else {
       dispatch(fetchAddNoticesFavorite({ id }))
     }
+
     handleCloseModal();
     dispatch(fetchNoticesByCategory({category, search, page, }));
   }
 
-  
+
   const handleDeleteNotice = () => {
     dispatch(fetchDeleteNotices(deletedID)).then(()=> {setDeletedID(''); handleCloseModal(); dispatch(fetchNoticesByCategory({category, search, page, }));});
   }
@@ -108,6 +111,9 @@ const inFavorites = favorite.includes(user._id);
     }
 
     dispatch(fetchNoticesByCategory({category, search, page, }));
+   if (!page) {
+     setCurrent(1)
+   }
   }, [category, searchParams, dispatch ]);
 
   return (<>
@@ -131,7 +137,7 @@ const inFavorites = favorite.includes(user._id);
         currentPage={current}
         totalItemsPage={notices.total}
         onChangePage={onChangePage}
-        itemsPerPage={6}
+        itemsPerPage={12}
         hideOnSinglePage
       />
     </div>
