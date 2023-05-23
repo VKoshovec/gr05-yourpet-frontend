@@ -5,8 +5,21 @@ export const getPets = createAsyncThunk(
   'pets/getAll',
   async (_, { rejectWithValue }) => {
     try {
-      // const { data } = await axios.get('/pets');
-      // return data;
+      const { data } = await axios.get(`api/pets`);
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
+  }
+);
+
+export const deletePets = createAsyncThunk(
+  'pets/delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`api/pets/${id}`);
+
+      return data;
     } catch ({ message }) {
       return rejectWithValue(message);
     }
@@ -50,69 +63,79 @@ export const getNoticesCategory = createAsyncThunk(
 );
 
 export const fetchAddFavorite = createAsyncThunk(
-  "notices/addFavorite",
-  async({category, image, location, date, sex}, {rejectWithValue, getState}) => {
-      try {
-        const {auth} = getState();
-        const { data } = await axios.post('/notices/addFavorite', {category, image, location, date, sex}, auth.token);
-        return data;
-      }
-      catch ({ message }) {
-        return rejectWithValue(message);
-      }
+  'notices/addFavorite',
+  async (
+    { category, image, location, date, sex },
+    { rejectWithValue, getState }
+  ) => {
+    try {
+      const { auth } = getState();
+      const { data } = await axios.post(
+        '/notices/addFavorite',
+        { category, image, location, date, sex },
+        auth.token
+      );
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
   },
   {
-      condition: ({id}, {getState}) => {
-          const {notices} = getState();
-          const isPresentNoticeFavorite = notices.items.find(element =>
-              element.id === id );
+    condition: ({ id }, { getState }) => {
+      const { notices } = getState();
+      const isPresentNoticeFavorite = notices.items.find(
+        element => element.id === id
+      );
 
-          if (isPresentNoticeFavorite) {
-              alert('Notice is already exist!')
-              return false;
-          }
+      if (isPresentNoticeFavorite) {
+        alert('Notice is already exist!');
+        return false;
       }
+    },
   }
 );
 
 export const fetchDeleteFavorite = createAsyncThunk(
-  "notices/deleteFavorite",
-  async({id}, {rejectWithValue, getState}) => {
-      try {
-          const {auth} = getState();
-          const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
-          return data;
-      }
-      catch ({ message }) {
-        return rejectWithValue(message);
-      }
+  'notices/deleteFavorite',
+  async ({ id }, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const { data } = await axios.delete(
+        '/notices/deleteFavorite',
+        id,
+        auth.token
+      );
+      return data;
+    } catch ({ message }) {
+      return rejectWithValue(message);
+    }
   }
 );
 
 export const fetchAddNotice = createAsyncThunk(
-  "notices/fetchAddNotice",
-  async({id}, {rejectWithValue, getState}) => {
-  //     try {
-  //         const {auth} = getState();
-  //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
-  //         return data;
-  //     }
-  //     catch ({ message }) {
-  //       return rejectWithValue(message);
-  //     }
+  'notices/fetchAddNotice',
+  async ({ id }, { rejectWithValue, getState }) => {
+    //     try {
+    //         const {auth} = getState();
+    //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
+    //         return data;
+    //     }
+    //     catch ({ message }) {
+    //       return rejectWithValue(message);
+    //     }
   }
 );
 
 export const fetchDeleteNotice = createAsyncThunk(
-  "notices/deleteNotice",
-  async({id}, {rejectWithValue, getState}) => {
-  //     try {
-  //         const {auth} = getState();
-  //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
-  //         return data;
-  //     }
-  //     catch ({ message }) {
-  //       return rejectWithValue(message);
-  //     }
+  'notices/deleteNotice',
+  async ({ id }, { rejectWithValue, getState }) => {
+    //     try {
+    //         const {auth} = getState();
+    //         const { data } = await axios.delete('/notices/deleteFavorite', id, auth.token);
+    //         return data;
+    //     }
+    //     catch ({ message }) {
+    //       return rejectWithValue(message);
+    //     }
   }
 );

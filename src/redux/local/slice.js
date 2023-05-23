@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialLocal } from '../../presets/initial';
 import { signup, signin, signout, refresh } from '../auth/operations';
-import { getPets, getNews } from '../data/operations';
-import { fetchNoticesByCategory, fetchRemoveNoticesFavorite, fetchAddNoticesFavorite} from '../notices/operation';
+import { getNews } from '../data/operations';
+import {
+  fetchNoticesByCategory,
+  fetchRemoveNoticesFavorite,
+  fetchAddNoticesFavorite,
+} from '../notices/operation';
 
 const handlePending = state => {
   state.error = null;
@@ -38,7 +42,6 @@ const localSlice = createSlice({
       .addCase(signout.fulfilled, handleFulfilled)
       .addCase(refresh.fulfilled, handleFulfilled)
 
-      .addCase(getPets.fulfilled, handleFulfilled)
       .addCase(getNews.fulfilled, handleFulfilled)
 
       .addCase(fetchNoticesByCategory.fulfilled, handleFulfilled)
@@ -50,7 +53,7 @@ const localSlice = createSlice({
       .addCase(signin.pending, handlePending)
       .addCase(signout.pending, handlePending)
       .addCase(refresh.pending, handlePending)
-      .addCase(getPets.pending, handlePending)
+
       .addCase(getNews.pending, handlePending)
 
       .addCase(fetchNoticesByCategory.pending, handlePending)
@@ -63,17 +66,15 @@ const localSlice = createSlice({
       .addCase(signout.rejected, handleRejected)
       .addCase(refresh.rejected, handleRejected)
 
-      .addCase(getPets.rejected, handleRejected)
       .addCase(getNews.rejected, handleRejected)
 
       .addCase(fetchNoticesByCategory.rejected, handleRejected)
       .addCase(fetchAddNoticesFavorite.rejected, (state, { payload }) => {
-        state.error = 'Available only to registered users'
+        state.error = 'Available only to registered users';
         state.isLoading = false;
       })
 
-      .addCase(fetchRemoveNoticesFavorite.rejected, handleRejected)
-
+      .addCase(fetchRemoveNoticesFavorite.rejected, handleRejected);
   },
 });
 
