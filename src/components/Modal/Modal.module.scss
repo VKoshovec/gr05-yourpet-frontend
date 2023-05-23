@@ -1,3 +1,5 @@
+@import "../../styles/mixins/media.scss";
+
 .overlay {
   position: fixed;
   top: 0;
@@ -29,10 +31,16 @@
 
 .modalBtn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 12px;
+  right: 12px;
   align-self: end;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  
+  @include tabletAndDesktop {
+    top: 24px;
+    right: 24px;
+
+  }
 }

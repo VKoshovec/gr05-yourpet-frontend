@@ -16,7 +16,7 @@ import { selectIsLoading } from '../../../redux/local/selectors';
 import { Modal } from '../../Modal/Modal';
 import LearnMoveModal from '../LearnMoveModal/LearnMoveModal';
 import DeleteNoticesModal from '../DeleteNoticesModal/DeleteNoticesModal';
-
+import AddPetButton from '../../Notices/AddPetButton/AddPetButton';
 const categories = ['sell', 'lost-found', 'for-free', 'favorite', 'own'];
 
 const NoticesCategoriesList = () => {
@@ -118,6 +118,7 @@ const inFavorites = favorite.includes(user._id);
 
   return (<>
     {notices.data.length === 0 && !isLoading &&  <p className={styled.noResult}>No result</p> }
+    <div className={styled.listWrapper}>
     <ul className={styled.list}>
       {notices?.data.map((items) => {
         return( <NoticeCategoryItem
@@ -132,6 +133,11 @@ const inFavorites = favorite.includes(user._id);
         />)
       })}
     </ul>
+    
+    <div className={styled.addPetBtnWrapper}>
+      <AddPetButton className={styled.addPetBtnIcon} />
+    </div>
+    </div>
     <div className={styled.paginationWrapper}>
       <CustomPagination
         currentPage={current}

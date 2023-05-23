@@ -61,12 +61,12 @@ const LearnMoveModal = ({ data, closeMenu, openMenu, onClickAdd }) => {
               <li className={styled.infoContent}>{location}</li>
               <li className={styled.infoContent}>{sex}</li>
               <li className={cn(styled.infoContent, styled.infoContentLink)}>
-                <a href='mailto:{email}' className='sc-bFqpvU bFAucp'>
+                <a href='mailto:{email}' className={cn('sc-bFqpvU bFAucp', styled.infoContentLink)}>
                   {email}
                 </a>
               </li>
               <li className={cn(styled.infoContent, styled.infoContentLink)}>
-                <a href='tel:{phone}' className='sc-bFqpvU bFAucp'>
+                <a href='tel:{phone}' className={cn('sc-bFqpvU bFAucp', styled.infoContentLink)} >
                   {phone}
                 </a>
               </li>
