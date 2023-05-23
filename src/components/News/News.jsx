@@ -36,13 +36,21 @@ const News = () => {
     dispatch(getNews({ page: page, search: search, perpage: 6 }));
   }, [dispatch, page, search]);
 
+  const resetCurrent = () => {
+    setCurrent(1);
+  };
+
   const handleSearchSubmit = value => {
     if (!value) {
+      resetCurrent();
+      // setCurrent(1);
       return setState({ search: '' });
     }
     setState(prevState => {
       if (prevState.search !== value) {
         setState({ search: value, page: 1 });
+        resetCurrent();
+        // setCurrent(1);
       }
 
       return setState({ search: value });
@@ -55,6 +63,7 @@ const News = () => {
     if (page) {
       updatedSearchParams = { ...state, page };
     }
+
     setState(updatedSearchParams);
     setCurrent(page);
   };
@@ -62,9 +71,14 @@ const News = () => {
   return (
     <>
       <Section className={styles.sectionNews}>
-        <CustomSearch title={titlePageNews} onSearch={handleSearchSubmit} />
-        {isLoading && <Loader />}
-        <NewsItem items={itemsNews} />
+        <div className={styles.section}>
+          <CustomSearch title={titlePageNews} onSearch={handleSearchSubmit} />
+          {isLoading && <Loader />}
+          {itemsNews.length === 0 && !isLoading && (
+            <p className={styles.noResult}>No result</p>
+          )}
+          <NewsItem items={itemsNews} />
+        </div>
       </Section>
       <Section>
         <div className={styles.paginationWrapper}>

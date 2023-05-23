@@ -1,7 +1,7 @@
 @import '../../styles/mixins/media.scss';
 
-.sectionNews {
-  padding-top: 40px;
+.section {
+  padding: 40px 20px 0 20px;
 
   @include tablet {
     padding-top: 80px;
@@ -13,4 +13,10 @@
   justify-content: center;
   // margin: 60px 0 0 0;
   padding: 60px 0 109px;
+}
+
+.noResult {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
 }

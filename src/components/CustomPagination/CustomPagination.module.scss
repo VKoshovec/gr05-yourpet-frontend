@@ -1,0 +1,49 @@
+@import '../../styles/mixins/media.scss';
+
+:global(
+    .ant-pagination
+      .ant-pagination-jump-next
+      .ant-pagination-item-container
+      .ant-pagination-item-ellipsis
+  ) {
+  display: flex;
+}
+
+:global(
+    .ant-pagination
+      .ant-pagination-jump-next
+      .ant-pagination-item-container
+      .ant-pagination-item-ellipsis
+  ) {
+  //   align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(
+    .ant-pagination .ant-pagination-jump-prev .ant-pagination-item-container
+  ) {
+  display: flex;
+}
+
+:global(
+    .ant-pagination
+      .ant-pagination-jump-prev
+      .ant-pagination-item-container
+      .ant-pagination-item-ellipsis
+  ) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.ant-pagination.customPagination) {
+  max-width: 100%;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  padding: 12px 20px;
+
+  @include tabletAndDesktop {
+    max-width: 100%;
+  }
+}
