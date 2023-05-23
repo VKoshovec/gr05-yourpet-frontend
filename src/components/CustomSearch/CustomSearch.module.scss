@@ -1,4 +1,4 @@
-@import "./src/styles/mixins/media";
+@import './src/styles/mixins/media';
 
 .wrapper {
   max-width: 608px;
@@ -9,15 +9,13 @@
   text-align: center;
   font-weight: 700;
   font-size: 24px;
-  line-height: 33px;
+  line-height: calc(33 / 24);
 
   @include tabletAndDesktop {
     font-weight: 700;
     font-size: 48px;
     line-height: 66px;
   }
-
-
 }
 
 .search {
@@ -29,16 +27,18 @@
   //height: 44px;
   padding: 0;
   max-width: 608px;
-  margin: 40px 0 0 0;
+  margin: 24px 0 24px 0;
 
+  @include tabletAndDesktop {
+    margin: 40px 0 40px 0;
+  }
 
   //:global(.ant-input-wrapper) {
   //
   //}
 
-  :global(.ant-input-affix-wrapper ) {
+  :global(.ant-input-affix-wrapper) {
     padding: 10px 20px;
-
   }
 
   :global(.ant-input-clear-icon) {
@@ -83,7 +83,6 @@
     height: 24px !important;
     border: transparent;
     transition: transform 0.4s ease-out;
-
 
     &:hover {
       background-color: initial !important;
