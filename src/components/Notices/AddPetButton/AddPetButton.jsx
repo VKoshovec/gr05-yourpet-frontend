@@ -20,6 +20,15 @@ const AddPetButton = () => {
   // let linkRoute = isLoggingIn ?  : `notices/${category}`
 
   const toggleModal = () => {
+    // setModalShow(!modalShow);
+    if (!modalShow) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (modalShow) {
+      document.body.style.overflow = '';
+    }
+
     setModalShow(!modalShow);
   };
 
@@ -45,14 +54,15 @@ const AddPetButton = () => {
         <Modal closeModal={toggleModal}>
           <div className={styled.modal}>
             <h2 className={styled.user_modal_text}>
-              To do this, you need <br />
-              to login or register
+              Only available to <br />
+              authorized users
             </h2>
             <div className={styled.modalBtns}>
               <button
                 className={styled.modalBtn_login}
                 onClick={() => {
                   navigate('/login');
+                  toggleModal();
                 }}
               >
                 Login <Pawprint />
@@ -61,9 +71,10 @@ const AddPetButton = () => {
                 className={styled.modalBtn_register}
                 onClick={() => {
                   navigate('/register');
+                  toggleModal();
                 }}
               >
-                Registeration
+                Registration
               </button>
             </div>
           </div>

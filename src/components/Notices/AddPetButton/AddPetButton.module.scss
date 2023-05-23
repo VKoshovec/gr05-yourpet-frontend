@@ -52,14 +52,14 @@
 .modal {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
 
   @media screen and (min-width: 768px) {
-    padding: 60px 85px;
+    padding: 10px 15px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 100px 155px;
+    padding: 30px 65px;
   }
 }
 
