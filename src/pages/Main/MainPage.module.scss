@@ -2,7 +2,7 @@
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
-  background-image: url('../../components/assets/images/mainPageImage/bgMob.png'), url('../../components/assets/images/mainPageImage/FrameMob.png');
+  background-image: url('../../components/assets/images/mainPageImage/bgMob.png'), url('../../components/assets/images/mainPageImage/newBgMob.png');
   background-repeat: no-repeat;
   background-position: center center, bottom center;
   position: relative;
@@ -12,9 +12,9 @@
 
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    background-image: url('../../components/assets/images/mainPageImage/bgTab.png'), url('../../components/assets/images/mainPageImage/FrameTab.png');
+    background-image: url('../../components/assets/images/mainPageImage/bgTab.png'), url('../../components/assets/images/mainPageImage/newBgTab.png');
     background-repeat: no-repeat;
-    background-position: center center, bottom center;
+    background-position: center center, center 75%;
     min-height: 1196px;
     /* min-height: 100vh; */
   }
@@ -25,9 +25,9 @@
     align-items: center;
     max-width: 1280px;
     min-height: calc(100vh - 68px);
-    background-image: url('../../components/assets/images/mainPageImage/bg.png'), url('../../components/assets/images/mainPageImage/FrameDesk.png');
+    background-image: url('../../components/assets/images/mainPageImage/bg.png'), url('../../components/assets/images/mainPageImage/newBg.png');
     background-repeat: no-repeat;
-    background-position: center center, bottom right;
+    background-position: center center, right -75%;
   }
 
 }
