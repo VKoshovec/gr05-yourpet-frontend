@@ -1,5 +1,4 @@
-@import "./src/styles/mixins/media";
-
+@import './src/styles/mixins/media';
 
 .addButton {
   display: flex;
@@ -22,7 +21,6 @@
     border-radius: 40px;
     min-height: 40px;
     min-width: 129px;
-
   }
 
   .text {
@@ -36,14 +34,10 @@
       font-size: 16px;
       line-height: 22px;
     }
-
-
   }
   svg {
-
     @include tabletAndDesktop {
       order: 2;
-
     }
   }
 
@@ -52,9 +46,130 @@
   }
 
   @include tabletAndDesktop {
+  }
+}
 
+.modal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 
+  @media screen and (min-width: 768px) {
+    padding: 60px 85px;
   }
 
+  @media screen and (min-width: 1280px) {
+    padding: 100px 155px;
+  }
+}
 
+.user_modal_text {
+  font-style: normal;
+  font-weight: 550;
+  font-size: 20px;
+  line-height: 49px;
+  letter-spacing: 0.04em;
+
+  color: #111111;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 36px;
+  }
+}
+
+.modalBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  align-items: center;
+  margin-top: 40px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    margin-top: 48px;
+    justify-content: center;
+  }
+}
+
+.modalBtn_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  gap: 12px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  color: #fef9f9;
+
+  width: 140px;
+  height: 40px;
+
+  background: #ffc107;
+
+  border: 2px solid #ffc107;
+  border-radius: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 165px;
+    height: 40px;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.modalBtn_register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+
+  width: 140px;
+  height: 40px;
+
+  border: 2px solid #ffc107;
+  border-radius: 40px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  color: #ffc107;
+  background: transparent;
+
+  @media screen and (min-width: 768px) {
+    width: 165px;
+    height: 40px;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.user_modal {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 85px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 100px 155px;
+  }
 }

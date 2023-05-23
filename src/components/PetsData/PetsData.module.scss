@@ -69,6 +69,16 @@
   color: #fef9f9;
 }
 
+.pets_navBtn:hover,
+.pets_navBtn:focus {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #fef9f9;
+}
+
 .pets_info {
   position: relative;
   display: flex;

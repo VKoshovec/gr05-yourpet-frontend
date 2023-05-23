@@ -76,10 +76,7 @@ const Router = () => {
           <Route
             path="/login"
             element={
-              <RestrictedRoute
-                redirectTo="/notices/sell"
-                component={<LoginPage />}
-              />
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
             }
           />
           <Route path="*" element={<NotFoundPage />} />
