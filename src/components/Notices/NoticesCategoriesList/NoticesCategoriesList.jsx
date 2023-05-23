@@ -32,6 +32,8 @@ const NoticesCategoriesList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
   const page = searchParams.get('page');
+  const gender = searchParams.get('gender')
+
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices)
   const isLoading = useSelector(selectIsLoading)
@@ -69,7 +71,9 @@ const inFavorites = favorite.includes(user._id);
 
 
   const handleDeleteNotice = () => {
-    dispatch(fetchDeleteNotices(deletedID)).then(()=> {setDeletedID(''); handleCloseModal(); dispatch(fetchNoticesByCategory({category, search, page, }));});
+    dispatch(fetchDeleteNotices(deletedID)).then(()=> {setDeletedID('');
+
+      handleCloseModal(); dispatch(fetchNoticesByCategory({category, search, page, }));});
   }
 
   const handleDeleteFavorite = (id, userId) => {
@@ -110,7 +114,7 @@ const inFavorites = favorite.includes(user._id);
       return;
     }
 
-    dispatch(fetchNoticesByCategory({category, search, page, }));
+    dispatch(fetchNoticesByCategory({category, search, page, gender}));
    if (!page) {
      setCurrent(1)
    }
