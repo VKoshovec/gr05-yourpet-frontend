@@ -2,15 +2,27 @@
 
 .section {
   padding-top: 40px;
-  padding-bottom: 75px;
+  padding-bottom: 24px;
 
   @include tablet {
     padding-top: 80px;
-    padding-bottom: 204px;
+    padding-bottom: 40px;
   }
 
   @include desktop {
     padding-top: 80px;
+    padding-bottom: 60px;
+  }
+}
+
+.sectionItems {
+  padding-bottom: 75px;
+
+  @include tablet {
+    padding-bottom: 204px;
+  }
+
+  @include desktop {
     padding-bottom: 81px;
   }
 }
