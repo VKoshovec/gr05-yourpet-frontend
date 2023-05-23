@@ -36,7 +36,7 @@ const UserData = () => {
       setModalShow(true);
       location.state = null;
     }
-  }, []);
+  }, [location]);
 
   const initialValues = {
     image: null,
@@ -98,7 +98,6 @@ const UserData = () => {
                     hidden
                     onChange={event => {
                       setFieldValue('image', event.target.files[0]);
-
                       setBtnChange(true);
                     }}
                   />

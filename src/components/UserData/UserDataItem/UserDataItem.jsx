@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { updateUser } from 'redux/auth/operations';
 import { useAuth } from 'services/hooks';
+import ErrorNotification from 'components/CustomNotificstion/ErrorNotification';
 
 import { ReactComponent as Confirm } from '../../assets/images/icon/check.svg';
 import { ReactComponent as Edit } from '../../assets/images/icon/edit-2.svg';
@@ -58,15 +57,6 @@ const UserDataItem = () => {
     setChangeBtn({ ...initialStateBlur, [name]: false });
   };
 
-  const error = error => {
-    toast.warn(error, {
-      autoClose: 5000,
-      position: 'top-center',
-      closeOnClick: true,
-      pauseOnHover: true,
-    });
-  };
-
   const formik = useFormik({
     initialValues,
     onSubmit: values => {
@@ -74,10 +64,17 @@ const UserDataItem = () => {
     },
     validationSchema: yup.object().shape({
       name: yup.string(),
-      email: yup.string().email().required('Required'),
-      birthday: yup.string(),
-      phone: yup.string(),
-      city: yup.string(),
+      email: yup
+        .string()
+        .email('Enter a valid Email')
+        .required('Email is required'),
+      birthday: yup
+        .string()
+        .matches(/^\d{2}\.\d{2}\.\d{4}$/, 'Birthday format DD.MM.YYYY'),
+      phone: yup.string().matches(/^\+380\d{9}$/, 'Phone format +380000000000'),
+      city: yup
+        .string()
+        .matches(/^[A-Za-z\s]+$/, 'City contain only letters and spaces'),
     }),
   });
 
@@ -109,9 +106,9 @@ const UserDataItem = () => {
               <Edit className={styles.user_svg} />
             )}
           </button>
-          {formik.errors.name &&
-            formik.touched.name &&
-            error(formik.errors.name)}
+          {formik.errors.name && formik.touched.name && (
+            <ErrorNotification error={formik.errors.name} />
+          )}
         </div>
 
         <div className={styles.user_form_wrapper}>
@@ -138,9 +135,9 @@ const UserDataItem = () => {
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {formik.errors.email &&
-              formik.touched.email &&
-              error(formik.errors.email)}
+            {formik.errors.email && formik.touched.email && (
+              <ErrorNotification error={formik.errors.email} />
+            )}
           </div>
         </div>
 
@@ -169,7 +166,7 @@ const UserDataItem = () => {
               )}
             </button>
             {formik.errors.birthday && formik.touched.birthday && (
-              <div className={styles.user_error}>{formik.errors.birthday}</div>
+              <ErrorNotification error={formik.errors.birthday} />
             )}
           </div>
         </div>
@@ -198,9 +195,9 @@ const UserDataItem = () => {
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {formik.errors.phone &&
-              formik.touched.phone &&
-              error(formik.errors.phone)}
+            {formik.errors.phone && formik.touched.phone && (
+              <ErrorNotification error={formik.errors.phone} />
+            )}
           </div>
         </div>
 
@@ -228,9 +225,9 @@ const UserDataItem = () => {
                 <Edit className={styles.user_svg} />
               )}
             </button>
-            {formik.errors.city &&
-              formik.touched.city &&
-              error(formik.errors.city)}
+            {formik.errors.city && formik.touched.city && (
+              <ErrorNotification error={formik.errors.city} />
+            )}
           </div>
         </div>
       </form>

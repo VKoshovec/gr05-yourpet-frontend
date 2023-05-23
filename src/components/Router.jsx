@@ -52,7 +52,6 @@ const Router = () => {
             <Route path=":category" element={<NoticesCategoriesList />} />
           </Route>
           <Route path="/friends" element={<OurFriendsPage />} />
-          {/* <Route path="/user" element={<UserPage />} /> */}
           <Route
             path="/user"
             element={

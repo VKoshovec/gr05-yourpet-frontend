@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ReactComponent as Trash } from '../assets/images/icon/trash-2.svg';
 
-import { getPets } from 'api/pets';
-import { deletePets } from 'api/pets';
+import { getPets } from 'redux/data/operations';
+import { deletePets } from 'redux/data/operations';
+import { getUserPets } from 'redux/data/selectors';
 
 import styles from './PetsData.module.scss';
 
 const PetsData = () => {
-  const [pets, setPets] = useState([]);
-
+  const dispatch = useDispatch();
   const location = useLocation();
-
-  const fetchPets = async () => {
-    const { data } = await getPets();
-
-    setPets(data);
-  };
+  const pets = useSelector(getUserPets);
 
   useEffect(() => {
-    fetchPets();
+    dispatch(getPets());
   }, []);
 
   const handleDeletePet = id => {
-    const fetchDeletePet = async () => {
-      try {
-        const result = await deletePets(id);
-        fetchPets();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDeletePet();
+    dispatch(deletePets(id));
+
+    dispatch(getPets());
   };
 
   return (
@@ -48,7 +38,7 @@ const PetsData = () => {
             Add Pet +
           </NavLink>
         </div>
-        {!pets ? (
+        {pets.length === 0 ? (
           <div></div>
         ) : (
           <>
