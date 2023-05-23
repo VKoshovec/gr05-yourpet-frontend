@@ -39,10 +39,8 @@ const optionsByGender = [
 
 const NoticesFilterAccordion = () => {
 
-
   const dispatch = useDispatch();
   const filterValue = useSelector(selectNoticesAdditionalFilters);
-  console.log(filterValue);
   const debouncedSetFilter = useCallback(
     debounce((filter) => {
       dispatch(setFilter(filter));
