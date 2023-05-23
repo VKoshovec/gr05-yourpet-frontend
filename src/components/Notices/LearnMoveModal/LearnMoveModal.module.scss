@@ -10,7 +10,7 @@
   }
 
   @include tabletAndDesktop {
-    
+
 
   }
 }
@@ -40,11 +40,11 @@
     align-items: center;
     position: absolute;
     top: 16px;
-    left: 0px;
+    left: 0;
     width: 126px;
     height: 32px;
     background: var(--bluelinks);
-    border-radius: 0px 16px 16px 0px;
+    border-radius: 0 16px 16px 0;
 }
 
 .categoryText {
@@ -61,19 +61,19 @@
 .imageWrapper {
     margin-bottom: 12px;
     overflow: hidden;
-    
+
 }
 
 .image {
     width: 100%;
     min-height: 240px;
     object-fit: cover;
-    border-radius: 0px 0px 40px 40px;
+    border-radius: 0 0 40px 40px;
 
     @include tablet {
       width: 262px;
       height: 298px;
-      
+
     }
 
     @include desktop {
@@ -174,14 +174,14 @@
   text-decoration-line: underline;
   color: var(--yellow);
   margin-bottom: 11px;
-  
+
   @include tabletAndDesktop {
-    
+
     &:not(:last-child) {
       margin-bottom: 8px;
     }
   }
-  
+
 }
 
 .comments {
@@ -207,7 +207,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    
+
     @include tabletAndDesktop {
       font-size: 16px;
       line-height: 24px;
@@ -223,9 +223,9 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    
+
   }
-  
+
 }
 
 .btnContact {
@@ -246,9 +246,9 @@
     @include tabletAndDesktop {
       width: 129px;
       height: 40px;
-      margin-left: 0px;
-      margin-right: 0px;
-      
+      margin-left: 0;
+      margin-right: 0;
+
     }
 
     &:hover {
@@ -278,8 +278,8 @@
     @include tabletAndDesktop {
       width: 129px;
       height: 40px;
-      margin-left: 0px;
-      margin-right: 0px;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     &:hover {
