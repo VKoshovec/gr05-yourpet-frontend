@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Button } from "antd";
 import css from '../AddPetFormButtonset/AddPetFormButtonset.module.scss';
 
-const AddPetFormButtonset = ({ ButtonSetResponse, step }) => {
+const AddPetFormButtonset = ({ ButtonSetResponse, step, initialVariant }) => {
 
-    const [variant, setVariant] = useState (); 
+    const [variant, setVariant] = useState (initialVariant); 
 
     const isRendered = (step) => {
         return step === 1;
