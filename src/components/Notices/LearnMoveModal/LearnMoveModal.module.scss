@@ -172,7 +172,7 @@
 }
 
 .infoContentLink {
-  text-decoration-line: underline;
+  // text-decoration-line: underline;
   color: var(--yellow);
   // margin-bottom: 11px;
 
@@ -240,12 +240,13 @@
     margin: 0 auto;
     width: 256px;
     height: 40px;
-
+    text-decoration: none;
     border: 2px solid var(--bluelinksActive);
     border-radius: 40px;
     background: transparent;
     color: var(--bluelinksActive);
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
 
     @include tabletAndDesktop {
       width: 129px;
@@ -278,6 +279,7 @@
     color: var(--white);
     stroke: var(--white);
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
 
     @include tabletAndDesktop {
       width: 129px;
@@ -295,6 +297,11 @@
   stroke:inherit;
 }
 
-.btnLink {
+.btnContactLink {
+  color: var(--bluelinksActive);
   text-decoration: none;
+  &:hover {
+    color: var(--white);
+  }
+
 }
