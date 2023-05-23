@@ -9,6 +9,11 @@
   font-size: 28px;
   font-weight: 600;
 }
+
+.listWrapper {
+  position: relative;
+}
+
 .list {
     display: flex;
     flex-wrap: wrap;
@@ -32,8 +37,22 @@
     }
 }
 
+.addPetBtnWrapper {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  right: 20px;
+  top: 550px;
+
+  @include tabletAndDesktop {
+      display: none;
+
+  }
+}
+
 .paginationWrapper {
   display: flex;
   justify-content: center;
   margin:60px 0 0 0;
 }
+

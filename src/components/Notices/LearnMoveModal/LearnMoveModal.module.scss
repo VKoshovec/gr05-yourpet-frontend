@@ -82,6 +82,7 @@
 }
 
 .titleBox {
+  text-align: start;
   height: 66px;
   padding-right: 70px;
   margin-bottom: 20px;
@@ -173,13 +174,13 @@
 .infoContentLink {
   text-decoration-line: underline;
   color: var(--yellow);
-  margin-bottom: 11px;
+  // margin-bottom: 11px;
 
   @include tabletAndDesktop {
 
-    &:not(:last-child) {
-      margin-bottom: 8px;
-    }
+    // &:not(:last-child) {
+    //   margin-bottom: 8px;
+    // }
   }
 
 }
@@ -187,6 +188,7 @@
 .comments {
   display: flex;
   justify-content: flex-start;
+  text-align: start;
   height: 95px;
   // margin-top: 12px;
   margin-bottom: 12px;
@@ -201,7 +203,9 @@
 
 .commentsText {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    text-align: start;
     letter-spacing: 0.04em;
     font-style: normal;
     font-weight: 600;
