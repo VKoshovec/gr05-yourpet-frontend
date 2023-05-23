@@ -9,6 +9,7 @@ import React, {  useState } from 'react';
 const AddPetPhoto = ({ formtype, getPhoto, initielFields, errorField, errorMessage }) => {
 
     let formData = new FormData();
+    
 
     const [fileList, setFileList] = useState(
       initielFields["saveList"] ? initielFields["saveList"] : []

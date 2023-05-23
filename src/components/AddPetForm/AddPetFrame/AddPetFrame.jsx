@@ -61,11 +61,11 @@ const AddPetFrame = () => {
         } 
         
         if(step === 3 && isValidFields(fields, step , formType)[0] === true) {
-            AddPetNotice( token, fields, formType).then((res) => { 
+            AddPetNotice( token, fields, formType ).then((res) => { 
                 if (res.status === 200 || res.status === 201) {
-                    navigate() 
+                    navigate(); 
                  }
-            } ).catch((err) => alert(err));           
+            } ).catch((err) => err);           
         }; 
     };
 
