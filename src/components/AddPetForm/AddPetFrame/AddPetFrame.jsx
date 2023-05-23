@@ -20,7 +20,7 @@ const testUrl = "https://funart.pro/uploads/posts/2021-07/1627093090_22-funart-p
 
 export const initialFormType = ["yourPet", "sell", "lost/found", "In good hands"];
 
-const AddPetFrame = () => {
+const AddPetFrame = ({incomingType}) => {
 
     const token = useSelector(selectToken);
     const user = useSelector(selectUser);
@@ -30,9 +30,10 @@ const AddPetFrame = () => {
 
     const [fields, setFields] = useState();
     const [step, setStep] = useState(1);
-    const [formType, setFormType] = useState();
+    const [formType, setFormType] = useState(incomingType);
     const [err, setErr] = useState();
     const [errMess, setErrMess] = useState();
+    const [initButSet, setInitButset] = useState( initialFormType.indexOf(incomingType) );
 
     const navigate = () => {
         if (location) {
@@ -101,7 +102,7 @@ const AddPetFrame = () => {
 
             <AddPetCarusel stepnumber={ step }/>
 
-            <AddPetFormButtonset ButtonSetResponse={ ButtonSetResponse } step={ step } />
+            <AddPetFormButtonset ButtonSetResponse={ ButtonSetResponse } step={ step } initialVariant={ initButSet }/>
 
             {step !== 1 ? <AddPetForm 
             stepnumber={ step } 
