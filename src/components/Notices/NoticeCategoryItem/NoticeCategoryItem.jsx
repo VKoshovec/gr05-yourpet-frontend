@@ -9,35 +9,22 @@ import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.s
 import styled from './NoticeCategoryItem.module.scss';
 import AddPetButton from 'components/Notices/AddPetButton/AddPetButton';
 import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
+import cn from 'classnames';
 
 
-const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite }) => {
+const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite, className }) => {
   const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
 
 
-  return (<li className={styled.item}>
+  return (<li className={cn(styled.item, className)}>
     <div className={styled.category}>
             <span className={styled.categoryText}>
                 {category}
             </span>
     </div>
-    {/*<button*/}
-    {/*  className={styled.buttonOnClick}*/}
-    {/*  type='button'*/}
-    {/*  // onClick={addAndDeleteFavorite}*/}
-    {/*>*/}
-    {/*  <HeartIcon />*/}
-    {/*</button>*/}
-    <AddToFavoriteButton  deleteFavorite={deleteFavorite}
-                         addFavorite={addFavorite} userID={userID} data={data}/>
-    {/*{_id===owner &&  <button*/}
-    {/*  className={styled.buttonDeleteOnClick}*/}
-    {/*  type="button"*/}
-    {/*  onClick={() => deleteNotices(null, 'deleteNotices')}*/}
-    {/*>*/}
-    {/*  <Trash />*/}
-    {/*</button>}*/}
-    { userID === owner && <button
+    <AddToFavoriteButton deleteFavorite={deleteFavorite}
+                         addFavorite={addFavorite} userID={userID} data={data} />
+    {userID === owner && <button
       className={styled.buttonDeleteOnClick}
       type='button'
       onClick={() => deleteNotices(_id, 'deleteNotices')}
@@ -45,7 +32,11 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       <Trash />
     </button>}
     <div className={styled.imageWrapper}>
-      <img className={styled.image} src={image} alt='Your pet' width='280' />
+      <img className={styled.image}
+           src={image}
+           alt='Your pet'
+           width='280'
+      />
     </div>
     <div className={styled.infoWrapper}>
       <div className={styled.info}>
@@ -73,7 +64,7 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       <div className={styled.titleBox}>
         <h2 className={styled.title}>{title}</h2>
       </div>
-    
+
       <button
         className={styled.buttonOnClickModal}
         type='button'
@@ -85,7 +76,6 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
         <PawIcon />
       </button>
     </div>
-
     <div className={styled.addPetBtnWrapper}>
       <AddPetButton className={styled.addPetBtnIcon} />
     </div>

@@ -117,7 +117,7 @@ const inFavorites = favorite.includes(user._id);
   }, [category, searchParams, dispatch ]);
 
   return (<>
-    {notices.data.length === 0 && !isLoading &&  <p>No result</p> }
+    {notices.data.length === 0 && !isLoading &&  <p className={styled.noResult}>No result</p> }
     <ul className={styled.list}>
       {notices?.data.map((items) => {
         return( <NoticeCategoryItem
@@ -128,7 +128,7 @@ const inFavorites = favorite.includes(user._id);
           addFavorite={handleAddFavorite}
           deleteFavorite={handleDeleteFavorite}
           userID={user._id}
-
+          className={category === 'favorite' && !items.favorite.includes(user._id) ? styled.isHidden : ''}
         />)
       })}
     </ul>
