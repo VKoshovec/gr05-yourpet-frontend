@@ -3,10 +3,11 @@ import { ReactComponent as ChevronIcon } from '../../assets/images/icon/chevron-
 import cn from 'classnames';
 import styled from './NoticesFilter.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import  debounce  from "lodash/debounce"
+import debounce from 'lodash/debounce';
 import { useCallback } from 'react';
 import { selectNoticesAdditionalFilters } from '../../../redux/notices/selector';
 import { setFilter } from '../../../redux/notices/slice';
+
 const { Panel } = Collapse;
 
 const optionsByAge = [
@@ -40,17 +41,14 @@ const NoticesFilterAccordion = () => {
 
   const dispatch = useDispatch();
   const filterValue = useSelector(selectNoticesAdditionalFilters);
-
   const debouncedSetFilter = useCallback(
     debounce((filter) => {
       dispatch(setFilter(filter));
     }, 300),
-    [dispatch]
+    [dispatch],
   );
 
-
-  const handleClick = (e) => {
-    const { name, value, checked } = e.target;
+  const handleClick = (name, value, checked) => {
     const updatedFilter = { ...filterValue };
 
     if (name === 'age') {
@@ -60,11 +58,9 @@ const NoticesFilterAccordion = () => {
       };
     } else if (name === 'gender') {
       updatedFilter.byGender = {
-        ...updatedFilter.byGender,
         [value]: checked,
       };
     }
-    // dispatch(setFilter(updatedFilter));
     debouncedSetFilter(updatedFilter);
   };
 
@@ -77,18 +73,28 @@ const NoticesFilterAccordion = () => {
         className={styled.filterWrapper}
       >
         <Panel header='By age' key='1' className={styled.title}>
-          <Checkbox.Group name={'age'}
-                          options={optionsByAge}
-                          onClick={handleClick}
-                          className={styled.checkbox}
-          />
+          {optionsByAge.map(({ label, value }) => (
+            <Checkbox
+              key={value}
+              checked={filterValue.byAge[value] || false}
+              onChange={(e) => handleClick('age', value, e.target.checked)}
+              className={styled.checkbox}
+            >
+              {label}
+            </Checkbox>
+          ))}
         </Panel>
         <Panel header='By gender' key='2' className={styled.title}>
-          <Checkbox.Group name={'gender'}
-                          options={optionsByGender}
-                          onClick={handleClick}
-                          className={styled.checkbox}
-          />
+          {optionsByGender.map(({ label, value }) => (
+            <Checkbox
+              key={value}
+              checked={filterValue.byGender[value] || false}
+              onChange={(e) => handleClick('gender', value, e.target.checked)}
+              className={styled.checkbox}
+            >
+              {label}
+            </Checkbox>
+          ))}
         </Panel>
       </Collapse>
     </div>

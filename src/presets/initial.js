@@ -39,9 +39,9 @@ export const initialNotices = {
   },
   additionalFilter: {
     byAge: {
-      '3-12m': false,
       '1year': false,
       '2year': false,
+      '3-12m': false,
     },
     byGender: {
       female: false,
