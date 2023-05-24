@@ -1,11 +1,10 @@
 import React from 'react';
-import { ReactComponent as HeartIcon } from '../../assets/images/icon/heart.svg';
 import cn from 'classnames';
 import styled from './LearnMoveModal.module.scss';
+import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
 
-const LearnMoveModal = ({ data, closeMenu, openMenu, onClickAdd }) => {
+const LearnMoveModal = ({ data, closeModal, userID, addFavorite, deleteFavorite, }) => {
 
-  // console.log(data);
   const {
     _id,
     category,
@@ -19,11 +18,9 @@ const LearnMoveModal = ({ data, closeMenu, openMenu, onClickAdd }) => {
     email,
     phone,
     comments,
-    addAndDeleteFavorite,
   } = data;
-  const handleClickBtn = () => {
-    if (openMenu) closeMenu(false);
-  };
+
+
 
   return (
     <div className={styled.modalWrapper}>
@@ -94,23 +91,17 @@ const LearnMoveModal = ({ data, closeMenu, openMenu, onClickAdd }) => {
           
           <span className={styled.btnContactText}>
                 Contact
-                </span>     
-          </button>
-          </a>
-
-        <button
-          className={styled.btnAdd}
-          type='button'
-          onClick={() => onClickAdd(_id)}
-          // onClick={addAndDeleteFavorite}
-        >
-                <span className={styled.btnAddText}>
-                Add to
                 </span>
-          <HeartIcon />
         </button>
+        <AddToFavoriteButton deleteFavorite={deleteFavorite}
+                             addFavorite={addFavorite}
+                             userID={userID}
+                             data={data}
+                             onClickBtn={closeModal}
+                             classStyled={styled.btnAdd}
+                             textVisible
+        />
       </div>
-
     </div>
   );
 

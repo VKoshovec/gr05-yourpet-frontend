@@ -112,13 +112,22 @@
       rotate: (180deg);
     }
   }
+:global(.ant-collapse-content-box) {
 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
   .checkbox {
-    flex-direction: column;
+    //flex-direction: column;
     gap: 8px;
 
+    &:global(.ant-checkbox-wrapper) {
+
+      margin-inline-start: initial!important;
+    }
     label {
-      margin-inline-start: initial;
+      margin-inline-start: initial !important;
     }
 
     :global(.ant-checkbox-checked .ant-checkbox-inner) {

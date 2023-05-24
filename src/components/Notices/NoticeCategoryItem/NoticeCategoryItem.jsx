@@ -23,7 +23,10 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
             </span>
     </div>
     <AddToFavoriteButton deleteFavorite={deleteFavorite}
-                         addFavorite={addFavorite} userID={userID} data={data} />
+                         addFavorite={addFavorite}
+                         userID={userID}
+                         data={data}
+    />
     {userID === owner && <button
       className={styled.buttonDeleteOnClick}
       type='button'

@@ -8,6 +8,7 @@ const noticesSlice = createSlice({
   reducers: {
     setFilter(state, action) {
       state.additionalFilter = action.payload;
+
     },
   },
   extraReducers: builder => {
@@ -18,11 +19,9 @@ const noticesSlice = createSlice({
       .addCase(fetchAddNoticesFavorite.fulfilled, (state, action) => {
 
         const notice = state.notices.data.find(item => item._id === action.meta.arg.id);
-        // console.log(targetObject.favorite, 'payload');
         if (notice) {
           notice.favorite.push(action.meta.arg.userId);
         }
-        // state.notices.data.favorite.push(action.meta.arg)
       })
       .addCase(fetchRemoveNoticesFavorite.fulfilled, (state, action) => {
         const notice = state.notices.data.find(item => item._id === action.meta.arg.id);
