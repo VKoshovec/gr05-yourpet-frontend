@@ -13,7 +13,7 @@ export function getCurrentAge(dateString) {
   }
   if (age === 0) {
     if (birthDate.getMonth() < m) {
-      return m+ ' month';
+      return m+ ' mon';
     }
     m = 12 + m;
     if (d < 0 || (d === 0 && today.getDate() < birthDate.getDate())) {
@@ -21,6 +21,11 @@ export function getCurrentAge(dateString) {
     }
   }
 
-  return age ? age + ' year' : m + ' month';
-}
+  return age ? age + ' year' : m + ' mon';
+};
 
+
+export function getLocation(value) {
+  if (!value) return "no data";
+  return value.length > 5 ?`${value.substr(0, 5).trimStart()}...` : value;
+};

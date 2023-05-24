@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentAge } from 'helpers/getCurrentAge';
+import { getCurrentAge, getLocation } from 'helpers/getCurrentAge';
 import { ReactComponent as Trash } from '../../assets/images/icon/trash-2.svg';
 import { ReactComponent as Location } from '../../assets/images/icon/location-1.svg';
 import { ReactComponent as Clock } from '../../assets/images/icon/clock.svg';
@@ -13,7 +13,7 @@ import cn from 'classnames';
 
 
 const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavorite, deleteFavorite, className }) => {
-  const { _id, category, image, location, date, sex, title, owner, favorite, birthday } = data;
+  const { _id, category, image, location, sex, title, owner, birthday } = data;
 
 
   return (<li className={cn(styled.item, className)}>
@@ -45,7 +45,7 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
       <div className={styled.info}>
         <Location />
         <span className={styled.infoText}>
-                {location}
+                {getLocation(location)}
             </span>
       </div>
       <div className={styled.info}>
