@@ -93,6 +93,7 @@ const LearnMoveModal = ({ data, closeModal, userID, addFavorite, deleteFavorite,
                 Contact
                 </span>
         </button>
+        </a>
         <AddToFavoriteButton deleteFavorite={deleteFavorite}
                              addFavorite={addFavorite}
                              userID={userID}
