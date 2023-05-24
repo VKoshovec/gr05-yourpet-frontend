@@ -27,11 +27,14 @@ export default function BaseInput({
         name={name}
         placeholder={placeholder}
       />
-      {isShow && (
-        <div className={css.authInputIsShow} onClick={handleShowPassword}>
-          {showPassword ? <EyeClosed /> : <EyeOpen />}
-        </div>
-      )}
+
+      <button
+        className={css.authInputIsShow}
+        type="button"
+        onClick={handleShowPassword}
+      >
+        {showPassword ? <EyeClosed /> : <EyeOpen />}
+      </button>
     </>
   );
 }
