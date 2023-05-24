@@ -83,11 +83,13 @@ const LearnMoveModal = ({ data, closeModal, userID, addFavorite, deleteFavorite,
                 </span>
       </div>
       <div className={styled.btnWrapper}>
-        <button
-          className={styled.btnContact}
+      <a href='tel:{phone}' className={cn('sc-bFqpvU bFAucp', styled.btnContactLink)} >
+        <button className={cn(styled.btnContact, styled.btnContactLink)}
+          // className={styled.btnContact}
           type='button'
         >
-                <span className={styled.btnContactText}>
+          
+          <span className={styled.btnContactText}>
                 Contact
                 </span>
         </button>

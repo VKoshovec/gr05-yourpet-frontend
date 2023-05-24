@@ -7,7 +7,7 @@ import { ReactComponent as Female } from '../../assets/images/icon/female.svg';
 import { ReactComponent as PawIcon } from '../../assets/images/icon/pawprint 1.svg';
 
 import styled from './NoticeCategoryItem.module.scss';
-// import AddPetButton from 'components/Notices/AddPetButton/AddPetButton';
+
 import AddToFavoriteButton from '../AddToFavoriteButton/AddToFavoriteButton';
 import cn from 'classnames';
 
@@ -79,9 +79,7 @@ const NoticeCategoryItem = ({ data, toggleModal, deleteNotices, userID, addFavor
         <PawIcon />
       </button>
     </div>
-    {/* <div className={styled.addPetBtnWrapper}>
-      <AddPetButton className={styled.addPetBtnIcon} />
-    </div> */}
+    
   </li>);
 };
 
