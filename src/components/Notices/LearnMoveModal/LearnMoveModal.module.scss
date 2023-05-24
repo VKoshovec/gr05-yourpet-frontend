@@ -3,6 +3,8 @@
 .modalWrapper {
   width: 280px;
   // height: 786px;
+  max-height: 80vh;
+  overflow-y: auto;
 
   @include tabletAndDesktop {
     width: 681px;
