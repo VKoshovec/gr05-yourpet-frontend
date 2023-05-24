@@ -24,7 +24,6 @@ export const signup = createAsyncThunk(
         data: { message },
       },
     }) {
-      // toast.error(message);
       return rejectWithValue(message);
     }
   }

@@ -1,37 +1,56 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { signup } from '../../redux/auth/operations';
-import { validationAuthForm } from 'helpers';
+import { schemaOfRegister } from './Yup';
 
-import Section from 'components/Section/Section';
-import BaseInput from 'components/fields/baseInput';
 import { MainButton } from 'components/buttons/MainButton';
+import Section from 'components/Section/Section';
+
+import { ReactComponent as EyeClosed } from '../assets/images/icon/eye-closed.svg';
+import { ReactComponent as EyeOpen } from '../assets/images/icon/eye-open.svg';
 
 import css from './Forms.module.scss';
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
+  const [showPassword1, setShowPassword1] = useState(false); // стан для показу / приховування пароля першого інпута
+  const [showPassword2, setShowPassword2] = useState(false);
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleShowPassword = () => {
+    setShowPassword1(!showPassword1);
+  };
+  const handleShowPasswordConfirm = () => {
+    setShowPassword2(!showPassword2);
+  };
 
-    const dataForm = Object.fromEntries(Array.from(new FormData(e.target)));
-    const { email, password } = dataForm;
+  const id = nanoid();
 
-    const errors = validationAuthForm(dataForm);
-    if (Object.keys(errors).length > 0) {
-      const errorMessages = Object.values(errors).join('\n');
-      return toast.error(errorMessages);
-    }
-    dispatch(signup({ email, password }));
-    // try {
-    //   const res = await dispatch(signup({ email, password, confirm_password }));
-    //   if (!res.payload.success) throw new Error(res.payload.errorCode);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schemaOfRegister),
+  });
+
+  const watchPassword1 = watch('password1', '');
+  const watchPassword2 = watch('password2', '');
+
+  const validatePassword = () => {
+    return watchPassword1 === watchPassword2 || "Passwords don't match";
+  };
+
+  const handleSubmitForm = ({ email, password1 }) => {
+    console.log(password1);
+    dispatch(signup({ email, password: password1 }));
+    // reset();
   };
 
   return (
@@ -42,29 +61,88 @@ export const AuthForm = () => {
             <h2 className={css.authFormTitle}>Registration</h2>
             <form
               className={css.authForm}
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(handleSubmitForm)}
               autoComplete="off"
             >
               <div className={css.authItem}>
-                <BaseInput name="email" type="email" placeholder="Email" />
+                <input
+                  id={id}
+                  className={`${css.authInput} ${
+                    errors.email ? css.error : ''
+                  } ${watch('email') && !errors.email ? css.success : ''}`}
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  {...register('email')}
+                />
+                {errors.email && (
+                  <p className={css.errorsMassage}>{errors.email.message}</p>
+                )}
               </div>
 
               <div className={css.authItem}>
-                <BaseInput
+                <input
+                  id={id}
+                  className={`${css.authInput} ${
+                    errors.password1 ? css.error : ''
+                  } ${
+                    watch('password1') && !errors.password1 ? css.success : ''
+                  }`}
                   name="password"
-                  type="password"
+                  {...register('password1', { required: true })}
+                  type={showPassword1 ? 'text' : 'password'}
                   placeholder="Password"
-                  isShow
                 />
+                <button
+                  className={css.authInputIsShow}
+                  type="button"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword1 ? (
+                    <EyeClosed className={css.passwordIcon} />
+                  ) : (
+                    <EyeOpen className={css.passwordIcon} />
+                  )}
+                </button>
+                {errors.password1 && (
+                  <p className={css.errorsMassage}>
+                    {errors.password1.message}
+                  </p>
+                )}
               </div>
 
               <div className={css.authItem}>
-                <BaseInput
-                  name="confirm_password"
-                  type="password"
+                <input
+                  name="passwordConfirm"
+                  className={`${css.authInput} ${
+                    errors.password2 ? css.error : ''
+                  } ${
+                    watch('password2') && !errors.password2 ? css.success : ''
+                  }`}
+                  type={showPassword2 ? 'text' : 'password'}
+                  {...register('password2', {
+                    validate: validatePassword,
+                  })}
                   placeholder="Confirm password"
-                  isShow
                 />
+
+                <button
+                  className={css.authInputIsShow}
+                  type="button"
+                  onClick={handleShowPasswordConfirm}
+                >
+                  {showPassword2 ? (
+                    <EyeClosed className={css.passwordIcon} />
+                  ) : (
+                    <EyeOpen className={css.passwordIcon} />
+                  )}
+                </button>
+
+                {errors.password2 && (
+                  <p className={css.errorsMassage}>
+                    {errors.password2.message}
+                  </p>
+                )}
               </div>
 
               <MainButton>Registration</MainButton>
