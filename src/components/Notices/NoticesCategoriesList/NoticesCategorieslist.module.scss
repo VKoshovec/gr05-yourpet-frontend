@@ -11,14 +11,16 @@
 }
 
 .listWrapper {
+  // position: sticky;
+  // top: 0px;
   position: relative;
+  // overflow: scroll;
+  // margin: auto;
 }
 
 .list {
     display: flex;
     flex-wrap: wrap;
-    // padding-right: 20px;
-    // padding-left: 20px;
     justify-content: center;
     margin-top: 24px;
     column-gap: 24px;
@@ -39,11 +41,35 @@
 
 .addPetBtnWrapper {
   position: fixed;
+  display: inline-block;
   width: 80px;
   height: 80px;
   right: 20px;
-  top: 550px;
+  // top: 550px;
+  top: calc(100vh - 250px);
+  // display: flex;
+  // justify-content: flex-end;
+  z-index: 1;
+//  margin-right: 0px;
+//  margin-left: auto;
+@media screen and (min-width: 321px) and (max-width: 380px) {
+  right: 10px;
+  // top: 550px;
+  }
 
+  @media screen and (min-width: 381px) and (max-width: 420px) {
+    right: 54px;
+    // top: 550px;
+    }
+
+  @media screen and (min-width: 321px) and (max-width: 480px) {
+    right: 98px;
+    // top: 550px;
+    }
+
+  @media screen and (min-width: 481px) {
+    display: none;
+    }
   @include tabletAndDesktop {
       display: none;
 

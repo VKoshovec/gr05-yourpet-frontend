@@ -119,7 +119,10 @@ const inFavorites = favorite.includes(user._id);
   return (<>
     {notices.data.length === 0 && !isLoading &&  <p className={styled.noResult}>No result</p> }
     <div className={styled.listWrapper}>
-    <ul className={styled.list}>
+      <div className={styled.addPetBtnWrapper}>
+        <AddPetButton className={styled.addPetBtnIcon} />
+      </div>
+      <ul className={styled.list}>
       {notices?.data.map((items) => {
         return( <NoticeCategoryItem
           key={items._id}
@@ -131,13 +134,9 @@ const inFavorites = favorite.includes(user._id);
           userID={user._id}
           className={category === 'favorite' && !items.favorite.includes(user._id) ? styled.isHidden : ''}
         />)
-      })}
-    </ul>
-    
-    <div className={styled.addPetBtnWrapper}>
-      <AddPetButton className={styled.addPetBtnIcon} />
-    </div>
-    </div>
+        })}
+      </ul>
+      </div>
     <div className={styled.paginationWrapper}>
       <CustomPagination
         currentPage={current}
