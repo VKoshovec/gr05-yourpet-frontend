@@ -76,6 +76,7 @@ const NoticesCategoriesList = () => {
 
   const handleCloseModal = () => {
     setOpenModal(prevState => ({ ...prevState, isOpen: false }));
+    document.querySelector('body').classList.toggle('no-scroll');
   };
 
   const handleOpenModal = (id, type) => {
@@ -86,6 +87,7 @@ const NoticesCategoriesList = () => {
     if (desiredObject) {
       setDataLearnMoveModal(desiredObject);
     }
+    document.querySelector('body').classList.toggle('no-scroll');
   };
 
   const handleDeleteNotice = () => {
